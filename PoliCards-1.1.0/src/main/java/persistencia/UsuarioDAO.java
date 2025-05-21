@@ -1,5 +1,6 @@
-package com.mycompany.policards;
+package persistencia;
 
+import com.mycompany.policards.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,14 +9,13 @@ import java.sql.SQLException;
 public class UsuarioDAO {
 
     public boolean cadastrar(Usuario u) {
-        String sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO alunos (email, senha) VALUES (?, ?)";
 
         try (Connection con = ConnectionFactory.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
-            ps.setString(1, u.getNome());
-            ps.setString(2, u.getEmail());
-            ps.setString(3, u.getSenha());
+            ps.setString(1, u.getEmail());
+            ps.setString(2, u.getSenha());
 
             return ps.executeUpdate() > 0;
 
@@ -26,7 +26,7 @@ public class UsuarioDAO {
     }
 
     public Usuario autenticar(String email, String senha) {
-        String sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?";
+        String sql = "SELECT * FROM alunos WHERE email = ? AND senha = ?";
 
         try (Connection con = ConnectionFactory.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -37,12 +37,10 @@ public class UsuarioDAO {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     Usuario u = new Usuario(
-                        rs.getString("nome"),
                         rs.getString("email"),
-                        rs.getString("senha")
-                    );
-                    u.setId_usuario(rs.getInt("id_usuario"));
-                    return u;
+                        rs.getString("senha"));
+                        u.setId_usuario(rs.getInt("id_usuario"));
+                        return u;
                 }
             }
 

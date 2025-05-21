@@ -4,6 +4,11 @@
  */
 package telas;
 
+import com.mycompany.policards.Usuario;
+import javax.swing.JOptionPane;
+import persistencia.UsuarioDAO;
+
+
 /**
  *
  * @author AMD
@@ -14,7 +19,9 @@ public class TelaLogin extends javax.swing.JFrame {
      * Creates new form TelaLogin
      */
     public TelaLogin() {
+        super ("Policards");
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -26,21 +33,91 @@ public class TelaLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        loginButton = new javax.swing.JButton();
+        loginTextField = new javax.swing.JTextField();
+        senhaPasswordField = new javax.swing.JPasswordField();
+        registrarButton = new javax.swing.JButton();
+        esqueciSenhaButton = new javax.swing.JButton();
+        telaLoginLabel = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(1920, 1080));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        loginButton.setBorder(null);
+        loginButton.setContentAreaFilled(false);
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(635, 799, 625, 56));
+
+        loginTextField.setBackground(new java.awt.Color(196, 196, 196));
+        loginTextField.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        loginTextField.setForeground(new java.awt.Color(51, 51, 51));
+        loginTextField.setBorder(null);
+        loginTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginTextFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(loginTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 502, 575, 50));
+
+        senhaPasswordField.setBackground(new java.awt.Color(196, 196, 196));
+        senhaPasswordField.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        senhaPasswordField.setForeground(new java.awt.Color(51, 51, 51));
+        senhaPasswordField.setBorder(null);
+        senhaPasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                senhaPasswordFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(senhaPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 623, 575, 50));
+
+        registrarButton.setBorder(null);
+        registrarButton.setContentAreaFilled(false);
+        getContentPane().add(registrarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 890, 350, 20));
+
+        esqueciSenhaButton.setBorder(null);
+        esqueciSenhaButton.setContentAreaFilled(false);
+        getContentPane().add(esqueciSenhaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 690, 180, 30));
+
+        telaLoginLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_LOGIN.png"))); // NOI18N
+        getContentPane().add(telaLoginLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void senhaPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaPasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_senhaPasswordFieldActionPerformed
+
+    private void loginTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginTextFieldActionPerformed
+    
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        //pega o login do usuário
+        String email = loginTextField.getText();
+        //pega a senha do usuário como char[] e converte para String
+        String senha = new String(senhaPasswordField.getPassword());
+
+        try {
+            UsuarioDAO dao = new UsuarioDAO();
+            Usuario usuario = dao.autenticar(email, senha);
+            if (usuario != null) {
+                JOptionPane.showMessageDialog(null, "Bem vindo, " + usuario.getEmail() + "!");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Usuário inválido");
+            }
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Problemas técnicos. Tente novamente mais tarde");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +155,11 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton esqueciSenhaButton;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JTextField loginTextField;
+    private javax.swing.JButton registrarButton;
+    private javax.swing.JPasswordField senhaPasswordField;
+    private javax.swing.JLabel telaLoginLabel;
     // End of variables declaration//GEN-END:variables
 }
