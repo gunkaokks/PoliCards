@@ -41,6 +41,9 @@ public class TelaLogin extends javax.swing.JFrame {
         telaLoginLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(null);
+        setMinimumSize(null);
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
         setSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -51,7 +54,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 loginButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(635, 799, 625, 56));
+        getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 815, 630, 56));
 
         loginTextField.setBackground(new java.awt.Color(196, 196, 196));
         loginTextField.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -62,7 +65,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 loginTextFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(loginTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 502, 575, 50));
+        getContentPane().add(loginTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 490, 575, 50));
 
         senhaPasswordField.setBackground(new java.awt.Color(196, 196, 196));
         senhaPasswordField.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -73,18 +76,20 @@ public class TelaLogin extends javax.swing.JFrame {
                 senhaPasswordFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(senhaPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 623, 575, 50));
+        getContentPane().add(senhaPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 610, 575, 50));
 
         registrarButton.setBorder(null);
         registrarButton.setContentAreaFilled(false);
-        getContentPane().add(registrarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 890, 350, 20));
+        getContentPane().add(registrarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 900, 350, 30));
 
         esqueciSenhaButton.setBorder(null);
         esqueciSenhaButton.setContentAreaFilled(false);
-        getContentPane().add(esqueciSenhaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 690, 180, 30));
+        getContentPane().add(esqueciSenhaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 690, 190, 30));
 
+        telaLoginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         telaLoginLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_LOGIN.png"))); // NOI18N
-        getContentPane().add(telaLoginLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        telaLoginLabel.setPreferredSize(new java.awt.Dimension(1280, 720));
+        getContentPane().add(telaLoginLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

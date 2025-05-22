@@ -4,6 +4,13 @@
  */
 package telas;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import persistencia.ConnectionFactory;
+
 /**
  *
  * @author AMD
@@ -26,33 +33,94 @@ public class TelaCadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        botaoSenha = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
-        boatoCadastro = new javax.swing.JButton();
+        cadastroButton = new javax.swing.JButton();
+        cadastroTextField = new javax.swing.JTextField();
+        senhaConfirmeCadastroPassworldField = new javax.swing.JPasswordField();
+        senhaCadastroPasswordField = new javax.swing.JPasswordField();
+        telaCadastroLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1440, 1024));
-        getContentPane().setLayout(null);
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(6, 208, 0, 16);
-        getContentPane().add(botaoSenha);
-        botaoSenha.setBounds(530, 560, 450, 50);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telas/TELA_CADASTRO.png"))); // NOI18N
-        jLabel1.setFocusable(false);
-        jLabel1.setRequestFocusEnabled(false);
-        jLabel1.setVerifyInputWhenFocusTarget(false);
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(12, 0, 1440, 1024);
+        cadastroButton.setBorder(null);
+        cadastroButton.setContentAreaFilled(false);
+        cadastroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cadastroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 880, 630, 60));
 
-        boatoCadastro.setBorderPainted(false);
-        boatoCadastro.setContentAreaFilled(false);
-        getContentPane().add(boatoCadastro);
-        boatoCadastro.setBounds(490, 740, 500, 50);
+        cadastroTextField.setBackground(new java.awt.Color(196, 196, 196));
+        cadastroTextField.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        cadastroTextField.setForeground(new java.awt.Color(51, 51, 51));
+        cadastroTextField.setBorder(null);
+        cadastroTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroTextFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cadastroTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 500, 580, 50));
+
+        senhaConfirmeCadastroPassworldField.setBackground(new java.awt.Color(196, 196, 196));
+        senhaConfirmeCadastroPassworldField.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        senhaConfirmeCadastroPassworldField.setBorder(null);
+        getContentPane().add(senhaConfirmeCadastroPassworldField, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 750, 580, 50));
+
+        senhaCadastroPasswordField.setBackground(new java.awt.Color(196, 196, 196));
+        senhaCadastroPasswordField.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        senhaCadastroPasswordField.setBorder(null);
+        getContentPane().add(senhaCadastroPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 620, 580, 50));
+
+        telaCadastroLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_CADASTRO.png"))); // NOI18N
+        telaCadastroLabel.setText("jLabel3");
+        getContentPane().add(telaCadastroLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cadastroTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cadastroTextFieldActionPerformed
+
+    private void cadastroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroButtonActionPerformed
+    String email = cadastroTextField.getText();
+    String senha = new String(senhaCadastroPasswordField.getPassword());
+
+    // SQL de inserção para a tabela 'alunos' (somente email e senha)
+    String sql = "INSERT INTO alunos (email, senha) VALUES (?, ?)";
+
+    try (Connection conexao = ConnectionFactory.getConnection(); // Usando a ConnectionFactory
+         PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+        // Definir os valores para a consulta
+        stmt.setString(1, email);  // Substituindo 'email'
+        stmt.setString(2, senha);  // Substituindo 'senha'
+
+        // Executar a consulta
+        int resultado = stmt.executeUpdate();
+
+        // Verificar se a inserção foi bem-sucedida
+        if (resultado > 0) {
+            JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!");
+            // Limpar os campos
+            cadastroTextField.setText("");
+            senhaCadastroPasswordField.setPassword("");
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar.");
+        }
+
+    } catch (SQLException e) {
+        // Exibir uma mensagem com detalhes do erro SQL
+        JOptionPane.showMessageDialog(this, "Erro de banco de dados: " + e.getMessage());
+        e.printStackTrace();  // Logar o erro completo no console
+    } catch (Exception e) {
+        // Tratar qualquer outra exceção
+        JOptionPane.showMessageDialog(this, "Erro inesperado: " + e.getMessage());
+         e.printStackTrace();
+    }
+    }//GEN-LAST:event_cadastroButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -90,9 +158,10 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton boatoCadastro;
-    private javax.swing.JPasswordField botaoSenha;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton cadastroButton;
+    private javax.swing.JTextField cadastroTextField;
+    private javax.swing.JPasswordField senhaCadastroPasswordField;
+    private javax.swing.JPasswordField senhaConfirmeCadastroPassworldField;
+    private javax.swing.JLabel telaCadastroLabel;
     // End of variables declaration//GEN-END:variables
 }
