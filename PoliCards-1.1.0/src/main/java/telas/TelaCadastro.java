@@ -85,41 +85,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastroTextFieldActionPerformed
 
     private void cadastroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroButtonActionPerformed
-    String email = cadastroTextField.getText();
-    String senha = new String(senhaCadastroPasswordField.getPassword());
-
-    // SQL de inserção para a tabela 'alunos' (somente email e senha)
-    String sql = "INSERT INTO alunos (email, senha) VALUES (?, ?)";
-
-    try (Connection conexao = ConnectionFactory.getConnection(); // Usando a ConnectionFactory
-         PreparedStatement stmt = conexao.prepareStatement(sql)) {
-
-        // Definir os valores para a consulta
-        stmt.setString(1, email);  // Substituindo 'email'
-        stmt.setString(2, senha);  // Substituindo 'senha'
-
-        // Executar a consulta
-        int resultado = stmt.executeUpdate();
-
-        // Verificar se a inserção foi bem-sucedida
-        if (resultado > 0) {
-            JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!");
-            // Limpar os campos
-            cadastroTextField.setText("");
-            senhaCadastroPasswordField.setPassword("");
-        } else {
-            JOptionPane.showMessageDialog(this, "Erro ao cadastrar.");
-        }
-
-    } catch (SQLException e) {
-        // Exibir uma mensagem com detalhes do erro SQL
-        JOptionPane.showMessageDialog(this, "Erro de banco de dados: " + e.getMessage());
-        e.printStackTrace();  // Logar o erro completo no console
-    } catch (Exception e) {
-        // Tratar qualquer outra exceção
-        JOptionPane.showMessageDialog(this, "Erro inesperado: " + e.getMessage());
-         e.printStackTrace();
-    }
+        
     }//GEN-LAST:event_cadastroButtonActionPerformed
 
     /**

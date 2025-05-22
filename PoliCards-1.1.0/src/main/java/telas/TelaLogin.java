@@ -42,8 +42,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(null);
-        setMinimumSize(null);
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
         setSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -113,9 +111,13 @@ public class TelaLogin extends javax.swing.JFrame {
             Usuario usuario = dao.autenticar(email, senha);
             if (usuario != null) {
                 JOptionPane.showMessageDialog(null, "Bem vindo, " + usuario.getEmail() + "!");
+                new TelaModos().setVisible(true);
+                this.dispose();
             }
             else {
                 JOptionPane.showMessageDialog(null, "Usuário inválido");
+                new TelaLogin().setVisible(true);
+                this.dispose();
             }
         }
         catch (Exception e) {

@@ -14,8 +14,8 @@ public class UsuarioDAO {
         try (Connection con = ConnectionFactory.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
-            ps.setString(1, u.getEmail());
-            ps.setString(2, u.getSenha());
+            ps.setString(1, u.getEmail().trim());
+            ps.setString(2, u.getSenha().trim());
 
             return ps.executeUpdate() > 0;
 
@@ -31,15 +31,15 @@ public class UsuarioDAO {
         try (Connection con = ConnectionFactory.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
-            ps.setString(1, email);
-            ps.setString(2, senha);
+            ps.setString(1, email.trim());
+            ps.setString(2, senha.trim());
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     Usuario u = new Usuario(
                         rs.getString("email"),
                         rs.getString("senha"));
-                        u.setId_usuario(rs.getInt("id_usuario"));
+                        u.setId_aluno(rs.getInt("id_aluno"));
                         return u;
                 }
             }
@@ -47,7 +47,6 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             System.err.println("Erro ao autenticar usuário: " + e.getMessage());
         }
-
         return null;
     }
 }
