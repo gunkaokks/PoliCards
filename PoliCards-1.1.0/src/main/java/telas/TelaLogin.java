@@ -22,6 +22,7 @@ public class TelaLogin extends javax.swing.JFrame {
         super ("Policards");
         initComponents();
         this.setLocationRelativeTo(null);
+        erroLoginInvalidoLabel.setVisible(false);
     }
 
     /**
@@ -33,17 +34,22 @@ public class TelaLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        erroLoginInvalidoLabel = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
-        loginTextField = new javax.swing.JTextField();
+        emailTextField = new javax.swing.JTextField();
         senhaPasswordField = new javax.swing.JPasswordField();
         registrarButton = new javax.swing.JButton();
         esqueciSenhaButton = new javax.swing.JButton();
         telaLoginLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(null);
         setSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        erroLoginInvalidoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        erroLoginInvalidoLabel.setForeground(new java.awt.Color(255, 29, 51));
+        erroLoginInvalidoLabel.setText("E-mail ou senha inválidos!");
+        getContentPane().add(erroLoginInvalidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 680, 390, -1));
 
         loginButton.setBorder(null);
         loginButton.setContentAreaFilled(false);
@@ -54,16 +60,16 @@ public class TelaLogin extends javax.swing.JFrame {
         });
         getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 815, 630, 56));
 
-        loginTextField.setBackground(new java.awt.Color(196, 196, 196));
-        loginTextField.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        loginTextField.setForeground(new java.awt.Color(51, 51, 51));
-        loginTextField.setBorder(null);
-        loginTextField.addActionListener(new java.awt.event.ActionListener() {
+        emailTextField.setBackground(new java.awt.Color(196, 196, 196));
+        emailTextField.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        emailTextField.setForeground(new java.awt.Color(51, 51, 51));
+        emailTextField.setBorder(null);
+        emailTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginTextFieldActionPerformed(evt);
+                emailTextFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(loginTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 490, 575, 50));
+        getContentPane().add(emailTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 490, 575, 50));
 
         senhaPasswordField.setBackground(new java.awt.Color(196, 196, 196));
         senhaPasswordField.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -96,31 +102,30 @@ public class TelaLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_senhaPasswordFieldActionPerformed
 
-    private void loginTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginTextFieldActionPerformed
+    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_loginTextFieldActionPerformed
+    }//GEN-LAST:event_emailTextFieldActionPerformed
     
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        //pega o login do usuário
-        String email = loginTextField.getText();
-        //pega a senha do usuário como char[] e converte para String
+        String email = emailTextField.getText().trim();
         String senha = new String(senhaPasswordField.getPassword());
 
         try {
             UsuarioDAO dao = new UsuarioDAO();
             Usuario usuario = dao.autenticar(email, senha);
+            loginButton.setEnabled(false);
+            
             if (usuario != null) {
-                JOptionPane.showMessageDialog(null, "Bem vindo, " + usuario.getEmail() + "!");
+                //JOptionPane.showMessageDialog(null, "Bem vindo, " + usuario.getEmail() + "!");
                 new TelaModos().setVisible(true);
                 this.dispose();
             }
             else {
-                JOptionPane.showMessageDialog(null, "Usuário inválido");
-                new TelaLogin().setVisible(true);
-                this.dispose();
+                //JOptionPane.showMessageDialog(null, "Usuário inválido");
+                erroLoginInvalidoLabel.setVisible(true);
+                senhaPasswordField.setText("");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Problemas técnicos. Tente novamente mais tarde");
             e.printStackTrace();
         }
@@ -162,9 +167,10 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField emailTextField;
+    private javax.swing.JLabel erroLoginInvalidoLabel;
     private javax.swing.JButton esqueciSenhaButton;
     private javax.swing.JButton loginButton;
-    private javax.swing.JTextField loginTextField;
     private javax.swing.JButton registrarButton;
     private javax.swing.JPasswordField senhaPasswordField;
     private javax.swing.JLabel telaLoginLabel;
