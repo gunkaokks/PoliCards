@@ -136,12 +136,10 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
 
         getContentPane().add(telaOpcoesPanelTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
 
-        dificuldadeComboBox.setEditable(true);
         dificuldadeComboBox.setFont(new java.awt.Font("Jersey 15", 0, 14)); // NOI18N
         dificuldadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fácil", "Médio", "Difícil" }));
         getContentPane().add(dificuldadeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 160, 110, 20));
 
-        materiaComboBox.setEditable(true);
         materiaComboBox.setFont(new java.awt.Font("Jersey 15", 0, 14)); // NOI18N
         materiaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "matemática", "português", "química", "física", "história" }));
         getContentPane().add(materiaComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 160, 110, 20));

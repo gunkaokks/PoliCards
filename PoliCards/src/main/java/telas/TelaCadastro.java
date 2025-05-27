@@ -1,9 +1,9 @@
-
 package telas;
 
+import com.mycompany.policards.Usuario;
+import java.awt.Cursor;
 import javax.swing.JOptionPane;
-import persistencia.DAO;
-import usuarios.Usuario;
+import persistencia.UsuarioDAO;
 
 public class TelaCadastro extends javax.swing.JFrame {
     public TelaCadastro() {
@@ -17,6 +17,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void initComponents() {
 
         erroSenhasDiferentesLabel = new javax.swing.JLabel();
+        voltarTelaCadastro = new javax.swing.JButton();
         cadastroButton = new javax.swing.JButton();
         cadastroEmailTextField = new javax.swing.JTextField();
         cadastroConfirmeSenhaPasswordField = new javax.swing.JPasswordField();
@@ -33,6 +34,15 @@ public class TelaCadastro extends javax.swing.JFrame {
         erroSenhasDiferentesLabel.setForeground(new java.awt.Color(255, 29, 51));
         erroSenhasDiferentesLabel.setText("A senha deve ser a mesma nos dois campos!");
         getContentPane().add(erroSenhasDiferentesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 380, -1));
+
+        voltarTelaCadastro.setBorder(null);
+        voltarTelaCadastro.setContentAreaFilled(false);
+        voltarTelaCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarTelaCadastroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltarTelaCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 40));
 
         cadastroButton.setBorder(null);
         cadastroButton.setContentAreaFilled(false);
@@ -89,27 +99,23 @@ public class TelaCadastro extends javax.swing.JFrame {
         String email = cadastroEmailTextField.getText().trim();
         String senha = new String(cadastroSenhaPasswordField.getPassword()).trim();
         
-        if (email.isEmpty() || senha.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
-            return;
-        } else if (cadastroSenhaPasswordField.getPassword() != cadastroConfirmeSenhaPasswordField.getPassword());
-            
-
-        try {
+        if (cadastroSenhaPasswordField.getPassword() != cadastroConfirmeSenhaPasswordField.getPassword());
+            try {
+            cadastroButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
             Usuario novoUsuario = new Usuario(email, senha);
-            DAO dao = new DAO();
+            UsuarioDAO dao = new UsuarioDAO();
 
-            if (dao.cadastrar(novoUsuario)) {
-                JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!");
-                this.dispose();
-                new TelaLogin().setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(this, "Erro ao cadastrar. Tente outro e-mail.");
+                if (dao.cadastrar(novoUsuario)) {
+                    JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!");
+                    this.dispose();
+                    new TelaLogin().setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Erro ao cadastrar. Tente outro e-mail.");
+                    }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
-            e.printStackTrace();
-        }
     }//GEN-LAST:event_cadastroButtonActionPerformed
 
     private void cadastroConfirmeSenhaPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroConfirmeSenhaPasswordFieldActionPerformed
@@ -121,11 +127,16 @@ public class TelaCadastro extends javax.swing.JFrame {
         String confirmacao = new String(cadastroConfirmeSenhaPasswordField.getPassword());
         
         if (!senha.equals(confirmacao)) {
-        erroSenhasDiferentesLabel.setVisible(true);
-    } else {
-        erroSenhasDiferentesLabel.setVisible(false);
-    }
+            erroSenhasDiferentesLabel.setVisible(true);
+        } else {
+            erroSenhasDiferentesLabel.setVisible(false);
+        }
     }//GEN-LAST:event_cadastroConfirmeSenhaPasswordFieldKeyReleased
+
+    private void voltarTelaCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaCadastroActionPerformed
+        new TelaInicial().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_voltarTelaCadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,5 +180,6 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JPasswordField cadastroSenhaPasswordField;
     private javax.swing.JLabel erroSenhasDiferentesLabel;
     private javax.swing.JLabel telaCadastroLabel;
+    private javax.swing.JButton voltarTelaCadastro;
     // End of variables declaration//GEN-END:variables
 }

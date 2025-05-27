@@ -1,8 +1,9 @@
 package telas;
 
+import com.mycompany.policards.Usuario;
+import java.awt.Cursor;
 import javax.swing.JOptionPane;
-import persistencia.UDAO;
-import usuarios.Usuario;
+import persistencia.UsuarioDAO;
 
 public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
@@ -15,6 +16,7 @@ public class TelaLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        voltarTelaLogin = new javax.swing.JButton();
         erroLoginInvalidoLabel = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
         emailTextField = new javax.swing.JTextField();
@@ -28,6 +30,15 @@ public class TelaLogin extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        voltarTelaLogin.setBorder(null);
+        voltarTelaLogin.setContentAreaFilled(false);
+        voltarTelaLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarTelaLoginActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltarTelaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 40));
 
         erroLoginInvalidoLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         erroLoginInvalidoLabel.setForeground(new java.awt.Color(255, 29, 51));
@@ -95,23 +106,23 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_emailTextFieldActionPerformed
     
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        String email = emailTextField.getText().trim();
-        String senha = new String(senhaPasswordField.getPassword());
+        String emailAluno = emailTextField.getText().trim();
+        String senhaAluno = new String(senhaPasswordField.getPassword());
 
         try {
-            DAO dao = new DAO();
-            Usuario usuario = (Usuario) dao.autenticar(email, senha);
+            loginButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+            UsuarioDAO dao = new UsuarioDAO();
+            Usuario usuario = dao.autenticar(emailAluno, senhaAluno);
             loginButton.setEnabled(false);
             
             if (usuario != null) {
-                //JOptionPane.showMessageDialog(null, "Bem vindo, " + usuario.getEmail() + "!");
                 new TelaModos().setVisible(true);
                 this.dispose();
             }
             else {
-                //JOptionPane.showMessageDialog(null, "Usuário inválido");
                 erroLoginInvalidoLabel.setVisible(true);
                 senhaPasswordField.setText("");
+                loginButton.setEnabled(true);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Problemas técnicos. Tente novamente mais tarde");
@@ -123,6 +134,11 @@ public class TelaLogin extends javax.swing.JFrame {
         new TelaCadastro().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registrarButtonActionPerformed
+
+    private void voltarTelaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaLoginActionPerformed
+        new TelaInicial().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_voltarTelaLoginActionPerformed
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -160,5 +176,6 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JButton registrarButton;
     private javax.swing.JPasswordField senhaPasswordField;
     private javax.swing.JLabel telaLoginLabel;
+    private javax.swing.JButton voltarTelaLogin;
     // End of variables declaration//GEN-END:variables
 }

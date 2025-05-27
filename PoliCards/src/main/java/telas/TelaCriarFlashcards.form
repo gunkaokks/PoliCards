@@ -239,7 +239,6 @@
     </Container>
     <Component class="javax.swing.JComboBox" name="dificuldadeComboBox">
       <Properties>
-        <Property name="editable" type="boolean" value="true"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Jersey 15" size="14" style="0"/>
         </Property>
@@ -262,7 +261,6 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="materiaComboBox">
       <Properties>
-        <Property name="editable" type="boolean" value="true"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Jersey 15" size="14" style="0"/>
         </Property>

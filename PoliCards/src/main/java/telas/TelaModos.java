@@ -39,6 +39,8 @@ public class TelaModos extends javax.swing.JFrame {
         onEfeitoSonoroTelaOpcoesButton = new javax.swing.JButton();
         fecharTelaOpcoes = new javax.swing.JButton();
         telaOpcoesLabelPanel = new javax.swing.JLabel();
+        desafioButton = new javax.swing.JButton();
+        classicoButton = new javax.swing.JButton();
         opcoesTelaModosButton = new javax.swing.JButton();
         voltarTelaModosButton = new javax.swing.JButton();
         telaModosLabel = new javax.swing.JLabel();
@@ -136,6 +138,19 @@ public class TelaModos extends javax.swing.JFrame {
 
         getContentPane().add(telaOpcoesPanelTelaModos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
 
+        desafioButton.setBorder(null);
+        desafioButton.setContentAreaFilled(false);
+        desafioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desafioButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(desafioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 320, 70));
+
+        classicoButton.setBorder(null);
+        classicoButton.setContentAreaFilled(false);
+        getContentPane().add(classicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 320, 70));
+
         opcoesTelaModosButton.setBorder(null);
         opcoesTelaModosButton.setContentAreaFilled(false);
         opcoesTelaModosButton.addActionListener(new java.awt.event.ActionListener() {
@@ -227,6 +242,10 @@ public class TelaModos extends javax.swing.JFrame {
         opcoesTelaModosButton.setEnabled(true);
         voltarTelaModosButton.setEnabled(true);
     }//GEN-LAST:event_fecharTelaOpcoesActionPerformed
+
+    private void desafioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desafioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_desafioButtonActionPerformed
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -257,7 +276,9 @@ public class TelaModos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton classicoButton;
     private javax.swing.JButton creditosTelaOpcoes;
+    private javax.swing.JButton desafioButton;
     private javax.swing.JButton fecharTelaOpcoes;
     private javax.swing.JButton offEfeitoSonoroTelaOpcoesButton;
     private javax.swing.JButton offMusicaTelaOpcoesButton;

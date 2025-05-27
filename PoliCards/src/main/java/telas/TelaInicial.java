@@ -31,6 +31,11 @@ public class TelaInicial extends javax.swing.JFrame {
 
         admTelaInicialButton.setBorder(null);
         admTelaInicialButton.setContentAreaFilled(false);
+        admTelaInicialButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admTelaInicialButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(admTelaInicialButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 200, 30));
 
         telaInicialLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_INICIAL.png"))); // NOI18N
@@ -43,6 +48,11 @@ public class TelaInicial extends javax.swing.JFrame {
         new TelaLogin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_inicialButtonActionPerformed
+
+    private void admTelaInicialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admTelaInicialButtonActionPerformed
+        new TelaLoginAdm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_admTelaInicialButtonActionPerformed
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

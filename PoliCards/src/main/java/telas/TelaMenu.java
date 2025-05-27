@@ -36,6 +36,7 @@ public class TelaMenu extends javax.swing.JFrame {
         onEfeitoSonoroTelaOpcoesButton = new javax.swing.JButton();
         fecharTelaOpcoes = new javax.swing.JButton();
         telaOpcoesLabelPanel = new javax.swing.JLabel();
+        voltarTelaMenu = new javax.swing.JButton();
         iniciarJogoTelaMenuButton = new javax.swing.JButton();
         flashcardsTelaMenu = new javax.swing.JButton();
         sairTelaMenu = new javax.swing.JButton();
@@ -134,6 +135,15 @@ public class TelaMenu extends javax.swing.JFrame {
         telaOpcoesPanelTelaMenu.add(telaOpcoesLabelPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(telaOpcoesPanelTelaMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
+
+        voltarTelaMenu.setBorder(null);
+        voltarTelaMenu.setContentAreaFilled(false);
+        voltarTelaMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarTelaMenuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltarTelaMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 50));
 
         iniciarJogoTelaMenuButton.setBorder(null);
         iniciarJogoTelaMenuButton.setContentAreaFilled(false);
@@ -264,6 +274,11 @@ public class TelaMenu extends javax.swing.JFrame {
         new TelaManterFlashcards().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_flashcardsTelaMenuActionPerformed
+
+    private void voltarTelaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaMenuActionPerformed
+        new TelaInicial().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_voltarTelaMenuActionPerformed
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -292,6 +307,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JLabel telaSobreNosLabel;
     private javax.swing.JPanel telaSobreNosPanelTelaMenu;
     private javax.swing.JButton voltarTelaCreditos;
+    private javax.swing.JButton voltarTelaMenu;
     private javax.swing.JButton voltarTelaSobreNos;
     // End of variables declaration//GEN-END:variables
 }
