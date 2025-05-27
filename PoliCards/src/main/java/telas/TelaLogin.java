@@ -43,7 +43,7 @@ public class TelaLogin extends javax.swing.JFrame {
         erroLoginInvalidoLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         erroLoginInvalidoLabel.setForeground(new java.awt.Color(255, 29, 51));
         erroLoginInvalidoLabel.setText("E-mail ou senha inválidos!");
-        getContentPane().add(erroLoginInvalidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 390, -1));
+        getContentPane().add(erroLoginInvalidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 190, -1));
 
         loginButton.setBorder(null);
         loginButton.setContentAreaFilled(false);

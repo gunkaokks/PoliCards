@@ -20,6 +20,14 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dificuldadeComboBox = new javax.swing.JComboBox<>();
+        materiaComboBox = new javax.swing.JComboBox<>();
+        resolucaoTextArea = new javax.swing.JTextArea();
+        questaoTextArea = new javax.swing.JTextArea();
+        finalizarTelaCriarFlashcards = new javax.swing.JButton();
+        voltarTelaCriarFlashcards = new javax.swing.JButton();
+        opcoesTelaCriarFlashcards = new javax.swing.JButton();
+        telaCriarFlashcardsLabel = new javax.swing.JLabel();
         telaSobreNosPanelTelaCriarFlashcards = new javax.swing.JPanel();
         voltarTelaSobreNos = new javax.swing.JButton();
         telaSobreNosLabel = new javax.swing.JLabel();
@@ -35,18 +43,61 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
         onEfeitoSonoroTelaOpcoesButton = new javax.swing.JButton();
         fecharTelaOpcoes = new javax.swing.JButton();
         telaOpcoesLabelPanel = new javax.swing.JLabel();
-        dificuldadeComboBox = new javax.swing.JComboBox<>();
-        materiaComboBox = new javax.swing.JComboBox<>();
-        resolucaoTextArea = new javax.swing.JTextArea();
-        questaoTextArea = new javax.swing.JTextArea();
-        finalizarTelaCriarFlashcards = new javax.swing.JButton();
-        voltarTelaCriarFlashcards = new javax.swing.JButton();
-        opcoesTelaCriarFlashcards = new javax.swing.JButton();
-        telaCriarFlashcardsLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        dificuldadeComboBox.setFont(new java.awt.Font("Jersey 15", 0, 14)); // NOI18N
+        dificuldadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fácil", "Médio", "Difícil" }));
+        getContentPane().add(dificuldadeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 160, 110, 20));
+
+        materiaComboBox.setFont(new java.awt.Font("Jersey 15", 0, 14)); // NOI18N
+        materiaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "matemática", "português", "química", "física", "história" }));
+        getContentPane().add(materiaComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 160, 110, 20));
+
+        resolucaoTextArea.setColumns(20);
+        resolucaoTextArea.setFont(new java.awt.Font("Jersey 15", 0, 18)); // NOI18N
+        resolucaoTextArea.setLineWrap(true);
+        resolucaoTextArea.setRows(5);
+        resolucaoTextArea.setWrapStyleWord(true);
+        resolucaoTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        resolucaoTextArea.setMargin(new java.awt.Insets(5, 5, 5, 5));
+        getContentPane().add(resolucaoTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(539, 290, 210, 120));
+
+        questaoTextArea.setColumns(1);
+        questaoTextArea.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        questaoTextArea.setLineWrap(true);
+        questaoTextArea.setRows(5);
+        questaoTextArea.setWrapStyleWord(true);
+        questaoTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        questaoTextArea.setMargin(new java.awt.Insets(5, 5, 5, 5));
+        getContentPane().add(questaoTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 290, 210, 120));
+
+        finalizarTelaCriarFlashcards.setBorder(null);
+        finalizarTelaCriarFlashcards.setContentAreaFilled(false);
+        getContentPane().add(finalizarTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 100, 30));
+
+        voltarTelaCriarFlashcards.setBorder(null);
+        voltarTelaCriarFlashcards.setContentAreaFilled(false);
+        voltarTelaCriarFlashcards.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarTelaCriarFlashcardsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltarTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 50));
+
+        opcoesTelaCriarFlashcards.setBorder(null);
+        opcoesTelaCriarFlashcards.setContentAreaFilled(false);
+        opcoesTelaCriarFlashcards.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcoesTelaCriarFlashcardsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(opcoesTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 100, 50));
+
+        telaCriarFlashcardsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_CRIAR_FLASHCARDS.png"))); // NOI18N
+        getContentPane().add(telaCriarFlashcardsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         telaSobreNosPanelTelaCriarFlashcards.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -135,57 +186,6 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
         telaOpcoesPanelTelaCriarFlashcards.add(telaOpcoesLabelPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(telaOpcoesPanelTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
-
-        dificuldadeComboBox.setFont(new java.awt.Font("Jersey 15", 0, 14)); // NOI18N
-        dificuldadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fácil", "Médio", "Difícil" }));
-        getContentPane().add(dificuldadeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 160, 110, 20));
-
-        materiaComboBox.setFont(new java.awt.Font("Jersey 15", 0, 14)); // NOI18N
-        materiaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "matemática", "português", "química", "física", "história" }));
-        getContentPane().add(materiaComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 160, 110, 20));
-
-        resolucaoTextArea.setColumns(20);
-        resolucaoTextArea.setFont(new java.awt.Font("Jersey 15", 0, 18)); // NOI18N
-        resolucaoTextArea.setLineWrap(true);
-        resolucaoTextArea.setRows(5);
-        resolucaoTextArea.setWrapStyleWord(true);
-        resolucaoTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        resolucaoTextArea.setMargin(new java.awt.Insets(5, 5, 5, 5));
-        getContentPane().add(resolucaoTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(539, 290, 210, 120));
-
-        questaoTextArea.setColumns(1);
-        questaoTextArea.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        questaoTextArea.setLineWrap(true);
-        questaoTextArea.setRows(5);
-        questaoTextArea.setWrapStyleWord(true);
-        questaoTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        questaoTextArea.setMargin(new java.awt.Insets(5, 5, 5, 5));
-        getContentPane().add(questaoTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 290, 210, 120));
-
-        finalizarTelaCriarFlashcards.setBorder(null);
-        finalizarTelaCriarFlashcards.setContentAreaFilled(false);
-        getContentPane().add(finalizarTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 100, 30));
-
-        voltarTelaCriarFlashcards.setBorder(null);
-        voltarTelaCriarFlashcards.setContentAreaFilled(false);
-        voltarTelaCriarFlashcards.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarTelaCriarFlashcardsActionPerformed(evt);
-            }
-        });
-        getContentPane().add(voltarTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 50));
-
-        opcoesTelaCriarFlashcards.setBorder(null);
-        opcoesTelaCriarFlashcards.setContentAreaFilled(false);
-        opcoesTelaCriarFlashcards.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opcoesTelaCriarFlashcardsActionPerformed(evt);
-            }
-        });
-        getContentPane().add(opcoesTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 100, 50));
-
-        telaCriarFlashcardsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_CRIAR_FLASHCARDS.png"))); // NOI18N
-        getContentPane().add(telaCriarFlashcardsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
