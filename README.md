@@ -9,7 +9,7 @@ Durante o jogo, os alunos podem criar e responder uma série de perguntas no for
 - [@Eduardo Ferreira Bueno](https://github.com/Eduardo-Buenov1)
 - [@Henrique Barra Locci]
 - [@Raul Cardoso Prates]
-- [@Murilo Domingues Candido de Oliveira]
+- [@Murilo Domingues Candido de Oliveira](https://github.com/MuriloDCO)
 -  
 # Documentação do projeto 
 
