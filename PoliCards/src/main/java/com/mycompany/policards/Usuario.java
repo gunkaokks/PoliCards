@@ -13,6 +13,5 @@ public class Usuario {
     public Usuario(String emailAluno, String senhaAluno) {
         this.emailAluno = emailAluno;
         this.senhaAluno = senhaAluno;
-        
     }
 }

@@ -3,6 +3,7 @@ package telas;
 import com.mycompany.policards.Usuario;
 import java.awt.Cursor;
 import javax.swing.JOptionPane;
+import persistencia.Sessao;
 import persistencia.UsuarioDAO;
 
 public class TelaLogin extends javax.swing.JFrame {
@@ -112,11 +113,14 @@ public class TelaLogin extends javax.swing.JFrame {
         try {
             loginButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
             UsuarioDAO dao = new UsuarioDAO();
-            Usuario usuario = dao.autenticar(emailAluno, senhaAluno);
+            Usuario usuarioAutenticado = dao.autenticar(emailAluno, senhaAluno);
             loginButton.setEnabled(false);
             
-            if (usuario != null) {
-                new TelaModos().setVisible(true);
+            if (usuarioAutenticado != null) {
+                Sessao.iniciarSessao(
+                    usuarioAutenticado.getId_aluno(),
+                    usuarioAutenticado.getEmailAluno());
+                new TelaMenu().setVisible(true);
                 this.dispose();
             }
             else {

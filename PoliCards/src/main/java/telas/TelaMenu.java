@@ -1,5 +1,7 @@
 package telas;
 
+import persistencia.Sessao;
+
 public class TelaMenu extends javax.swing.JFrame {
     public TelaMenu() {
         initComponents();
@@ -282,7 +284,7 @@ public class TelaMenu extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaMenu().setVisible(true);
+                new TelaInicial().setVisible(true);
             }
         });
     }
