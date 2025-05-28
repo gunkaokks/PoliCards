@@ -2,6 +2,7 @@ package telas;
 
 public class TelaInicial extends javax.swing.JFrame {
     public TelaInicial() {
+        super("Policards");
         initComponents();
         this.setLocationRelativeTo(null);
     }

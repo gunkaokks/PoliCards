@@ -124,6 +124,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 this.dispose();
             }
             else {
+                loginButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                 erroLoginInvalidoLabel.setVisible(true);
                 senhaPasswordField.setText("");
                 loginButton.setEnabled(true);

@@ -14,7 +14,7 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
     private void materiasComboBox() {
         try {
             MateriasDAO dao = new MateriasDAO();
-            List<Materias> materias = dao.listarTodasMaterias(); // Alterado para retornar objetos Materias
+            List<Materias> materias = dao.listarTodasMaterias();
             DefaultComboBoxModel<Materias> modelo = new DefaultComboBoxModel<>();
 
             for (Materias materia : materias) {
@@ -27,11 +27,13 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
     private int idAluno;
     public TelaCriarFlashcards() {
+        super("Policards");
         initComponents();
         materiasComboBox();
-        this.idAluno = idAluno;
+        erroPreenchaCamposLabel.setVisible(false);
         this.setLocationRelativeTo(null);
         telaCreditosPanelTelaCriarFlashcards.setVisible(false);
         telaOpcoesPanelTelaCriarFlashcards.setVisible(false);
@@ -49,15 +51,6 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        erroPreenchaCamposLabel = new javax.swing.JLabel();
-        dificuldadeComboBox = new javax.swing.JComboBox<>();
-        materiaComboBox = new javax.swing.JComboBox<>();
-        respostaTextArea = new javax.swing.JTextArea();
-        questaoTextArea = new javax.swing.JTextArea();
-        finalizarTelaCriarFlashcards = new javax.swing.JButton();
-        voltarTelaCriarFlashcards = new javax.swing.JButton();
-        opcoesTelaCriarFlashcards = new javax.swing.JButton();
-        telaCriarFlashcardsLabel = new javax.swing.JLabel();
         telaSobreNosPanelTelaCriarFlashcards = new javax.swing.JPanel();
         voltarTelaSobreNos = new javax.swing.JButton();
         telaSobreNosLabel = new javax.swing.JLabel();
@@ -73,75 +66,19 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
         onEfeitoSonoroTelaOpcoesButton = new javax.swing.JButton();
         fecharTelaOpcoes = new javax.swing.JButton();
         telaOpcoesLabelPanel = new javax.swing.JLabel();
+        erroPreenchaCamposLabel = new javax.swing.JLabel();
+        dificuldadeComboBox = new javax.swing.JComboBox<>();
+        materiaComboBox = new javax.swing.JComboBox<>();
+        respostaTextArea = new javax.swing.JTextArea();
+        perguntaTextArea = new javax.swing.JTextArea();
+        finalizarTelaCriarFlashcards = new javax.swing.JButton();
+        voltarTelaCriarFlashcards = new javax.swing.JButton();
+        opcoesTelaCriarFlashcards = new javax.swing.JButton();
+        telaCriarFlashcardsLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        erroPreenchaCamposLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        erroPreenchaCamposLabel.setForeground(new java.awt.Color(255, 29, 51));
-        erroPreenchaCamposLabel.setText("Preencha todos os campos!");
-        getContentPane().add(erroPreenchaCamposLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, 190, -1));
-
-        dificuldadeComboBox.setFont(new java.awt.Font("Jersey 15", 0, 14)); // NOI18N
-        dificuldadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fácil", "Médio", "Difícil" }));
-        getContentPane().add(dificuldadeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 160, 110, 20));
-
-        materiaComboBox.setFont(new java.awt.Font("Jersey 15", 0, 14)); // NOI18N
-        materiaComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                materiaComboBoxActionPerformed(evt);
-            }
-        });
-        getContentPane().add(materiaComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 160, 110, 20));
-
-        respostaTextArea.setColumns(20);
-        respostaTextArea.setFont(new java.awt.Font("Jersey 15", 0, 18)); // NOI18N
-        respostaTextArea.setLineWrap(true);
-        respostaTextArea.setRows(5);
-        respostaTextArea.setWrapStyleWord(true);
-        respostaTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        respostaTextArea.setMargin(new java.awt.Insets(5, 5, 5, 5));
-        getContentPane().add(respostaTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(539, 290, 210, 120));
-
-        questaoTextArea.setColumns(1);
-        questaoTextArea.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        questaoTextArea.setLineWrap(true);
-        questaoTextArea.setRows(5);
-        questaoTextArea.setWrapStyleWord(true);
-        questaoTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        questaoTextArea.setMargin(new java.awt.Insets(5, 5, 5, 5));
-        getContentPane().add(questaoTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 290, 210, 120));
-
-        finalizarTelaCriarFlashcards.setBorder(null);
-        finalizarTelaCriarFlashcards.setContentAreaFilled(false);
-        finalizarTelaCriarFlashcards.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                finalizarTelaCriarFlashcardsActionPerformed(evt);
-            }
-        });
-        getContentPane().add(finalizarTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 120, 40));
-
-        voltarTelaCriarFlashcards.setBorder(null);
-        voltarTelaCriarFlashcards.setContentAreaFilled(false);
-        voltarTelaCriarFlashcards.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarTelaCriarFlashcardsActionPerformed(evt);
-            }
-        });
-        getContentPane().add(voltarTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 50));
-
-        opcoesTelaCriarFlashcards.setBorder(null);
-        opcoesTelaCriarFlashcards.setContentAreaFilled(false);
-        opcoesTelaCriarFlashcards.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opcoesTelaCriarFlashcardsActionPerformed(evt);
-            }
-        });
-        getContentPane().add(opcoesTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 100, 50));
-
-        telaCriarFlashcardsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_CRIAR_FLASHCARDS.png"))); // NOI18N
-        getContentPane().add(telaCriarFlashcardsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         telaSobreNosPanelTelaCriarFlashcards.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -231,6 +168,72 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
 
         getContentPane().add(telaOpcoesPanelTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
 
+        erroPreenchaCamposLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        erroPreenchaCamposLabel.setForeground(new java.awt.Color(255, 29, 51));
+        erroPreenchaCamposLabel.setText("Preencha todos os campos!");
+        getContentPane().add(erroPreenchaCamposLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 190, -1));
+
+        dificuldadeComboBox.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        dificuldadeComboBox.setMaximumRowCount(3);
+        dificuldadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fácil", "Médio", "Difícil" }));
+        getContentPane().add(dificuldadeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 130, 180, 30));
+
+        materiaComboBox.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        materiaComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                materiaComboBoxActionPerformed(evt);
+            }
+        });
+        getContentPane().add(materiaComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 220, 30));
+
+        respostaTextArea.setColumns(20);
+        respostaTextArea.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        respostaTextArea.setLineWrap(true);
+        respostaTextArea.setRows(5);
+        respostaTextArea.setWrapStyleWord(true);
+        respostaTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        respostaTextArea.setMargin(new java.awt.Insets(5, 5, 5, 5));
+        getContentPane().add(respostaTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 230, 357, 200));
+
+        perguntaTextArea.setColumns(1);
+        perguntaTextArea.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        perguntaTextArea.setLineWrap(true);
+        perguntaTextArea.setRows(5);
+        perguntaTextArea.setWrapStyleWord(true);
+        perguntaTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        perguntaTextArea.setMargin(new java.awt.Insets(5, 5, 5, 5));
+        getContentPane().add(perguntaTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 230, 357, 200));
+
+        finalizarTelaCriarFlashcards.setBorder(null);
+        finalizarTelaCriarFlashcards.setContentAreaFilled(false);
+        finalizarTelaCriarFlashcards.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finalizarTelaCriarFlashcardsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(finalizarTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 230, 40));
+
+        voltarTelaCriarFlashcards.setBorder(null);
+        voltarTelaCriarFlashcards.setContentAreaFilled(false);
+        voltarTelaCriarFlashcards.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarTelaCriarFlashcardsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltarTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 50));
+
+        opcoesTelaCriarFlashcards.setBorder(null);
+        opcoesTelaCriarFlashcards.setContentAreaFilled(false);
+        opcoesTelaCriarFlashcards.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcoesTelaCriarFlashcardsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(opcoesTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 100, 50));
+
+        telaCriarFlashcardsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_CRIAR_FLASHCARDS.png"))); // NOI18N
+        getContentPane().add(telaCriarFlashcardsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -247,10 +250,12 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
         fecharTelaOpcoes.setEnabled(false);
         creditosTelaOpcoes.setEnabled(false);
         respostaTextArea.setEnabled(true);
-        questaoTextArea.setEnabled(true);
+        perguntaTextArea.setEnabled(true);
         finalizarTelaCriarFlashcards.setEnabled(true);
         voltarTelaCriarFlashcards.setEnabled(true);
         opcoesTelaCriarFlashcards.setEnabled(true);
+        dificuldadeComboBox.setEnabled(true);
+        materiaComboBox.setEnabled(true);
     }//GEN-LAST:event_fecharTelaOpcoesActionPerformed
 
     private void voltarTelaCriarFlashcardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaCriarFlashcardsActionPerformed
@@ -261,13 +266,15 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
     private void opcoesTelaCriarFlashcardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcoesTelaCriarFlashcardsActionPerformed
         telaOpcoesPanelTelaCriarFlashcards.setVisible(true);
         respostaTextArea.setEnabled(false);
-        questaoTextArea.setEnabled(false);
+        perguntaTextArea.setEnabled(false);
         finalizarTelaCriarFlashcards.setEnabled(false);
         voltarTelaCriarFlashcards.setEnabled(false);
         opcoesTelaCriarFlashcards.setEnabled(false);
         sobreNosTelaCreditos.setEnabled(false);
         creditosTelaOpcoes.setEnabled(true);
         fecharTelaOpcoes.setEnabled(true);
+        dificuldadeComboBox.setEnabled(false);
+        materiaComboBox.setEnabled(false);
     }//GEN-LAST:event_opcoesTelaCriarFlashcardsActionPerformed
 
     private void creditosTelaOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditosTelaOpcoesActionPerformed
@@ -279,7 +286,7 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
         fecharTelaOpcoes.setEnabled(false);
         creditosTelaOpcoes.setVisible(false);
         respostaTextArea.setEnabled(false);
-        questaoTextArea.setEnabled(false);
+        perguntaTextArea.setEnabled(false);
         finalizarTelaCriarFlashcards.setEnabled(false);
         voltarTelaCriarFlashcards.setEnabled(false);
         opcoesTelaCriarFlashcards.setEnabled(false);
@@ -312,34 +319,35 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
 
     private void finalizarTelaCriarFlashcardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarTelaCriarFlashcardsActionPerformed
         Materias materiaSelecionada = (Materias) materiaComboBox.getSelectedItem();
-        String pergunta = questaoTextArea.getText();
+        String pergunta = perguntaTextArea.getText();
         String resposta = respostaTextArea.getText();
         String dificuldade = (String) dificuldadeComboBox.getSelectedItem();
         
 
         if (materiaSelecionada == null || dificuldade == null || pergunta.isEmpty() || resposta.isEmpty()) {
             erroPreenchaCamposLabel.setVisible(true);
-            JOptionPane.showMessageDialog(this, "travou maithe");
         }
-        
-        try {
+        else {
             finalizarTelaCriarFlashcards.setCursor(new Cursor(Cursor.WAIT_CURSOR));
-            this.idAluno = idAluno;
-            FlashcardsDAO flashcardsDAO = new FlashcardsDAO();
-            Flashcards novoFlashcard = new Flashcards(this.idAluno, materiaSelecionada.getId(), pergunta, resposta, dificuldade);
-            boolean salvou = flashcardsDAO.criarFlashcards(novoFlashcard);
+            try {
+                FlashcardsDAO flashcardsDAO = new FlashcardsDAO();
+                Flashcards novoFlashcard = new Flashcards(this.idAluno, materiaSelecionada.getId(), pergunta, resposta, dificuldade);
+                boolean salvou = flashcardsDAO.criarFlashcards(novoFlashcard);
 
-
-            if (salvou) {
-                JOptionPane.showMessageDialog(this, "Flashcard criado com sucesso!");
-            } else {
-                JOptionPane.showMessageDialog(this,
-                        "Falha ao criar flashcard. Tente novamente.",
-                        "Erro", JOptionPane.ERROR_MESSAGE);
+                if (salvou) {
+                    JOptionPane.showMessageDialog(this, "Flashcard criado com sucesso!");
+                    perguntaTextArea.setText("");
+                    respostaTextArea.setText("");
+                    finalizarTelaCriarFlashcards.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                } else {
+                    JOptionPane.showMessageDialog(this, "Falha ao criar flashcard. Tente novamente.");
+                    finalizarTelaCriarFlashcards.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Problemas técnicos. Tente novamente mais tarde");
+                e.printStackTrace();
+                finalizarTelaCriarFlashcards.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Problemas técnicos. Tente novamente mais tarde");
-            e.printStackTrace();
         }
     }//GEN-LAST:event_finalizarTelaCriarFlashcardsActionPerformed
 
@@ -387,7 +395,7 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
     private javax.swing.JButton onEfeitoSonoroTelaOpcoesButton;
     private javax.swing.JButton onMusicaTelaOpcoesButton;
     private javax.swing.JButton opcoesTelaCriarFlashcards;
-    private javax.swing.JTextArea questaoTextArea;
+    private javax.swing.JTextArea perguntaTextArea;
     private javax.swing.JTextArea respostaTextArea;
     private javax.swing.JButton sobreNosTelaCreditos;
     private javax.swing.JLabel telaCreditosLabelPanel;

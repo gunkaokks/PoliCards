@@ -12,17 +12,14 @@ public class Materias {
     private int id;
     private String nome;
 
-    // Construtor com parâmetros
     public Materias(int id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    // Construtor vazio (se necessário)
     public Materias() {
     }
 
-    // Getters e Setters
     public int getId() {
         return id;
     }
@@ -41,6 +38,6 @@ public class Materias {
 
     @Override
     public String toString() {
-        return nome; // Isso será mostrado no ComboBox
+        return nome;
     }
 }

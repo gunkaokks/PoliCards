@@ -1,10 +1,8 @@
 package telas;
 
-import static java.awt.GridBagConstraints.BOTH;
-import javax.swing.JFrame;
-
 public class TelaModos extends javax.swing.JFrame {
     public TelaModos() {
+        super("Policards");
         initComponents();
         this.setLocationRelativeTo(null);
         telaOpcoesPanelTelaModos.setVisible(false);

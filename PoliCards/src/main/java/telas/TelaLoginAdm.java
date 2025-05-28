@@ -7,6 +7,7 @@ import persistencia.UsuarioDAO;
 
 public class TelaLoginAdm extends javax.swing.JFrame {
     public TelaLoginAdm() {
+        super("Policards");
         initComponents();
         this.setLocationRelativeTo(null);
         erroLoginAdmInvalidoLabel.setVisible(false);

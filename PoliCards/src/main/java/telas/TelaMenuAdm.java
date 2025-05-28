@@ -2,6 +2,7 @@ package telas;
 
 public class TelaMenuAdm extends javax.swing.JFrame {
     public TelaMenuAdm() {
+        super("Policards");
         initComponents();
         this.setLocationRelativeTo(null);
     }

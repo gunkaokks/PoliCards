@@ -110,6 +110,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                     this.dispose();
                     new TelaLogin().setVisible(true);
                 } else {
+                    cadastroButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                     JOptionPane.showMessageDialog(this, "Erro ao cadastrar. Tente outro e-mail.");
                     }
             } catch (Exception e) {

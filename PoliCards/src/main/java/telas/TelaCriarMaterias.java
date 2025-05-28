@@ -1,12 +1,15 @@
 package telas;
 
 import crudMaterias.MateriasDAO;
+import java.awt.Cursor;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class TelaCriarMaterias extends javax.swing.JFrame {
     public TelaCriarMaterias() {
+        super("Policards");
         initComponents();
+        this.setLocationRelativeTo(null);
         erroPreenchaCamposLabel.setVisible(false);
     }
     @SuppressWarnings("unchecked")
@@ -21,10 +24,10 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        erroPreenchaCamposLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        erroPreenchaCamposLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         erroPreenchaCamposLabel.setForeground(new java.awt.Color(255, 29, 51));
-        erroPreenchaCamposLabel.setText("Preencha todos os campos!");
-        getContentPane().add(erroPreenchaCamposLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 190, -1));
+        erroPreenchaCamposLabel.setText("Preencha o campo!");
+        getContentPane().add(erroPreenchaCamposLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 170, -1));
 
         materiaTextField.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         getContentPane().add(materiaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 410, 70));
@@ -39,7 +42,6 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
         getContentPane().add(adicionarMateriaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 440, 70));
 
         telaCriarMateriasLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_CRIAR_MATERIAS.png"))); // NOI18N
-        telaCriarMateriasLabel.setText("jLabel1");
         getContentPane().add(telaCriarMateriasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -50,18 +52,19 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
         
         if (materia.isEmpty()) {
             erroPreenchaCamposLabel.setVisible(true);
-            return;
         }
-        
-        try {
-            MateriasDAO dao = new MateriasDAO();
-            JOptionPane.showMessageDialog(this, "Matéria criada com sucesso!");
-            new TelaCriarMaterias().setVisible(true);
-            this.dispose();
+        else {
+            erroPreenchaCamposLabel.setVisible(false);
+            try {
+                adicionarMateriaButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+                MateriasDAO dao = new MateriasDAO();
+                JOptionPane.showMessageDialog(this, "Matéria criada com sucesso!");
+                materiaTextField.setText("");
 
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Problemas técnicos. Tente novamente mais tarde");
-            e.printStackTrace();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Problemas técnicos. Tente novamente mais tarde");
+                e.printStackTrace();
+            }
         }
     }//GEN-LAST:event_adicionarMateriaButtonActionPerformed
     public static void main(String args[]) {

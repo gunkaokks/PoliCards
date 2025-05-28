@@ -64,6 +64,6 @@ public class MateriasDAO {
             System.err.println("Erro ao buscar ID da matéria: " + e.getMessage());
         }
 
-        return -1; // Retorna -1 se não encontrar
+        return -1;
     }
 }

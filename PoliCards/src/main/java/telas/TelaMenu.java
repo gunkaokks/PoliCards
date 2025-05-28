@@ -4,6 +4,7 @@ import persistencia.Sessao;
 
 public class TelaMenu extends javax.swing.JFrame {
     public TelaMenu() {
+        super("Policards");
         initComponents();
         this.setLocationRelativeTo(null);
         telaOpcoesPanelTelaMenu.setVisible(false);
