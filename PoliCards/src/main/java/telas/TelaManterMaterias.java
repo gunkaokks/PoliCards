@@ -28,6 +28,11 @@ public class TelaManterMaterias extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        opcoesTelaManterMaterias = new javax.swing.JButton();
+        voltarTelaManterMaterias = new javax.swing.JButton();
+        deletarTelaManterMaterias = new javax.swing.JButton();
+        criarTelaManterMaterias = new javax.swing.JButton();
+        telaManterMateriasLabel = new javax.swing.JLabel();
         telaSobreNosPanelTelaManterMaterias = new javax.swing.JPanel();
         voltarTelaSobreNosTelaManterMaterias = new javax.swing.JButton();
         telaSobreNosLabel = new javax.swing.JLabel();
@@ -43,14 +48,43 @@ public class TelaManterMaterias extends javax.swing.JFrame {
         onEfeitoSonoroTelaOpcoesButton = new javax.swing.JButton();
         fecharTelaOpcoes = new javax.swing.JButton();
         telaOpcoesLabelPanel = new javax.swing.JLabel();
-        opcoesTelaManterMaterias = new javax.swing.JButton();
-        voltarTelaManterMaterias = new javax.swing.JButton();
-        deletarTelaManterMaterias = new javax.swing.JButton();
-        criarTelaManterMaterias = new javax.swing.JButton();
-        telaManterMateriasLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        opcoesTelaManterMaterias.setBorder(null);
+        opcoesTelaManterMaterias.setContentAreaFilled(false);
+        opcoesTelaManterMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcoesTelaManterMateriasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(opcoesTelaManterMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, 120, 30));
+
+        voltarTelaManterMaterias.setBorder(null);
+        voltarTelaManterMaterias.setContentAreaFilled(false);
+        voltarTelaManterMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarTelaManterMateriasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltarTelaManterMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 120, 50));
+
+        deletarTelaManterMaterias.setBorder(null);
+        deletarTelaManterMaterias.setContentAreaFilled(false);
+        getContentPane().add(deletarTelaManterMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 380, 90));
+
+        criarTelaManterMaterias.setBorder(null);
+        criarTelaManterMaterias.setContentAreaFilled(false);
+        criarTelaManterMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                criarTelaManterMateriasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(criarTelaManterMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 380, 90));
+
+        telaManterMateriasLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_MANTER_MATERIAS.png"))); // NOI18N
+        getContentPane().add(telaManterMateriasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         telaSobreNosPanelTelaManterMaterias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -139,40 +173,6 @@ public class TelaManterMaterias extends javax.swing.JFrame {
         telaOpcoesPanelTelaManterMaterias.add(telaOpcoesLabelPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(telaOpcoesPanelTelaManterMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
-
-        opcoesTelaManterMaterias.setBorder(null);
-        opcoesTelaManterMaterias.setContentAreaFilled(false);
-        opcoesTelaManterMaterias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opcoesTelaManterMateriasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(opcoesTelaManterMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, 120, 30));
-
-        voltarTelaManterMaterias.setBorder(null);
-        voltarTelaManterMaterias.setContentAreaFilled(false);
-        voltarTelaManterMaterias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarTelaManterMateriasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(voltarTelaManterMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 120, 50));
-
-        deletarTelaManterMaterias.setBorder(null);
-        deletarTelaManterMaterias.setContentAreaFilled(false);
-        getContentPane().add(deletarTelaManterMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 380, 90));
-
-        criarTelaManterMaterias.setBorder(null);
-        criarTelaManterMaterias.setContentAreaFilled(false);
-        criarTelaManterMaterias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                criarTelaManterMateriasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(criarTelaManterMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 380, 90));
-
-        telaManterMateriasLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_MANTER_MATERIAS.png"))); // NOI18N
-        getContentPane().add(telaManterMateriasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -300,13 +300,9 @@ public class TelaManterMaterias extends javax.swing.JFrame {
     private javax.swing.JLabel telaOpcoesLabelPanel;
     private javax.swing.JPanel telaOpcoesPanelTelaManterMaterias;
     private javax.swing.JLabel telaSobreNosLabel;
-    private javax.swing.JPanel telaSobreNosPanelTelaCriarFlashcards;
-    private javax.swing.JPanel telaSobreNosPanelTelaCriarFlashcards1;
     private javax.swing.JPanel telaSobreNosPanelTelaManterMaterias;
     private javax.swing.JButton voltarTelaCreditos;
     private javax.swing.JButton voltarTelaManterMaterias;
-    private javax.swing.JButton voltarTelaSobreNos;
-    private javax.swing.JButton voltarTelaSobreNos1;
     private javax.swing.JButton voltarTelaSobreNosTelaManterMaterias;
     // End of variables declaration//GEN-END:variables
 }

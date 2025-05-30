@@ -61,7 +61,7 @@ public class TelaMenuAdm extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarTelaMenuAdmActionPerformed
 
     private void iniciarJogoAdmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarJogoAdmButtonActionPerformed
-        new TelaMenu().setVisible(true);
+        new TelaLogin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_iniciarJogoAdmButtonActionPerformed
 
