@@ -1,5 +1,8 @@
 package telas;
 
+import java.awt.Cursor;
+import usuario.CrudUsuarios;
+
 public class TelaMenuAdm extends javax.swing.JFrame {
     public TelaMenuAdm() {
         super("Policards");
@@ -39,6 +42,11 @@ public class TelaMenuAdm extends javax.swing.JFrame {
 
         controlarUsuariosButton.setBorder(null);
         controlarUsuariosButton.setContentAreaFilled(false);
+        controlarUsuariosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                controlarUsuariosButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(controlarUsuariosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 300, 60));
 
         telaMenuAdmLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_MENU_ADM.png"))); // NOI18N
@@ -56,6 +64,12 @@ public class TelaMenuAdm extends javax.swing.JFrame {
         new TelaMenu().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_iniciarJogoAdmButtonActionPerformed
+
+    private void controlarUsuariosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_controlarUsuariosButtonActionPerformed
+        controlarUsuariosButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+        new CrudUsuarios().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_controlarUsuariosButtonActionPerformed
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

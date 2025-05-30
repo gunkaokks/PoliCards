@@ -88,6 +88,11 @@ public class TelaLogin extends javax.swing.JFrame {
 
         esqueciSenhaButton.setBorder(null);
         esqueciSenhaButton.setContentAreaFilled(false);
+        esqueciSenhaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                esqueciSenhaButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(esqueciSenhaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 330, 130, 30));
 
         telaLoginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -144,6 +149,10 @@ public class TelaLogin extends javax.swing.JFrame {
         new TelaInicial().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_voltarTelaLoginActionPerformed
+
+    private void esqueciSenhaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esqueciSenhaButtonActionPerformed
+        JOptionPane.showMessageDialog(this,"Contate o Administrador responsável");
+    }//GEN-LAST:event_esqueciSenhaButtonActionPerformed
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

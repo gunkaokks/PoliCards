@@ -116,6 +116,23 @@ public class UsuarioService {
                 c.close();
         }
     }
+    public static boolean usuarioExiste(String email) throws Exception {
+    String query = "SELECT COUNT(*) FROM alunos WHERE emailAluno = ?";
+    
+    try (Connection conn = ConnectionFactory.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(query)) {
+        
+        stmt.setString(1, email);
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        }
+    }
+    
+    return false;
+}
+
 }
      
      

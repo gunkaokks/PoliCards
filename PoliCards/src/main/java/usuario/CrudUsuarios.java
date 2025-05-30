@@ -1,8 +1,10 @@
 package usuario;
 
 import com.mycompany.policards.Usuario;
+import java.awt.Cursor;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
+import telas.TelaMenuAdm;
 
 public class CrudUsuarios extends javax.swing.JFrame {
     private int indexSelecionado = -1;
@@ -12,6 +14,8 @@ public class CrudUsuarios extends javax.swing.JFrame {
         initComponents();
         usuariosTable.setModel((TableModel) tabelaUsuario);
         getUsuarios();
+        txtEmail.setOpaque(false);
+        txtSenha.setOpaque(false);
         setLocationRelativeTo(null);
         usuariosScrollPane.setViewportView(usuariosTable);
         
@@ -32,13 +36,16 @@ public class CrudUsuarios extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Erro ao carregar usuários", JOptionPane.ERROR_MESSAGE);
         }
+        
+        
     }
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtSenha = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        voltarButton = new javax.swing.JButton();
         removerButton = new javax.swing.JButton();
         atualizarButton = new javax.swing.JButton();
         salvarButton = new javax.swing.JButton();
@@ -48,9 +55,25 @@ public class CrudUsuarios extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 212, 610, 30));
+        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 610, 30));
+
+        voltarButton.setBorder(null);
+        voltarButton.setContentAreaFilled(false);
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 100, 40));
 
         removerButton.setBorder(null);
         removerButton.setContentAreaFilled(false);
+        removerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(removerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 470, 130, 40));
 
         atualizarButton.setBorder(null);
@@ -60,7 +83,7 @@ public class CrudUsuarios extends javax.swing.JFrame {
                 atualizarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(atualizarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, 130, 40));
+        getContentPane().add(atualizarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 460, 130, 40));
 
         salvarButton.setBorder(null);
         salvarButton.setContentAreaFilled(false);
@@ -99,7 +122,31 @@ public class CrudUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void atualizarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarButtonActionPerformed
-        // TODO add your handling code here:
+        if (indexSelecionado == -1) {
+            atualizarButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+            return;
+}
+
+boolean validacao = true;
+try {
+    Usuario u = this.tabelaUsuario.getUsuario(this.indexSelecionado);
+    u.setEmailAluno(this.txtEmail.getText());
+    u.setSenhaAluno(this.txtSenha.getText());
+    validacao = false;
+
+    UsuarioService.update(u);
+    this.tabelaUsuario.atualizar(u, this.indexSelecionado);
+
+    JOptionPane.showMessageDialog(this, "Usuário alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+    this.limparCampos();
+} catch (Exception e) {
+    String title = validacao ? "Validação" : "Erro";
+    int pane = validacao ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.ERROR_MESSAGE;
+
+    JOptionPane.showMessageDialog(this, e.getMessage(), title, pane);
+}
+
     }//GEN-LAST:event_atualizarButtonActionPerformed
 
     private void usuariosTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuariosTableMouseClicked
@@ -108,8 +155,61 @@ public class CrudUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_usuariosTableMouseClicked
 
     private void salvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarButtonActionPerformed
-        // TODO add your handling code here:
+        salvarButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+        boolean validacao = true;
+
+        try {
+            String email = txtEmail.getText();
+            String senha = txtSenha.getText();
+
+            if (!UsuarioService.usuarioExiste(email)) { 
+
+                Usuario u = new Usuario(email, senha);
+                validacao = false;
+
+                UsuarioService.insert(u);
+
+                JOptionPane.showMessageDialog(this, "Usuário criado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+                this.getUsuarios();
+                limparCampos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuário já existe", "Aviso", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (Exception e) {
+            String title = validacao ? "Validação" : "Erro";
+            int pane = validacao ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.ERROR_MESSAGE;
+
+            JOptionPane.showMessageDialog(this, e.getMessage(), title, pane);
+        }
+
     }//GEN-LAST:event_salvarButtonActionPerformed
+
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+        new TelaMenuAdm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_voltarButtonActionPerformed
+
+    private void removerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerButtonActionPerformed
+        if (this.indexSelecionado == -1)
+            return;
+
+try
+{
+    removerButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+    Usuario u = this.tabelaUsuario.getUsuario(this.indexSelecionado);
+    UsuarioService.delete(u);
+
+    this.tabelaUsuario.removeRow(this.indexSelecionado);
+    this.limparCampos();
+    
+    JOptionPane.showMessageDialog(this, "O usuário foi removido com sucesso.", "Usuário Removido", JOptionPane.INFORMATION_MESSAGE);
+}
+catch (Exception e)
+{
+    JOptionPane.showMessageDialog(this, e.getMessage(), "Erro ao deletar usuário", JOptionPane.ERROR_MESSAGE);
+}
+    }//GEN-LAST:event_removerButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,7 +251,14 @@ public class CrudUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton removerButton;
     private javax.swing.JButton salvarButton;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtSenha;
     private javax.swing.JScrollPane usuariosScrollPane;
     private javax.swing.JTable usuariosTable;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
+private void limparCampos(){
+        txtEmail.setText("");
+        txtSenha.setText("");
+    }
 }
