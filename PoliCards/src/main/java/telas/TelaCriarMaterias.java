@@ -49,20 +49,26 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
 
     private void adicionarMateriaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarMateriaButtonActionPerformed
         String materia = materiaTextField.getText().trim();
-        
+
         if (materia.isEmpty()) {
             erroPreenchaCamposLabel.setVisible(true);
-        }
-        else {
+        } else {
             erroPreenchaCamposLabel.setVisible(false);
             try {
                 adicionarMateriaButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
                 MateriasDAO dao = new MateriasDAO();
-                JOptionPane.showMessageDialog(this, "Matéria criada com sucesso!");
-                materiaTextField.setText("");
+                int salvou = dao.salvarMateria(materia);
+                if (salvou != -1) {
+                    JOptionPane.showMessageDialog(this, "Matéria criada com sucesso!");
+                    materiaTextField.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Falha ao criar matéria");
+                    adicionarMateriaButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                }
+                dao.close();
 
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Problemas técnicos. Tente novamente mais tarde");
+                JOptionPane.showMessageDialog(this, "Erro ao conectar com o banco de dados.");
                 e.printStackTrace();
             }
         }
