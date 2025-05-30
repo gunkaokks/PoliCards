@@ -9,43 +9,39 @@ import persistencia.ConnectionFactory;
 
 public class UsuarioService {
     public static ArrayList<Usuario> get() throws Exception {
-        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+    ArrayList<Usuario> usuarios = new ArrayList<>();
 
-        Connection c = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        
-        try {
-            c = ConnectionFactory.getConnection();
-            String query = "SELECT id_aluno, emailAluno, senhaAluno FROM alunos;";
-            stmt = c.prepareStatement(query);
-            rs = stmt.executeQuery();
+    Connection c = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+    
+    try {
+        c = ConnectionFactory.getConnection();
+        String query = "SELECT id_aluno, emailAluno, senhaAluno FROM alunos;";
+        stmt = c.prepareStatement(query);
+        rs = stmt.executeQuery();
 
-            while (rs.next()) {
-                int id = rs.getInt("id_aluno");
-                String emailAluno = rs.getString("emailAluno");
-                String senhaAluno = rs.getString("senhaAluno");
+        while (rs.next()) {
+            int id = rs.getInt("id_aluno");
+            String emailAluno = rs.getString("emailAluno");
+            String senhaAluno = rs.getString("senhaAluno");
 
-                if (emailAluno != null) {
-                    Usuario u = new Usuario(emailAluno, senhaAluno);
-                    usuarios.add(u);
-                }
-            }
-
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (c != null) {
-                c.close();
+            if (emailAluno != null) {
+                Usuario u = new Usuario(emailAluno, senhaAluno);
+                u.setId_aluno(id);  // Definindo o ID no objeto
+                usuarios.add(u);
             }
         }
 
-        return usuarios;
+    } finally {
+        if (rs != null) rs.close();
+        if (stmt != null) stmt.close();
+        if (c != null) c.close();
     }
+
+    return usuarios;
+}
+
     public static void insert(Usuario u) throws Exception {
         Connection c = null;
         PreparedStatement stmt = null;

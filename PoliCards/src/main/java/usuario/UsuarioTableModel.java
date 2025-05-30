@@ -3,8 +3,9 @@ package usuario;
 import com.mycompany.policards.Usuario;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.AbstractTableModel;
 
-public class UsuarioTableModel {
+public class UsuarioTableModel extends AbstractTableModel {
     private List<Usuario> dados = new ArrayList<>();
     private String[] colunas ={"id","Email","Senha"};
     
