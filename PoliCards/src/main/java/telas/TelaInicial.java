@@ -1,9 +1,12 @@
 package telas;
 
+import sons.Musicas;
+
 public class TelaInicial extends javax.swing.JFrame {
     public TelaInicial() {
         super("Policards");
         initComponents();
+        Musicas.Play("inicio.wav");
         this.setLocationRelativeTo(null);
     }
 
