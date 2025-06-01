@@ -12,6 +12,7 @@ Durante o jogo, os alunos podem criar e responder uma série de perguntas no for
 - [@Murilo Domingues Candido de Oliveira](https://github.com/MuriloDCO)
 
 # Documentação do projeto 
+[PoliCards](https://online.fliphtml5.com/epkou/rrni/)
 
 # Ferramentas utilizadas
 **Telas de cadastro e login:** Java, Figma
@@ -19,3 +20,8 @@ Durante o jogo, os alunos podem criar e responder uma série de perguntas no for
 **Back-end:** Java, Aiven
 
 **Jogo:** Java, Figma
+
+# Instalação
+A instalação do jogo é extremamente simples, basta fazer o download do executável e já poderá jogar.
+
+
