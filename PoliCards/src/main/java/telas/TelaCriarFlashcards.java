@@ -3,36 +3,16 @@ package telas;
 import crudFlashcards.Flashcards;
 import crudFlashcards.FlashcardsDAO;
 import crudMaterias.Materias;
-import crudMaterias.MateriasDAO;
+import crudMaterias.MateriasComboBox;
 import java.awt.Cursor;
-import java.sql.SQLException;
-import java.util.List;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import persistencia.Sessao;
 
 public class TelaCriarFlashcards extends javax.swing.JFrame {
-    private void materiasComboBox() {
-        try {
-            MateriasDAO dao = new MateriasDAO();
-            List<Materias> materias = dao.listarTodasMaterias();
-            DefaultComboBoxModel<Materias> modelo = new DefaultComboBoxModel<>();
-
-            for (Materias materia : materias) {
-                modelo.addElement(materia);
-            }
-            materiaComboBox.setModel(modelo);
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Problemas técnicos. Tente novamente mais tarde");
-            e.printStackTrace();
-        }
-    }
-    
-    private int idAluno;
     public TelaCriarFlashcards() {
         super("Policards");
         initComponents();
-        materiasComboBox();
+        MateriasComboBox.carregarMaterias(materiaComboBox);
         erroPreenchaCamposLabel.setVisible(false);
         this.setLocationRelativeTo(null);
         telaCreditosPanelTelaCriarFlashcards.setVisible(false);
@@ -331,8 +311,16 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
             finalizarTelaCriarFlashcards.setCursor(new Cursor(Cursor.WAIT_CURSOR));
             try {
                 FlashcardsDAO flashcardsDAO = new FlashcardsDAO();
-                Flashcards novoFlashcard = new Flashcards(this.idAluno, materiaSelecionada.getId(), pergunta, resposta, dificuldade);
-                boolean salvou = flashcardsDAO.criarFlashcards(novoFlashcard);
+                Flashcards novoFlashcard = new Flashcards(
+                        0,
+                        Sessao.getIdAluno(),
+                        materiaSelecionada.getId(),
+                        pergunta,
+                        resposta,
+                        dificuldade
+                );
+                
+                boolean salvou = flashcardsDAO.criarFlashcard(novoFlashcard);
 
                 if (salvou) {
                     JOptionPane.showMessageDialog(this, "Flashcard criado com sucesso!");

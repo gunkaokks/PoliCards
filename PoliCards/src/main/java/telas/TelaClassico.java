@@ -1,5 +1,7 @@
 package telas;
 
+import crudFlashcards.Flashcards;
+import crudFlashcards.FlashcardsDAO;
 import crudMaterias.Materias;
 import crudMaterias.MateriasDAO;
 import java.sql.SQLException;
@@ -8,6 +10,12 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 public class TelaClassico extends javax.swing.JFrame {
+
+    private List<Flashcards> flashcardsAtuais;
+    private int indiceFlashcardAtual;
+    private javax.swing.JLabel perguntaLabel;
+    private javax.swing.JLabel respostaLabel;
+
     private void materiasComboBox() {
         try {
             MateriasDAO dao = new MateriasDAO();
@@ -23,8 +31,33 @@ public class TelaClassico extends javax.swing.JFrame {
             materiaComboBox.setModel(modelo);
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Tente novamente mais tarde");
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao carregar matérias: " + e.getMessage(),
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void iniciarJogo() throws Exception {
+        Materias materiaSelecionada = (Materias) materiaComboBox.getSelectedItem();
+        String dificuldadeSelecionada = (String) dificuldadeComboBox.getSelectedItem();
+
+        try {
+            FlashcardsDAO dao = new FlashcardsDAO();
+
+            Integer idMateria = (materiaSelecionada.getId() == -1) ? null : materiaSelecionada.getId();
+            String dificuldade = dificuldadeSelecionada.equals("Aleatório") ? null : dificuldadeSelecionada;
+
+            flashcardsAtuais = dao.listarFlashcardsFiltrados(idMateria, dificuldade);
+
+            if (flashcardsAtuais.isEmpty()) {
+                JOptionPane.showMessageDialog(this,
+                        "Nenhum flashcard encontrado com esses filtros!",
+                        "Aviso",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this,"Erro ao carregar flashcards");
         }
     }
     
@@ -36,6 +69,7 @@ public class TelaClassico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        iniciarJogoButton = new javax.swing.JButton();
         selecioneDificuldade = new javax.swing.JLabel();
         selecioneMateria = new javax.swing.JLabel();
         materiaComboBox = new javax.swing.JComboBox<>();
@@ -44,6 +78,10 @@ public class TelaClassico extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        iniciarJogoButton.setBorder(null);
+        iniciarJogoButton.setContentAreaFilled(false);
+        getContentPane().add(iniciarJogoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, 130, 50));
 
         selecioneDificuldade.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         selecioneDificuldade.setForeground(new java.awt.Color(51, 51, 51));
@@ -109,6 +147,7 @@ public class TelaClassico extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> dificuldadeComboBox;
+    private javax.swing.JButton iniciarJogoButton;
     private javax.swing.JComboBox<Materias> materiaComboBox;
     private javax.swing.JLabel selecioneDificuldade;
     private javax.swing.JLabel selecioneMateria;
