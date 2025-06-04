@@ -4,6 +4,7 @@ import com.mycompany.policards.Usuario;
 import java.awt.Cursor;
 import javax.swing.JOptionPane;
 import persistencia.UsuarioDAO;
+import sons.EfeitosSonoros;
 
 public class TelaCadastro extends javax.swing.JFrame {
     public TelaCadastro() {
@@ -96,6 +97,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastroEmailTextFieldActionPerformed
 
     private void cadastroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroButtonActionPerformed
+        EfeitosSonoros.Play("text.wav");
         String email = cadastroEmailTextField.getText().trim();
         String senha = new String(cadastroSenhaPasswordField.getPassword()).trim();
         
@@ -135,6 +137,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastroConfirmeSenhaPasswordFieldKeyReleased
 
     private void voltarTelaCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaCadastroActionPerformed
+        EfeitosSonoros.Play("back.wav");
         new TelaInicial().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_voltarTelaCadastroActionPerformed

@@ -1,6 +1,7 @@
 package telas;
 
 import java.awt.Cursor;
+import usuario.CrudAdm;
 import usuario.CrudUsuarios;
 
 public class TelaMenuAdm extends javax.swing.JFrame {
@@ -14,6 +15,7 @@ public class TelaMenuAdm extends javax.swing.JFrame {
     private void initComponents() {
 
         voltarTelaMenuAdm = new javax.swing.JButton();
+        controlarAdmButton = new javax.swing.JButton();
         iniciarJogoAdmButton = new javax.swing.JButton();
         controlarUsuariosButton = new javax.swing.JButton();
         telaMenuAdmLabel = new javax.swing.JLabel();
@@ -30,6 +32,15 @@ public class TelaMenuAdm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(voltarTelaMenuAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 30));
+
+        controlarAdmButton.setBorder(null);
+        controlarAdmButton.setContentAreaFilled(false);
+        controlarAdmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                controlarAdmButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(controlarAdmButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 430, 300, 50));
 
         iniciarJogoAdmButton.setBorder(null);
         iniciarJogoAdmButton.setContentAreaFilled(false);
@@ -70,6 +81,11 @@ public class TelaMenuAdm extends javax.swing.JFrame {
         new CrudUsuarios().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_controlarUsuariosButtonActionPerformed
+
+    private void controlarAdmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_controlarAdmButtonActionPerformed
+        new CrudAdm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_controlarAdmButtonActionPerformed
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -100,6 +116,7 @@ public class TelaMenuAdm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton controlarAdmButton;
     private javax.swing.JButton controlarUsuariosButton;
     private javax.swing.JButton iniciarJogoAdmButton;
     private javax.swing.JLabel telaMenuAdmLabel;

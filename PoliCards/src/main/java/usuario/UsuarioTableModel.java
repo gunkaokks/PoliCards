@@ -10,18 +10,22 @@ public class UsuarioTableModel extends AbstractTableModel {
     private String[] colunas ={"id","Email","Senha"};
     
     
+    @Override
     public String getColumnName(int column){
         return colunas[column];
     }
     
+    @Override
     public int getRowCount() {
         return dados.size();
     }
 
+    @Override
     public int getColumnCount() {
         return colunas.length;
     }
     
+    @Override
     public Object getValueAt(int linha, int coluna) {
 
         switch(coluna){
@@ -36,6 +40,7 @@ public class UsuarioTableModel extends AbstractTableModel {
         return null;
     }
     
+    @Override
     public void setValueAt(Object valor, int linha, int coluna){
         
         switch(coluna){

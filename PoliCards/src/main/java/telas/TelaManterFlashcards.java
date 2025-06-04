@@ -1,6 +1,8 @@
 package telas;
 
 import java.awt.Cursor;
+import sons.EfeitosSonoros;
+import sons.Musicas;
 
 public class TelaManterFlashcards extends javax.swing.JFrame {
 
@@ -8,9 +10,9 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
         super ("Policards");
         initComponents();
         this.setLocationRelativeTo(null);
-        telaOpcoesPanelTelaManterFlashcards.setVisible(false);
-        telaSobreNosPanelTelaManterFlashcards.setVisible(false);
-        telaCreditosPanelTelaManterFlashcards.setVisible(false);
+        telaOpcoesPanel.setVisible(false);
+        telaSobreNosPanel.setVisible(false);
+        telaCreditosPanel.setVisible(false);
         offMusicaTelaOpcoesButton.setEnabled(false);
         onMusicaTelaOpcoesButton.setEnabled(false);
         offEfeitoSonoroTelaOpcoesButton.setEnabled(false);
@@ -26,19 +28,18 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
 
         opcoesTelaManterFlashcards = new javax.swing.JButton();
         voltarTelaManterFlashcards = new javax.swing.JButton();
+        criarMateriaButton = new javax.swing.JButton();
         criarButton = new javax.swing.JButton();
         editarButton = new javax.swing.JButton();
-        visualizarButton = new javax.swing.JButton();
-        deletarButton = new javax.swing.JButton();
         telaManterFlashcardsLabel = new javax.swing.JLabel();
-        telaSobreNosPanelTelaManterFlashcards = new javax.swing.JPanel();
+        telaSobreNosPanel = new javax.swing.JPanel();
         voltarTelaSobreNos = new javax.swing.JButton();
         telaSobreNosLabel = new javax.swing.JLabel();
-        telaCreditosPanelTelaManterFlashcards = new javax.swing.JPanel();
+        telaCreditosPanel = new javax.swing.JPanel();
         voltarTelaCreditos = new javax.swing.JButton();
         sobreNosTelaCreditos = new javax.swing.JButton();
         telaCreditosLabelPanel = new javax.swing.JLabel();
-        telaOpcoesPanelTelaManterFlashcards = new javax.swing.JPanel();
+        telaOpcoesPanel = new javax.swing.JPanel();
         offMusicaTelaOpcoesButton = new javax.swing.JButton();
         onMusicaTelaOpcoesButton = new javax.swing.JButton();
         offEfeitoSonoroTelaOpcoesButton = new javax.swing.JButton();
@@ -70,6 +71,15 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
         });
         getContentPane().add(voltarTelaManterFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 100, 30));
 
+        criarMateriaButton.setBorder(null);
+        criarMateriaButton.setContentAreaFilled(false);
+        criarMateriaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                criarMateriaButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(criarMateriaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 300, 60));
+
         criarButton.setBorder(null);
         criarButton.setContentAreaFilled(false);
         criarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +87,7 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
                 criarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(criarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 240, 60));
+        getContentPane().add(criarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 240, 60));
 
         editarButton.setBorder(null);
         editarButton.setContentAreaFilled(false);
@@ -86,20 +96,12 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
                 editarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(editarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 240, 50));
+        getContentPane().add(editarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 240, 50));
 
-        visualizarButton.setBorder(null);
-        visualizarButton.setContentAreaFilled(false);
-        getContentPane().add(visualizarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 240, 60));
-
-        deletarButton.setBorder(null);
-        deletarButton.setContentAreaFilled(false);
-        getContentPane().add(deletarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, 240, 60));
-
-        telaManterFlashcardsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA MANTER_FLASHCARDS.png"))); // NOI18N
+        telaManterFlashcardsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_MANTER_FLASHCARD.png"))); // NOI18N
         getContentPane().add(telaManterFlashcardsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        telaSobreNosPanelTelaManterFlashcards.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        telaSobreNosPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         voltarTelaSobreNos.setBorder(null);
         voltarTelaSobreNos.setContentAreaFilled(false);
@@ -108,14 +110,14 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
                 voltarTelaSobreNosActionPerformed(evt);
             }
         });
-        telaSobreNosPanelTelaManterFlashcards.add(voltarTelaSobreNos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
+        telaSobreNosPanel.add(voltarTelaSobreNos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
 
         telaSobreNosLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_SOBRE_NOS.png"))); // NOI18N
-        telaSobreNosPanelTelaManterFlashcards.add(telaSobreNosLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        telaSobreNosPanel.add(telaSobreNosLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        getContentPane().add(telaSobreNosPanelTelaManterFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 560));
+        getContentPane().add(telaSobreNosPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 560));
 
-        telaCreditosPanelTelaManterFlashcards.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        telaCreditosPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         voltarTelaCreditos.setBorder(null);
         voltarTelaCreditos.setContentAreaFilled(false);
@@ -124,7 +126,7 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
                 voltarTelaCreditosActionPerformed(evt);
             }
         });
-        telaCreditosPanelTelaManterFlashcards.add(voltarTelaCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 104, 26));
+        telaCreditosPanel.add(voltarTelaCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 104, 26));
 
         sobreNosTelaCreditos.setBorder(null);
         sobreNosTelaCreditos.setContentAreaFilled(false);
@@ -133,19 +135,24 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
                 sobreNosTelaCreditosActionPerformed(evt);
             }
         });
-        telaCreditosPanelTelaManterFlashcards.add(sobreNosTelaCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(678, 451, 148, 39));
+        telaCreditosPanel.add(sobreNosTelaCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(678, 451, 148, 39));
 
         telaCreditosLabelPanel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         telaCreditosLabelPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_CREDITOS.png"))); // NOI18N
-        telaCreditosPanelTelaManterFlashcards.add(telaCreditosLabelPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        telaCreditosPanel.add(telaCreditosLabelPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        getContentPane().add(telaCreditosPanelTelaManterFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 560));
+        getContentPane().add(telaCreditosPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 560));
 
-        telaOpcoesPanelTelaManterFlashcards.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        telaOpcoesPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         offMusicaTelaOpcoesButton.setBorder(null);
         offMusicaTelaOpcoesButton.setContentAreaFilled(false);
-        telaOpcoesPanelTelaManterFlashcards.add(offMusicaTelaOpcoesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 70, 50));
+        offMusicaTelaOpcoesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                offMusicaTelaOpcoesButtonActionPerformed(evt);
+            }
+        });
+        telaOpcoesPanel.add(offMusicaTelaOpcoesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 70, 50));
 
         onMusicaTelaOpcoesButton.setBorder(null);
         onMusicaTelaOpcoesButton.setContentAreaFilled(false);
@@ -154,11 +161,16 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
                 onMusicaTelaOpcoesButtonActionPerformed(evt);
             }
         });
-        telaOpcoesPanelTelaManterFlashcards.add(onMusicaTelaOpcoesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 70, 50));
+        telaOpcoesPanel.add(onMusicaTelaOpcoesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 70, 50));
 
         offEfeitoSonoroTelaOpcoesButton.setBorder(null);
         offEfeitoSonoroTelaOpcoesButton.setContentAreaFilled(false);
-        telaOpcoesPanelTelaManterFlashcards.add(offEfeitoSonoroTelaOpcoesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 70, 40));
+        offEfeitoSonoroTelaOpcoesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                offEfeitoSonoroTelaOpcoesButtonActionPerformed(evt);
+            }
+        });
+        telaOpcoesPanel.add(offEfeitoSonoroTelaOpcoesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 70, 40));
 
         creditosTelaOpcoes.setBorder(null);
         creditosTelaOpcoes.setContentAreaFilled(false);
@@ -167,11 +179,16 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
                 creditosTelaOpcoesActionPerformed(evt);
             }
         });
-        telaOpcoesPanelTelaManterFlashcards.add(creditosTelaOpcoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 130, 50));
+        telaOpcoesPanel.add(creditosTelaOpcoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 130, 50));
 
         onEfeitoSonoroTelaOpcoesButton.setBorder(null);
         onEfeitoSonoroTelaOpcoesButton.setContentAreaFilled(false);
-        telaOpcoesPanelTelaManterFlashcards.add(onEfeitoSonoroTelaOpcoesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 70, 50));
+        onEfeitoSonoroTelaOpcoesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onEfeitoSonoroTelaOpcoesButtonActionPerformed(evt);
+            }
+        });
+        telaOpcoesPanel.add(onEfeitoSonoroTelaOpcoesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 70, 50));
 
         fecharTelaOpcoes.setBorder(null);
         fecharTelaOpcoes.setContentAreaFilled(false);
@@ -180,18 +197,19 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
                 fecharTelaOpcoesActionPerformed(evt);
             }
         });
-        telaOpcoesPanelTelaManterFlashcards.add(fecharTelaOpcoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 50));
+        telaOpcoesPanel.add(fecharTelaOpcoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 50));
 
         telaOpcoesLabelPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_OPCOES.png"))); // NOI18N
-        telaOpcoesPanelTelaManterFlashcards.add(telaOpcoesLabelPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        telaOpcoesPanel.add(telaOpcoesLabelPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        getContentPane().add(telaOpcoesPanelTelaManterFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
+        getContentPane().add(telaOpcoesPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void opcoesTelaManterFlashcardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcoesTelaManterFlashcardsActionPerformed
-        telaOpcoesPanelTelaManterFlashcards.setVisible(true);
+        EfeitosSonoros.Play("click.wav");
+        telaOpcoesPanel.setVisible(true);
         offMusicaTelaOpcoesButton.setEnabled(true);
         onMusicaTelaOpcoesButton.setEnabled(true);
         offEfeitoSonoroTelaOpcoesButton.setEnabled(true);
@@ -202,18 +220,78 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
         voltarTelaManterFlashcards.setEnabled(false);
         criarButton.setEnabled(false);
         editarButton.setEnabled(false);
-        visualizarButton.setEnabled(false);
-        deletarButton.setEnabled(false);
         
     }//GEN-LAST:event_opcoesTelaManterFlashcardsActionPerformed
 
     private void voltarTelaManterFlashcardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaManterFlashcardsActionPerformed
+        EfeitosSonoros.Play("back.wav");
         new TelaMenu().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_voltarTelaManterFlashcardsActionPerformed
 
+    private void criarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
+        criarButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+        new TelaCriarFlashcards().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_criarButtonActionPerformed
+
+    private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
+    }//GEN-LAST:event_editarButtonActionPerformed
+
+    private void criarMateriaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarMateriaButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
+        new TelaManterMaterias().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_criarMateriaButtonActionPerformed
+
+    private void offMusicaTelaOpcoesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_offMusicaTelaOpcoesButtonActionPerformed
+        EfeitosSonoros.Play("back.wav");
+        Musicas.Stop();
+    }//GEN-LAST:event_offMusicaTelaOpcoesButtonActionPerformed
+
+    private void onMusicaTelaOpcoesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onMusicaTelaOpcoesButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
+        Musicas.Play("inicio.wav");
+    }//GEN-LAST:event_onMusicaTelaOpcoesButtonActionPerformed
+
+    private void offEfeitoSonoroTelaOpcoesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_offEfeitoSonoroTelaOpcoesButtonActionPerformed
+        EfeitosSonoros.Play("back.wav");
+        EfeitosSonoros.setLigado(false);
+    }//GEN-LAST:event_offEfeitoSonoroTelaOpcoesButtonActionPerformed
+
+    private void creditosTelaOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditosTelaOpcoesActionPerformed
+        EfeitosSonoros.Play("click.wav");
+        telaCreditosPanel.setVisible(true);
+        offMusicaTelaOpcoesButton.setEnabled(false);
+        onMusicaTelaOpcoesButton.setEnabled(false);
+        offEfeitoSonoroTelaOpcoesButton.setEnabled(false);
+        onEfeitoSonoroTelaOpcoesButton.setEnabled(false);
+        fecharTelaOpcoes.setEnabled(false);
+        creditosTelaOpcoes.setVisible(false);
+        sobreNosTelaCreditos.setEnabled(true);
+    }//GEN-LAST:event_creditosTelaOpcoesActionPerformed
+
+    private void onEfeitoSonoroTelaOpcoesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onEfeitoSonoroTelaOpcoesButtonActionPerformed
+        EfeitosSonoros.setLigado(true);
+        EfeitosSonoros.Play("click.wav");
+    }//GEN-LAST:event_onEfeitoSonoroTelaOpcoesButtonActionPerformed
+
+    private void fecharTelaOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharTelaOpcoesActionPerformed
+        EfeitosSonoros.Play("back.wav");
+        telaOpcoesPanel.setVisible(false);
+        offMusicaTelaOpcoesButton.setEnabled(false);
+        onMusicaTelaOpcoesButton.setEnabled(false);
+        offEfeitoSonoroTelaOpcoesButton.setEnabled(false);
+        onEfeitoSonoroTelaOpcoesButton.setEnabled(false);
+        fecharTelaOpcoes.setEnabled(false);
+        creditosTelaOpcoes.setEnabled(false);
+    }//GEN-LAST:event_fecharTelaOpcoesActionPerformed
+
     private void voltarTelaCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaCreditosActionPerformed
-        telaCreditosPanelTelaManterFlashcards.setVisible(false);
+        EfeitosSonoros.Play("back.wav");
+        telaCreditosPanel.setVisible(false);
         offMusicaTelaOpcoesButton.setEnabled(true);
         onMusicaTelaOpcoesButton.setEnabled(true);
         offEfeitoSonoroTelaOpcoesButton.setEnabled(true);
@@ -225,58 +303,18 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarTelaCreditosActionPerformed
 
     private void sobreNosTelaCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobreNosTelaCreditosActionPerformed
-        telaSobreNosPanelTelaManterFlashcards.setVisible(true);
+        EfeitosSonoros.Play("click.wav");
+        telaSobreNosPanel.setVisible(true);
         voltarTelaSobreNos.setEnabled(true);
         sobreNosTelaCreditos.setVisible(false);
     }//GEN-LAST:event_sobreNosTelaCreditosActionPerformed
 
     private void voltarTelaSobreNosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaSobreNosActionPerformed
-        telaSobreNosPanelTelaManterFlashcards.setVisible(false);
+        EfeitosSonoros.Play("back.wav");
+        telaSobreNosPanel.setVisible(false);
         voltarTelaSobreNos.setEnabled(false);
         sobreNosTelaCreditos.setVisible(true);
     }//GEN-LAST:event_voltarTelaSobreNosActionPerformed
-
-    private void onMusicaTelaOpcoesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onMusicaTelaOpcoesButtonActionPerformed
-
-    }//GEN-LAST:event_onMusicaTelaOpcoesButtonActionPerformed
-
-    private void creditosTelaOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditosTelaOpcoesActionPerformed
-        telaCreditosPanelTelaManterFlashcards.setVisible(true);
-        offMusicaTelaOpcoesButton.setEnabled(false);
-        onMusicaTelaOpcoesButton.setEnabled(false);
-        offEfeitoSonoroTelaOpcoesButton.setEnabled(false);
-        onEfeitoSonoroTelaOpcoesButton.setEnabled(false);
-        fecharTelaOpcoes.setEnabled(false);
-        creditosTelaOpcoes.setVisible(false);
-        sobreNosTelaCreditos.setEnabled(true);
-    }//GEN-LAST:event_creditosTelaOpcoesActionPerformed
-
-    private void fecharTelaOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharTelaOpcoesActionPerformed
-        telaOpcoesPanelTelaManterFlashcards.setVisible(false);
-        offMusicaTelaOpcoesButton.setEnabled(false);
-        onMusicaTelaOpcoesButton.setEnabled(false);
-        offEfeitoSonoroTelaOpcoesButton.setEnabled(false);
-        onEfeitoSonoroTelaOpcoesButton.setEnabled(false);
-        fecharTelaOpcoes.setEnabled(false);
-        creditosTelaOpcoes.setEnabled(false);
-        opcoesTelaManterFlashcards.setEnabled(true);
-        voltarTelaManterFlashcards.setEnabled(true);
-        criarButton.setEnabled(true);
-        editarButton.setEnabled(true);
-        visualizarButton.setEnabled(true);
-        deletarButton.setEnabled(true);
-        
-    }//GEN-LAST:event_fecharTelaOpcoesActionPerformed
-
-    private void criarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarButtonActionPerformed
-        criarButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
-        new TelaCriarFlashcards().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_criarButtonActionPerformed
-
-    private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editarButtonActionPerformed
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -309,7 +347,7 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton creditosTelaOpcoes;
     private javax.swing.JButton criarButton;
-    private javax.swing.JButton deletarButton;
+    private javax.swing.JButton criarMateriaButton;
     private javax.swing.JButton editarButton;
     private javax.swing.JButton fecharTelaOpcoes;
     private javax.swing.JButton offEfeitoSonoroTelaOpcoesButton;
@@ -319,13 +357,12 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
     private javax.swing.JButton opcoesTelaManterFlashcards;
     private javax.swing.JButton sobreNosTelaCreditos;
     private javax.swing.JLabel telaCreditosLabelPanel;
-    private javax.swing.JPanel telaCreditosPanelTelaManterFlashcards;
+    private javax.swing.JPanel telaCreditosPanel;
     private javax.swing.JLabel telaManterFlashcardsLabel;
     private javax.swing.JLabel telaOpcoesLabelPanel;
-    private javax.swing.JPanel telaOpcoesPanelTelaManterFlashcards;
+    private javax.swing.JPanel telaOpcoesPanel;
     private javax.swing.JLabel telaSobreNosLabel;
-    private javax.swing.JPanel telaSobreNosPanelTelaManterFlashcards;
-    private javax.swing.JButton visualizarButton;
+    private javax.swing.JPanel telaSobreNosPanel;
     private javax.swing.JButton voltarTelaCreditos;
     private javax.swing.JButton voltarTelaManterFlashcards;
     private javax.swing.JButton voltarTelaSobreNos;

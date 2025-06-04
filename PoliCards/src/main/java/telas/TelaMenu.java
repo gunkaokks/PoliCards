@@ -1,5 +1,8 @@
 package telas;
 
+import sons.EfeitosSonoros;
+import sons.Musicas;
+
 public class TelaMenu extends javax.swing.JFrame {
     public TelaMenu() {
         super("Policards");
@@ -22,6 +25,11 @@ public class TelaMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        iniciarJogoTelaMenuButton = new javax.swing.JButton();
+        flashcardsTelaMenu = new javax.swing.JButton();
+        sairTelaMenu = new javax.swing.JButton();
+        opcoesTelaMenuButton = new javax.swing.JButton();
+        telaMenuLabel = new javax.swing.JLabel();
         telaSobreNosPanelTelaMenu = new javax.swing.JPanel();
         voltarTelaSobreNos = new javax.swing.JButton();
         telaSobreNosLabel = new javax.swing.JLabel();
@@ -37,18 +45,50 @@ public class TelaMenu extends javax.swing.JFrame {
         onEfeitoSonoroTelaOpcoesButton = new javax.swing.JButton();
         fecharTelaOpcoes = new javax.swing.JButton();
         telaOpcoesLabelPanel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        voltarTelaMenu = new javax.swing.JButton();
-        iniciarJogoTelaMenuButton = new javax.swing.JButton();
-        flashcardsTelaMenu = new javax.swing.JButton();
-        sairTelaMenu = new javax.swing.JButton();
-        opcoesTelaMenuButton = new javax.swing.JButton();
-        telaMenuLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PoliCards");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        iniciarJogoTelaMenuButton.setBorder(null);
+        iniciarJogoTelaMenuButton.setContentAreaFilled(false);
+        iniciarJogoTelaMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciarJogoTelaMenuButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(iniciarJogoTelaMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 290, 70));
+
+        flashcardsTelaMenu.setBorder(null);
+        flashcardsTelaMenu.setContentAreaFilled(false);
+        flashcardsTelaMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                flashcardsTelaMenuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(flashcardsTelaMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 290, 70));
+
+        sairTelaMenu.setBorder(null);
+        sairTelaMenu.setContentAreaFilled(false);
+        sairTelaMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairTelaMenuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(sairTelaMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 300, 70));
+
+        opcoesTelaMenuButton.setBorder(null);
+        opcoesTelaMenuButton.setContentAreaFilled(false);
+        opcoesTelaMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcoesTelaMenuButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(opcoesTelaMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 13, 110, 30));
+
+        telaMenuLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_MENU.png"))); // NOI18N
+        getContentPane().add(telaMenuLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         telaSobreNosPanelTelaMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -96,6 +136,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
         offMusicaTelaOpcoesButton.setBorder(null);
         offMusicaTelaOpcoesButton.setContentAreaFilled(false);
+        offMusicaTelaOpcoesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                offMusicaTelaOpcoesButtonActionPerformed(evt);
+            }
+        });
         telaOpcoesPanelTelaMenu.add(offMusicaTelaOpcoesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 70, 50));
 
         onMusicaTelaOpcoesButton.setBorder(null);
@@ -109,6 +154,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
         offEfeitoSonoroTelaOpcoesButton.setBorder(null);
         offEfeitoSonoroTelaOpcoesButton.setContentAreaFilled(false);
+        offEfeitoSonoroTelaOpcoesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                offEfeitoSonoroTelaOpcoesButtonActionPerformed(evt);
+            }
+        });
         telaOpcoesPanelTelaMenu.add(offEfeitoSonoroTelaOpcoesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 70, 40));
 
         creditosTelaOpcoes.setBorder(null);
@@ -122,6 +172,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
         onEfeitoSonoroTelaOpcoesButton.setBorder(null);
         onEfeitoSonoroTelaOpcoesButton.setContentAreaFilled(false);
+        onEfeitoSonoroTelaOpcoesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onEfeitoSonoroTelaOpcoesButtonActionPerformed(evt);
+            }
+        });
         telaOpcoesPanelTelaMenu.add(onEfeitoSonoroTelaOpcoesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 70, 50));
 
         fecharTelaOpcoes.setBorder(null);
@@ -138,65 +193,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
         getContentPane().add(telaOpcoesPanelTelaMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
 
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 140, 50));
-
-        voltarTelaMenu.setBorder(null);
-        voltarTelaMenu.setContentAreaFilled(false);
-        voltarTelaMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarTelaMenuActionPerformed(evt);
-            }
-        });
-        getContentPane().add(voltarTelaMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 50));
-
-        iniciarJogoTelaMenuButton.setBorder(null);
-        iniciarJogoTelaMenuButton.setContentAreaFilled(false);
-        iniciarJogoTelaMenuButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                iniciarJogoTelaMenuButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(iniciarJogoTelaMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 290, 70));
-
-        flashcardsTelaMenu.setBorder(null);
-        flashcardsTelaMenu.setContentAreaFilled(false);
-        flashcardsTelaMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                flashcardsTelaMenuActionPerformed(evt);
-            }
-        });
-        getContentPane().add(flashcardsTelaMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 290, 70));
-
-        sairTelaMenu.setBorder(null);
-        sairTelaMenu.setContentAreaFilled(false);
-        sairTelaMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sairTelaMenuActionPerformed(evt);
-            }
-        });
-        getContentPane().add(sairTelaMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 300, 70));
-
-        opcoesTelaMenuButton.setBorder(null);
-        opcoesTelaMenuButton.setContentAreaFilled(false);
-        opcoesTelaMenuButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opcoesTelaMenuButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(opcoesTelaMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 13, 110, 30));
-
-        telaMenuLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_MENU.png"))); // NOI18N
-        getContentPane().add(telaMenuLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void opcoesTelaMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcoesTelaMenuButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
         telaOpcoesPanelTelaMenu.setVisible(true);
         iniciarJogoTelaMenuButton.setEnabled(false);
         flashcardsTelaMenu.setEnabled(false);
@@ -214,10 +215,12 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_opcoesTelaMenuButtonActionPerformed
 
     private void sairTelaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairTelaMenuActionPerformed
+        EfeitosSonoros.Play("tchau.wav");
         System.exit(0);
     }//GEN-LAST:event_sairTelaMenuActionPerformed
 
     private void voltarTelaCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaCreditosActionPerformed
+        EfeitosSonoros.Play("back.wav");
         telaCreditosPanelTelaMenu.setVisible(false);
         offMusicaTelaOpcoesButton.setEnabled(true);
         onMusicaTelaOpcoesButton.setEnabled(true);
@@ -230,22 +233,26 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarTelaCreditosActionPerformed
 
     private void sobreNosTelaCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobreNosTelaCreditosActionPerformed
+        EfeitosSonoros.Play("click.wav");
         telaSobreNosPanelTelaMenu.setVisible(true);
         voltarTelaSobreNos.setEnabled(true);
         sobreNosTelaCreditos.setVisible(false);
     }//GEN-LAST:event_sobreNosTelaCreditosActionPerformed
 
     private void voltarTelaSobreNosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaSobreNosActionPerformed
+        EfeitosSonoros.Play("back.wav");
         telaSobreNosPanelTelaMenu.setVisible(false);
         voltarTelaSobreNos.setEnabled(false);
         sobreNosTelaCreditos.setVisible(true);
     }//GEN-LAST:event_voltarTelaSobreNosActionPerformed
 
     private void onMusicaTelaOpcoesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onMusicaTelaOpcoesButtonActionPerformed
-
+        EfeitosSonoros.Play("click.wav");
+        Musicas.Play("inicio.wav");
     }//GEN-LAST:event_onMusicaTelaOpcoesButtonActionPerformed
 
     private void creditosTelaOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditosTelaOpcoesActionPerformed
+        EfeitosSonoros.Play("click.wav");
         telaCreditosPanelTelaMenu.setVisible(true);
         offMusicaTelaOpcoesButton.setEnabled(false);
         onMusicaTelaOpcoesButton.setEnabled(false);
@@ -261,6 +268,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_creditosTelaOpcoesActionPerformed
 
     private void fecharTelaOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharTelaOpcoesActionPerformed
+        EfeitosSonoros.Play("back.wav");
         telaOpcoesPanelTelaMenu.setVisible(false);
         offMusicaTelaOpcoesButton.setEnabled(false);
         onMusicaTelaOpcoesButton.setEnabled(false);
@@ -275,24 +283,31 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_fecharTelaOpcoesActionPerformed
 
     private void iniciarJogoTelaMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarJogoTelaMenuButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
         new TelaModos().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_iniciarJogoTelaMenuButtonActionPerformed
 
     private void flashcardsTelaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flashcardsTelaMenuActionPerformed
+        EfeitosSonoros.Play("click.wav");
         new TelaManterFlashcards().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_flashcardsTelaMenuActionPerformed
 
-    private void voltarTelaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaMenuActionPerformed
-        new TelaInicial().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_voltarTelaMenuActionPerformed
+    private void offMusicaTelaOpcoesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_offMusicaTelaOpcoesButtonActionPerformed
+        EfeitosSonoros.Play("back.wav");
+        Musicas.Stop();
+    }//GEN-LAST:event_offMusicaTelaOpcoesButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new TelaCriarMaterias().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void onEfeitoSonoroTelaOpcoesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onEfeitoSonoroTelaOpcoesButtonActionPerformed
+        EfeitosSonoros.setLigado(true);
+        EfeitosSonoros.Play("click.wav");
+    }//GEN-LAST:event_onEfeitoSonoroTelaOpcoesButtonActionPerformed
+
+    private void offEfeitoSonoroTelaOpcoesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_offEfeitoSonoroTelaOpcoesButtonActionPerformed
+        EfeitosSonoros.Play("back.wav");
+        EfeitosSonoros.setLigado(false);
+    }//GEN-LAST:event_offEfeitoSonoroTelaOpcoesButtonActionPerformed
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -306,7 +321,6 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JButton fecharTelaOpcoes;
     private javax.swing.JButton flashcardsTelaMenu;
     private javax.swing.JButton iniciarJogoTelaMenuButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton offEfeitoSonoroTelaOpcoesButton;
     private javax.swing.JButton offMusicaTelaOpcoesButton;
     private javax.swing.JButton onEfeitoSonoroTelaOpcoesButton;
@@ -322,7 +336,6 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JLabel telaSobreNosLabel;
     private javax.swing.JPanel telaSobreNosPanelTelaMenu;
     private javax.swing.JButton voltarTelaCreditos;
-    private javax.swing.JButton voltarTelaMenu;
     private javax.swing.JButton voltarTelaSobreNos;
     // End of variables declaration//GEN-END:variables
 }

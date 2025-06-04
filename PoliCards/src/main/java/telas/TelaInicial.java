@@ -1,5 +1,6 @@
 package telas;
 
+import sons.EfeitosSonoros;
 import sons.Musicas;
 
 public class TelaInicial extends javax.swing.JFrame {
@@ -49,11 +50,14 @@ public class TelaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inicialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicialButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
         new TelaLogin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_inicialButtonActionPerformed
 
     private void admTelaInicialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admTelaInicialButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
+        Musicas.Stop();
         new TelaLoginAdm().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_admTelaInicialButtonActionPerformed

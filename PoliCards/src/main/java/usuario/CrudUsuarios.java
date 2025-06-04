@@ -55,7 +55,19 @@ public class CrudUsuarios extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSenhaActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 212, 610, 30));
+
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 610, 30));
 
         voltarButton.setBorder(null);
@@ -83,7 +95,7 @@ public class CrudUsuarios extends javax.swing.JFrame {
                 atualizarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(atualizarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 460, 130, 40));
+        getContentPane().add(atualizarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, 130, 40));
 
         salvarButton.setBorder(null);
         salvarButton.setContentAreaFilled(false);
@@ -210,6 +222,14 @@ catch (Exception e)
     JOptionPane.showMessageDialog(this, e.getMessage(), "Erro ao deletar usuário", JOptionPane.ERROR_MESSAGE);
 }
     }//GEN-LAST:event_removerButtonActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenhaActionPerformed
 
     /**
      * @param args the command line arguments

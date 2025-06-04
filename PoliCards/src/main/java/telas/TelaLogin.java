@@ -5,6 +5,7 @@ import java.awt.Cursor;
 import javax.swing.JOptionPane;
 import persistencia.Sessao;
 import persistencia.UsuarioDAO;
+import sons.EfeitosSonoros;
 
 public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
@@ -112,6 +113,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_emailTextFieldActionPerformed
     
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        EfeitosSonoros.Play("text.wav");
         String emailAluno = emailTextField.getText().trim();
         String senhaAluno = new String(senhaPasswordField.getPassword());
 
@@ -141,16 +143,19 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void registrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
         new TelaCadastro().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registrarButtonActionPerformed
 
     private void voltarTelaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaLoginActionPerformed
+        EfeitosSonoros.Play("back.wav");
         new TelaInicial().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_voltarTelaLoginActionPerformed
 
     private void esqueciSenhaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esqueciSenhaButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
         JOptionPane.showMessageDialog(this,"Contate o Administrador responsável");
     }//GEN-LAST:event_esqueciSenhaButtonActionPerformed
     public static void main(String args[]) {

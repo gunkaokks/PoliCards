@@ -1,5 +1,6 @@
 package persistencia;
 
+import com.mycompany.policards.Administrador;
 import com.mycompany.policards.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -73,4 +74,22 @@ public class UsuarioDAO {
         }
         return null;
     }
+    
+    public boolean cadastrarAdm(Administrador a) {
+        String sql = "INSERT INTO administradores (emailAdm, senhaAdm) VALUES (?, ?)";
+
+        try (Connection con = ConnectionFactory.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, a.getEmailAdm().trim());
+            ps.setString(2, a.getSenhaAdm().trim());
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao cadastrar administrador: " + e.getMessage());
+            return false;
+        }
+    }
 }
+
+
