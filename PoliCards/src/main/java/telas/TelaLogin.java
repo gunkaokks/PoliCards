@@ -18,8 +18,8 @@ public class TelaLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        voltarTelaLogin = new javax.swing.JButton();
         erroLoginInvalidoLabel = new javax.swing.JLabel();
+        voltarTelaLogin = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
         emailTextField = new javax.swing.JTextField();
         senhaPasswordField = new javax.swing.JPasswordField();
@@ -33,6 +33,11 @@ public class TelaLogin extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        erroLoginInvalidoLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        erroLoginInvalidoLabel.setForeground(new java.awt.Color(255, 29, 51));
+        erroLoginInvalidoLabel.setText("E-mail ou senha inválidos!");
+        getContentPane().add(erroLoginInvalidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 190, -1));
+
         voltarTelaLogin.setBorder(null);
         voltarTelaLogin.setContentAreaFilled(false);
         voltarTelaLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -41,11 +46,6 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(voltarTelaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 40));
-
-        erroLoginInvalidoLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        erroLoginInvalidoLabel.setForeground(new java.awt.Color(255, 29, 51));
-        erroLoginInvalidoLabel.setText("E-mail ou senha inválidos!");
-        getContentPane().add(erroLoginInvalidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 190, -1));
 
         loginButton.setBorder(null);
         loginButton.setContentAreaFilled(false);

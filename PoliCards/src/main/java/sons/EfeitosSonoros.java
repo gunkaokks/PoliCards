@@ -15,7 +15,7 @@ public class EfeitosSonoros {
     public static void Play(String filepath) {
         if (ligado) {
             try {
-                InputStream soundStream = EfeitosSonoros.class.getClassLoader().getResourceAsStream("sons/" + filepath);
+                InputStream soundStream = EfeitosSonoros.class.getClassLoader().getResourceAsStream("efeitos sonoros/" + filepath);
                 if (soundStream != null) {
                     BufferedInputStream bufferedInputStream = new BufferedInputStream(soundStream);
                     clip = AudioSystem.getClip();

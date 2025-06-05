@@ -9,13 +9,11 @@ import persistencia.Sessao;
 public class Materias {
     private int id_materia;
     private String materia;
-    private int id;
-    private String nome;
     private int id_aluno = Sessao.getIdAluno();
 
-    public Materias(int id, String nome) {
-        this.id = id;
-        this.nome = nome;
+    public Materias(int id_materia, String materia) {
+        this.id_materia = id_materia;
+        this.materia = materia;
         this.id_aluno = Sessao.getIdAluno();
     }
 
@@ -25,6 +23,6 @@ public class Materias {
 
     @Override
     public String toString() {
-        return nome;
+        return materia;
     }
 }

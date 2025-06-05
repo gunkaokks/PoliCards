@@ -31,15 +31,6 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        erroPreenchaCamposLabel = new javax.swing.JLabel();
-        dificuldadeComboBox = new javax.swing.JComboBox<>();
-        materiaComboBox = new javax.swing.JComboBox<>();
-        respostaTextArea = new javax.swing.JTextArea();
-        perguntaTextArea = new javax.swing.JTextArea();
-        finalizarTelaCriarFlashcards = new javax.swing.JButton();
-        voltarTelaCriarFlashcards = new javax.swing.JButton();
-        opcoesTelaCriarFlashcards = new javax.swing.JButton();
-        telaCriarFlashcardsLabel = new javax.swing.JLabel();
         telaSobreNosPanelTelaCriarFlashcards = new javax.swing.JPanel();
         voltarTelaSobreNos = new javax.swing.JButton();
         telaSobreNosLabel = new javax.swing.JLabel();
@@ -55,76 +46,19 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
         onEfeitoSonoroTelaOpcoesButton = new javax.swing.JButton();
         fecharTelaOpcoes = new javax.swing.JButton();
         telaOpcoesLabelPanel = new javax.swing.JLabel();
+        erroPreenchaCamposLabel = new javax.swing.JLabel();
+        dificuldadeComboBox = new javax.swing.JComboBox<>();
+        materiaComboBox = new javax.swing.JComboBox<>();
+        respostaTextArea = new javax.swing.JTextArea();
+        perguntaTextArea = new javax.swing.JTextArea();
+        finalizarTelaCriarFlashcards = new javax.swing.JButton();
+        voltarTelaCriarFlashcards = new javax.swing.JButton();
+        opcoesTelaCriarFlashcards = new javax.swing.JButton();
+        telaCriarFlashcardsLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        erroPreenchaCamposLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        erroPreenchaCamposLabel.setForeground(new java.awt.Color(255, 29, 51));
-        erroPreenchaCamposLabel.setText("Preencha todos os campos!");
-        getContentPane().add(erroPreenchaCamposLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 190, -1));
-
-        dificuldadeComboBox.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        dificuldadeComboBox.setMaximumRowCount(3);
-        dificuldadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fácil", "Médio", "Difícil" }));
-        getContentPane().add(dificuldadeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 130, 180, 30));
-
-        materiaComboBox.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        materiaComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                materiaComboBoxActionPerformed(evt);
-            }
-        });
-        getContentPane().add(materiaComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 220, 30));
-
-        respostaTextArea.setColumns(20);
-        respostaTextArea.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        respostaTextArea.setLineWrap(true);
-        respostaTextArea.setRows(5);
-        respostaTextArea.setWrapStyleWord(true);
-        respostaTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        respostaTextArea.setMargin(new java.awt.Insets(5, 5, 5, 5));
-        getContentPane().add(respostaTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 230, 357, 200));
-
-        perguntaTextArea.setColumns(1);
-        perguntaTextArea.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        perguntaTextArea.setLineWrap(true);
-        perguntaTextArea.setRows(5);
-        perguntaTextArea.setWrapStyleWord(true);
-        perguntaTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        perguntaTextArea.setMargin(new java.awt.Insets(5, 5, 5, 5));
-        getContentPane().add(perguntaTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 230, 357, 200));
-
-        finalizarTelaCriarFlashcards.setBorder(null);
-        finalizarTelaCriarFlashcards.setContentAreaFilled(false);
-        finalizarTelaCriarFlashcards.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                finalizarTelaCriarFlashcardsActionPerformed(evt);
-            }
-        });
-        getContentPane().add(finalizarTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 230, 40));
-
-        voltarTelaCriarFlashcards.setBorder(null);
-        voltarTelaCriarFlashcards.setContentAreaFilled(false);
-        voltarTelaCriarFlashcards.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarTelaCriarFlashcardsActionPerformed(evt);
-            }
-        });
-        getContentPane().add(voltarTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 50));
-
-        opcoesTelaCriarFlashcards.setBorder(null);
-        opcoesTelaCriarFlashcards.setContentAreaFilled(false);
-        opcoesTelaCriarFlashcards.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opcoesTelaCriarFlashcardsActionPerformed(evt);
-            }
-        });
-        getContentPane().add(opcoesTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 100, 50));
-
-        telaCriarFlashcardsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_CRIAR_FLASHCARDS.png"))); // NOI18N
-        getContentPane().add(telaCriarFlashcardsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         telaSobreNosPanelTelaCriarFlashcards.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -213,6 +147,72 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
         telaOpcoesPanelTelaCriarFlashcards.add(telaOpcoesLabelPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(telaOpcoesPanelTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
+
+        erroPreenchaCamposLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        erroPreenchaCamposLabel.setForeground(new java.awt.Color(255, 29, 51));
+        erroPreenchaCamposLabel.setText("Preencha todos os campos!");
+        getContentPane().add(erroPreenchaCamposLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 190, -1));
+
+        dificuldadeComboBox.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        dificuldadeComboBox.setMaximumRowCount(3);
+        dificuldadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fácil", "Médio", "Difícil" }));
+        getContentPane().add(dificuldadeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 130, 180, 30));
+
+        materiaComboBox.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        materiaComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                materiaComboBoxActionPerformed(evt);
+            }
+        });
+        getContentPane().add(materiaComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 220, 30));
+
+        respostaTextArea.setColumns(20);
+        respostaTextArea.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        respostaTextArea.setLineWrap(true);
+        respostaTextArea.setRows(5);
+        respostaTextArea.setWrapStyleWord(true);
+        respostaTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        respostaTextArea.setMargin(new java.awt.Insets(5, 5, 5, 5));
+        getContentPane().add(respostaTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 230, 357, 200));
+
+        perguntaTextArea.setColumns(1);
+        perguntaTextArea.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        perguntaTextArea.setLineWrap(true);
+        perguntaTextArea.setRows(5);
+        perguntaTextArea.setWrapStyleWord(true);
+        perguntaTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        perguntaTextArea.setMargin(new java.awt.Insets(5, 5, 5, 5));
+        getContentPane().add(perguntaTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 230, 357, 200));
+
+        finalizarTelaCriarFlashcards.setBorder(null);
+        finalizarTelaCriarFlashcards.setContentAreaFilled(false);
+        finalizarTelaCriarFlashcards.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finalizarTelaCriarFlashcardsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(finalizarTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 230, 40));
+
+        voltarTelaCriarFlashcards.setBorder(null);
+        voltarTelaCriarFlashcards.setContentAreaFilled(false);
+        voltarTelaCriarFlashcards.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarTelaCriarFlashcardsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltarTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 50));
+
+        opcoesTelaCriarFlashcards.setBorder(null);
+        opcoesTelaCriarFlashcards.setContentAreaFilled(false);
+        opcoesTelaCriarFlashcards.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcoesTelaCriarFlashcardsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(opcoesTelaCriarFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 100, 50));
+
+        telaCriarFlashcardsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_CRIAR_FLASHCARDS.png"))); // NOI18N
+        getContentPane().add(telaCriarFlashcardsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -314,7 +314,7 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
                 Flashcards novoFlashcard = new Flashcards(
                         0,
                         Sessao.getIdAluno(),
-                        materiaSelecionada.getId(),
+                        materiaSelecionada.getId_materia(),
                         pergunta,
                         resposta,
                         dificuldade

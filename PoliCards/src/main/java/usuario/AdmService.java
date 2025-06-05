@@ -29,7 +29,7 @@ public class AdmService {
 
                 if (emailAdm != null) {
                     Administrador a = new Administrador(emailAdm, senhaAdm);
-                    a.setId_adm(id);  // Definindo o ID no objeto
+                    a.setId_adm(id);
                     administradores.add(a);
                 }
             }
@@ -49,7 +49,7 @@ public class AdmService {
         return administradores;
     }
 
-    public static void insert(Administrador a) throws Exception {
+    public static void adicionar(Administrador a) throws Exception {
         Connection c = null;
         PreparedStatement stmt = null;
 
@@ -74,14 +74,14 @@ public class AdmService {
         }
     }
 
-    public static void update(Administrador a) throws Exception {
+    public static void atualizar(Administrador a) throws Exception {
         Connection c = null;
         PreparedStatement stmt = null;
 
         try {
             c = ConnectionFactory.getConnection();
 
-            String query = "UPDATE administradores SET emailAdm=?, senhaAdm=? WHERE id_aluno=?;";
+            String query = "UPDATE administradores SET emailAdm=?, senhaAdm=? WHERE id_adm=?;";
             stmt = c.prepareStatement(query);
 
             stmt.setString(1, a.getEmailAdm());
@@ -100,7 +100,7 @@ public class AdmService {
         }
     }
 
-    public static void delete(Administrador a) throws Exception {
+    public static void remover(Administrador a) throws Exception {
         Connection c = null;
         PreparedStatement stmt = null;
 

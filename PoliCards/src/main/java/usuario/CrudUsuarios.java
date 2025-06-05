@@ -11,11 +11,10 @@ public class CrudUsuarios extends javax.swing.JFrame {
     private UsuarioTableModel tabelaUsuario = new UsuarioTableModel();
     
     public CrudUsuarios() {
+        super("Policards");
         initComponents();
         usuariosTable.setModel((TableModel) tabelaUsuario);
         getUsuarios();
-        txtEmail.setOpaque(false);
-        txtSenha.setOpaque(false);
         setLocationRelativeTo(null);
         usuariosScrollPane.setViewportView(usuariosTable);
         
@@ -34,7 +33,7 @@ public class CrudUsuarios extends javax.swing.JFrame {
         }
         catch (Exception e)
         {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Erro ao carregar usuários", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Erro ao carregar usuários");
         }
         
         
@@ -51,11 +50,12 @@ public class CrudUsuarios extends javax.swing.JFrame {
         salvarButton = new javax.swing.JButton();
         usuariosScrollPane = new javax.swing.JScrollPane();
         usuariosTable = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        crudUsuariosLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtSenha.setBackground(new java.awt.Color(193, 193, 193));
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
@@ -63,6 +63,7 @@ public class CrudUsuarios extends javax.swing.JFrame {
         });
         getContentPane().add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 212, 610, 30));
 
+        txtEmail.setBackground(new java.awt.Color(193, 193, 193));
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
@@ -126,9 +127,9 @@ public class CrudUsuarios extends javax.swing.JFrame {
 
         getContentPane().add(usuariosScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 690, 190));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_CONTROLAR_USUARIOS.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 999, -1));
+        crudUsuariosLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_CONTROLAR_USUARIOS.png"))); // NOI18N
+        crudUsuariosLabel.setText("jLabel1");
+        getContentPane().add(crudUsuariosLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 999, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -137,27 +138,27 @@ public class CrudUsuarios extends javax.swing.JFrame {
         if (indexSelecionado == -1) {
             atualizarButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
             return;
-}
+        }
 
-boolean validacao = true;
-try {
-    Usuario u = this.tabelaUsuario.getUsuario(this.indexSelecionado);
-    u.setEmailAluno(this.txtEmail.getText());
-    u.setSenhaAluno(this.txtSenha.getText());
-    validacao = false;
+        boolean validacao = true;
+        try {
+            Usuario u = this.tabelaUsuario.getUsuario(this.indexSelecionado);
+            u.setEmailAluno(this.txtEmail.getText());
+            u.setSenhaAluno(this.txtSenha.getText());
+            validacao = false;
 
-    UsuarioService.update(u);
-    this.tabelaUsuario.atualizar(u, this.indexSelecionado);
+            UsuarioService.atualizar(u);
+            this.tabelaUsuario.atualizar(u, this.indexSelecionado);
 
-    JOptionPane.showMessageDialog(this, "Usuário alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Usuário alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 
-    this.limparCampos();
-} catch (Exception e) {
-    String title = validacao ? "Validação" : "Erro";
-    int pane = validacao ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.ERROR_MESSAGE;
+            this.limparCampos();
+        } catch (Exception e) {
+            String title = validacao ? "Validação" : "Erro";
+            int pane = validacao ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.ERROR_MESSAGE;
 
-    JOptionPane.showMessageDialog(this, e.getMessage(), title, pane);
-}
+            JOptionPane.showMessageDialog(this, e.getMessage(), title, pane);
+        }
 
     }//GEN-LAST:event_atualizarButtonActionPerformed
 
@@ -179,7 +180,7 @@ try {
                 Usuario u = new Usuario(email, senha);
                 validacao = false;
 
-                UsuarioService.insert(u);
+                UsuarioService.adicionar(u);
 
                 JOptionPane.showMessageDialog(this, "Usuário criado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 
@@ -210,7 +211,7 @@ try
 {
     removerButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
     Usuario u = this.tabelaUsuario.getUsuario(this.indexSelecionado);
-    UsuarioService.delete(u);
+    UsuarioService.remover(u);
 
     this.tabelaUsuario.removeRow(this.indexSelecionado);
     this.limparCampos();
@@ -230,12 +231,7 @@ catch (Exception e)
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSenhaActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -257,8 +253,6 @@ catch (Exception e)
             java.util.logging.Logger.getLogger(CrudUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CrudUsuarios().setVisible(true);
@@ -268,7 +262,7 @@ catch (Exception e)
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atualizarButton;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel crudUsuariosLabel;
     private javax.swing.JButton removerButton;
     private javax.swing.JButton salvarButton;
     private javax.swing.JTextField txtEmail;

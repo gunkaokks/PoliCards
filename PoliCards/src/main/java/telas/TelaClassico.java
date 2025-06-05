@@ -3,38 +3,14 @@ package telas;
 import crudFlashcards.Flashcards;
 import crudFlashcards.FlashcardsDAO;
 import crudMaterias.Materias;
-import crudMaterias.MateriasDAO;
+import crudMaterias.MateriasComboBox;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 public class TelaClassico extends javax.swing.JFrame {
-
     private List<Flashcards> flashcardsAtuais;
-    private int indiceFlashcardAtual;
-    private javax.swing.JLabel perguntaLabel;
-    private javax.swing.JLabel respostaLabel;
-
-    private void materiasComboBox() {
-        try {
-            MateriasDAO dao = new MateriasDAO();
-            List<Materias> materias = dao.listarTodasMaterias();
-            DefaultComboBoxModel<Materias> modelo = new DefaultComboBoxModel<>();
-
-            Materias aleatorio = new Materias(-1, "Aleatório");
-            modelo.addElement(aleatorio);
-
-            for (Materias materia : materias) {
-                modelo.addElement(materia);
-            }
-            materiaComboBox.setModel(modelo);
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao carregar matérias: " + e.getMessage(),
-                    "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-    }
 
     private void iniciarJogo() throws Exception {
         Materias materiaSelecionada = (Materias) materiaComboBox.getSelectedItem();
@@ -43,16 +19,13 @@ public class TelaClassico extends javax.swing.JFrame {
         try {
             FlashcardsDAO dao = new FlashcardsDAO();
 
-            Integer idMateria = (materiaSelecionada.getId() == -1) ? null : materiaSelecionada.getId();
+            Integer idMateria = (materiaSelecionada.getId_materia() == -1) ? null : materiaSelecionada.getId_materia();
             String dificuldade = dificuldadeSelecionada.equals("Aleatório") ? null : dificuldadeSelecionada;
 
             flashcardsAtuais = dao.listarFlashcardsFiltrados(idMateria, dificuldade);
 
             if (flashcardsAtuais.isEmpty()) {
-                JOptionPane.showMessageDialog(this,
-                        "Nenhum flashcard encontrado com esses filtros!",
-                        "Aviso",
-                        JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Nenhum flashcard encontrado com esses filtros!");
                 return;
             }
 
@@ -62,8 +35,13 @@ public class TelaClassico extends javax.swing.JFrame {
     }
     
     public TelaClassico() {
+        super("Policards");
         initComponents();
-        materiasComboBox();
+        this.setLocationRelativeTo(null);
+        MateriasComboBox.carregarMaterias(materiaComboBox);
+        DefaultComboBoxModel<Materias> modelo = (DefaultComboBoxModel<Materias>) materiaComboBox.getModel();
+        modelo.insertElementAt(new Materias(-1, "Aleatório"), 0);
+        materiaComboBox.setSelectedIndex(0);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -2,7 +2,6 @@
 package usuario;
 
 import com.mycompany.policards.Administrador;
-import com.mycompany.policards.Usuario;
 import java.awt.Cursor;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
@@ -133,7 +132,7 @@ public class CrudAdm extends javax.swing.JFrame {
         try {
             removerButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
             Administrador a = this.tabelaAdministrador.getAdm(this.indexSelecionado);
-            AdmService.delete(a);
+            AdmService.remover(a);
 
             this.tabelaAdministrador.removeRow(this.indexSelecionado);
             this.limparCampos();
@@ -161,7 +160,7 @@ public class CrudAdm extends javax.swing.JFrame {
                 Administrador a = new Administrador(email, senha);
                 validacao = false;
 
-                AdmService.insert(a);
+                AdmService.adicionar(a);
 
                 JOptionPane.showMessageDialog(this, "Administrador criado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 
@@ -191,7 +190,7 @@ public class CrudAdm extends javax.swing.JFrame {
             a.setSenhaAdm(this.txtSenha.getText());
             validacao = false;
 
-            AdmService.update(a);
+            AdmService.atualizar(a);
             this.tabelaAdministrador.atualizar(a, this.indexSelecionado);
 
             JOptionPane.showMessageDialog(this, "Administrador alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
@@ -215,12 +214,7 @@ public class CrudAdm extends javax.swing.JFrame {
         Administrador a = tabelaAdministrador.getAdm(admTable.getSelectedRow());
         indexSelecionado = admTable.getSelectedRow();
     }//GEN-LAST:event_admTableMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -242,8 +236,6 @@ public class CrudAdm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(CrudAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CrudAdm().setVisible(true);

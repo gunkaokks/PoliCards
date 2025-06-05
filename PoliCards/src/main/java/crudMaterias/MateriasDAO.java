@@ -45,8 +45,8 @@ public class MateriasDAO {
 
             while (rs.next()) {
                 Materias m = new Materias();
-                m.setId(rs.getInt("id_materia"));
-                m.setNome(rs.getString("materia"));
+                m.setId_materia(rs.getInt("id_materia"));
+                m.setMateria(rs.getString("materia"));
                 m.setId_aluno(Sessao.getIdAluno());
                 materias.add(m);
             }
@@ -77,6 +77,18 @@ public class MateriasDAO {
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, idMateria);
             ps.setInt(2, Sessao.getIdAluno());
+            return ps.executeUpdate() > 0;
+        }
+    }
+    
+    public boolean atualizarMateria(Materias materia) throws SQLException {
+        String sql = "UPDATE materias SET materia = ? WHERE id_materia = ? AND id_aluno = ?";
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, materia.getMateria());
+            ps.setInt(2, materia.getId_materia());
+            ps.setInt(3, materia.getId_aluno());
+
             return ps.executeUpdate() > 0;
         }
     }

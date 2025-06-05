@@ -8,12 +8,13 @@ import java.util.ArrayList;
 import persistencia.ConnectionFactory;
 
 public class UsuarioService {
+    
     public static ArrayList<Usuario> get() throws Exception {
-    ArrayList<Usuario> usuarios = new ArrayList<>();
+        ArrayList<Usuario> usuarios = new ArrayList<>();
 
-    Connection c = null;
-    PreparedStatement stmt = null;
-    ResultSet rs = null;
+        Connection c = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
     
     try {
         c = ConnectionFactory.getConnection();
@@ -28,7 +29,7 @@ public class UsuarioService {
 
             if (emailAluno != null) {
                 Usuario u = new Usuario(emailAluno, senhaAluno);
-                u.setId_aluno(id);  // Definindo o ID no objeto
+                u.setId_aluno(id);
                 usuarios.add(u);
             }
         }
@@ -42,7 +43,7 @@ public class UsuarioService {
     return usuarios;
 }
 
-    public static void insert(Usuario u) throws Exception {
+    public static void adicionar(Usuario u) throws Exception {
         Connection c = null;
         PreparedStatement stmt = null;
         
@@ -67,7 +68,7 @@ public class UsuarioService {
                 c.close();
         }
     }
-    public static void update(Usuario u) throws Exception {
+    public static void atualizar(Usuario u) throws Exception {
         Connection c = null;
         PreparedStatement stmt = null;
 
@@ -93,7 +94,7 @@ public class UsuarioService {
                 c.close();
         }
     }
-    public static void delete(Usuario u) throws Exception {
+    public static void remover(Usuario u) throws Exception {
         Connection c = null;
         PreparedStatement stmt = null;
 
