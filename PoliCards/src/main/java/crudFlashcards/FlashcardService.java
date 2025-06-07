@@ -22,12 +22,12 @@ public class FlashcardService {
                     + "m.id_materia, m.materia "
                     + "FROM flashcards f "
                     + "JOIN materias m ON f.id_materia = m.id_materia "
-                    + "LEFT JOIN respostas r ON f.idFlashcard = r.id_flashcard AND r.id_aluno = ? "
+                    + "LEFT JOIN respostas r ON f.id_flashcard = r.id_flashcard AND r.id_aluno = ? "
                     + "WHERE f.id_aluno = ?";
 
             stmt = c.prepareStatement(query);
-            stmt.setInt(1, idAluno); // Para respostas
-            stmt.setInt(2, idAluno); // Para flashcards
+            stmt.setInt(1, idAluno); 
+            stmt.setInt(2, idAluno); 
 
             rs = stmt.executeQuery();
 

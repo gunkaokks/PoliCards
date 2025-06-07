@@ -31,14 +31,19 @@ public class FlashcardTableModel extends AbstractTableModel {
         switch (coluna) {
             case 0:
                 return f.getId_flashcard();
+                
             case 1:
                 return f.getPergunta();
+                
             case 2:
                 return f.getResposta();
+                
             case 3:
                 return f.getDificuldade();
+                
             case 4:
-                return f.getNomeMateria(); // Assumindo que sua classe tem esse getter
+                return f.getNomeMateria(); 
+                
             case 5:
                 Boolean acertou = f.getAcertou();
                 if (acertou == null) {
@@ -48,6 +53,7 @@ public class FlashcardTableModel extends AbstractTableModel {
                 } else {
                     return "Errou";
                 }
+                
             default:
                 return null;
         }
@@ -75,7 +81,7 @@ public class FlashcardTableModel extends AbstractTableModel {
                     f.setAcertou((Boolean) valor);
                 }
                 break;
-            // ID normalmente não se altera via tabela
+           
         }
         fireTableRowsUpdated(linha, linha);
     }
@@ -105,5 +111,16 @@ public class FlashcardTableModel extends AbstractTableModel {
 
         fireTableRowsUpdated(index, index);
     }
-
+    @Override
+    public boolean isCellEditable(int row, int column) {
+        return column >= 1 && column <= 4;
+    }
+    
+    public void limparDados() {
+        int rowCount = dados.size();
+        if (rowCount > 0) {
+            dados.clear();
+            fireTableRowsDeleted(0, rowCount - 1);
+        }
+    }
 }

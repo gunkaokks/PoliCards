@@ -1,18 +1,45 @@
 package crudFlashcards;
 
-public class TelaEditarFlashcards extends javax.swing.JFrame {
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
-    public TelaEditarFlashcards() {
+
+public class TelaEditarFlashcards extends javax.swing.JFrame {
+    private int indexSelecionado = -1;
+    private FlashcardTableModel tabelaFlashcard = new FlashcardTableModel();
+    private int idAlunoLogado;
+
+    public TelaEditarFlashcards(int idAluno) {
+        this.idAlunoLogado = idAluno;
         initComponents();
+        getFlashcards();
+        flashcardTable.setModel(tabelaFlashcard); 
+        setLocationRelativeTo(null);
+        flashcardScrollPane.setViewportView(flashcardTable);
     }
 
-    private int indexSelecionado = -1;
-    private FlashcardTableModel flashcardTable = new FlashcardTableModel();
+    private void getFlashcards() {
+        try {
+            tabelaFlashcard.limparDados();
+            ArrayList<FlashcardResposta> flashcards = FlashcardService.get(idAlunoLogado);
+
+            for (FlashcardResposta flashcard : flashcards) {
+                tabelaFlashcard.addRow(flashcard);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(),
+                    "Erro ao carregar flashcards", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        flashcardScrollPane = new javax.swing.JScrollPane();
+        flashcardTable = new javax.swing.JTable();
+        voltarButton1 = new javax.swing.JButton();
         voltarButton = new javax.swing.JButton();
         IdComboBox = new javax.swing.JComboBox<>();
         atualizarButton = new javax.swing.JButton();
@@ -26,8 +53,28 @@ public class TelaEditarFlashcards extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        voltarButton.setText("jButton1");
-        getContentPane().add(voltarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 130, -1));
+        flashcardTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        flashcardScrollPane.setViewportView(flashcardTable);
+
+        getContentPane().add(flashcardScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 590, 210));
+
+        voltarButton1.setBorder(null);
+        voltarButton1.setContentAreaFilled(false);
+        getContentPane().add(voltarButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 110, 30));
+
+        voltarButton.setBorder(null);
+        voltarButton.setContentAreaFilled(false);
+        getContentPane().add(voltarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 110, 30));
 
         IdComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(IdComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 90, 30));
@@ -66,7 +113,7 @@ public class TelaEditarFlashcards extends javax.swing.JFrame {
         getContentPane().add(perguntaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 470, 30));
 
         telaEditarFlashcardsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_EDITAR_FLASHCARD.png"))); // NOI18N
-        getContentPane().add(telaEditarFlashcardsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, -1));
+        getContentPane().add(telaEditarFlashcardsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -80,55 +127,10 @@ public class TelaEditarFlashcards extends javax.swing.JFrame {
     }//GEN-LAST:event_respostaTextField1ActionPerformed
 
     private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirButtonActionPerformed
-        //if (this.indexSelecionado == -1) {
-         //   return;
-        //}
-        //try {
-            //excluirButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
-            //FlashcardResposta f = this.flashcardTable.getFlashcard(this.indexSelecionado);
-            //FlashcardService.remover(f);
-            //this.flashcardTable.removeRow(this.indexSelecionado);
-
-            //this.limparCampos();
-           // JOptionPane.showMessageDialog(this, "O Flashcard foi removido com sucesso.", "Flashcard Removido", JOptionPane.INFORMATION_MESSAGE);
-            
-        //} catch (Exception e) {
-           // JOptionPane.showMessageDialog(this, e.getMessage(), "Erro ao deletar Flashcard", JOptionPane.ERROR_MESSAGE);
-            
-        //} finally {
-           // excluirButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-        //}
 
     }//GEN-LAST:event_excluirButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaEditarFlashcards.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaEditarFlashcards.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaEditarFlashcards.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaEditarFlashcards.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaEditarFlashcards().setVisible(true);
@@ -140,10 +142,13 @@ public class TelaEditarFlashcards extends javax.swing.JFrame {
     private javax.swing.JButton atualizarButton;
     private javax.swing.JComboBox<String> dificuldadeComboBox;
     private javax.swing.JButton excluirButton;
+    private javax.swing.JScrollPane flashcardScrollPane;
+    private javax.swing.JTable flashcardTable;
     private javax.swing.JComboBox<String> materiaComboBox;
     private javax.swing.JTextField perguntaTextField;
     private javax.swing.JTextField respostaTextField1;
     private javax.swing.JLabel telaEditarFlashcardsLabel;
     private javax.swing.JButton voltarButton;
+    private javax.swing.JButton voltarButton1;
     // End of variables declaration//GEN-END:variables
 }
