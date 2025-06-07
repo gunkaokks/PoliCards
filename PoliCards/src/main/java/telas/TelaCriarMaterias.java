@@ -253,6 +253,11 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
         voltarTelaCriarMaterias.setToolTipText("");
         voltarTelaCriarMaterias.setBorder(null);
         voltarTelaCriarMaterias.setContentAreaFilled(false);
+        voltarTelaCriarMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarTelaCriarMateriasActionPerformed(evt);
+            }
+        });
         getContentPane().add(voltarTelaCriarMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 40));
 
         opcoesTelaCriarMaterias.setToolTipText("");
@@ -517,6 +522,11 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
         materiasScrollPane.setVisible(true);
         materiasTable.setVisible(true);
     }//GEN-LAST:event_fecharTelaOpcoesActionPerformed
+
+    private void voltarTelaCriarMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaCriarMateriasActionPerformed
+        new TelaManterFlashcards().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_voltarTelaCriarMateriasActionPerformed
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

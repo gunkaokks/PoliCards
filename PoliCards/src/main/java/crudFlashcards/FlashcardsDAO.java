@@ -33,8 +33,10 @@ public class FlashcardsDAO {
     
     public List<Flashcards> listarFlashcardsFiltrados(Integer idMateria, String dificuldade) throws SQLException, Exception {
         List<Flashcards> lista = new ArrayList<>();
-        StringBuilder sql = new StringBuilder("SELECT * FROM flashcards WHERE 1=1");
+        StringBuilder sql = new StringBuilder("SELECT * FROM flashcards WHERE id_aluno = ?");
         List<Object> parametros = new ArrayList<>();
+
+        parametros.add(Sessao.getIdAluno());
 
         if (idMateria != null && idMateria > 0) {
             sql.append(" AND id_materia = ?");
@@ -47,9 +49,8 @@ public class FlashcardsDAO {
         }
 
         sql.append(" ORDER BY RAND()");
-        
-        try (Connection conn = ConnectionFactory.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql.toString())) {
+
+        try (Connection conn = ConnectionFactory.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql.toString())) {
 
             for (int i = 0; i < parametros.size(); i++) {
                 stmt.setObject(i + 1, parametros.get(i));
@@ -67,11 +68,7 @@ public class FlashcardsDAO {
                     lista.add(flashcard);
                 }
             }
-        } catch (SQLException e) {
-            System.err.println("Erro ao listar flashcards");
-            throw e;
         }
-
         return lista;
     }
 }

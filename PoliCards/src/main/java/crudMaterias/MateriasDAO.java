@@ -71,6 +71,18 @@ public class MateriasDAO {
         return -1;
     }
     
+    public String getNomeMateria(int idMateria) throws SQLException {
+        String sql = "SELECT materia FROM materias WHERE id_materia = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, idMateria);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getString("materia");
+            }
+        }
+        return "Matéria desconhecida";
+    }
+    
     public boolean deletarMateria(int idMateria) throws SQLException {
         String sql = "DELETE FROM materias WHERE id_materia = ? AND id_aluno = ?";
 

@@ -1,5 +1,6 @@
 package telas;
 
+import java.awt.Cursor;
 import sons.EfeitosSonoros;
 import sons.Musicas;
 
@@ -348,7 +349,8 @@ public class TelaModos extends javax.swing.JFrame {
     }//GEN-LAST:event_fecharTelaOpcoesActionPerformed
 
     private void classicoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classicoButtonActionPerformed
-        new TelaJogoClassico().setVisible(true);
+        classicoButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+        new TelaClassico().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_classicoButtonActionPerformed
     public static void main(String args[]) {
