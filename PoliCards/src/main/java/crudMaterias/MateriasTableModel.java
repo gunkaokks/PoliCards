@@ -6,11 +6,11 @@ import javax.swing.table.AbstractTableModel;
 
 public class MateriasTableModel extends AbstractTableModel {
 
-    private List<Materias> dados = new ArrayList<>();
+    private List<Materias> listaMaterias = new ArrayList<>();
     private String[] colunas = {"ID", "Matéria"};
 
     public List<Materias> getDados() {
-        return dados;
+        return listaMaterias;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class MateriasTableModel extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        return dados.size();
+        return listaMaterias.size();
     }
 
     @Override
@@ -32,9 +32,9 @@ public class MateriasTableModel extends AbstractTableModel {
     public Object getValueAt(int linha, int coluna) {
         switch (coluna) {
             case 0:
-                return dados.get(linha).getId_materia();
+                return listaMaterias.get(linha).getId_materia();
             case 1:
-                return dados.get(linha).getMateria();
+                return listaMaterias.get(linha).getMateria();
         }
         return null;
     }
@@ -43,23 +43,23 @@ public class MateriasTableModel extends AbstractTableModel {
     public void setValueAt(Object valor, int linha, int coluna) {
         switch (coluna) {
             case 0:
-                dados.get(linha).setId_materia(Integer.parseInt((String) valor));
+                listaMaterias.get(linha).setId_materia(Integer.parseInt((String) valor));
                 break;
             case 1:
-                dados.get(linha).setMateria((String) valor);
+                listaMaterias.get(linha).setMateria((String) valor);
                 break;
         }
         this.fireTableRowsUpdated(linha, linha);
     }
 
     public void addRow(Materias m) {
-        this.dados.add(m);
+        this.listaMaterias.add(m);
         this.fireTableDataChanged();
     }
     
     public Materias getMateria(int row) {
-        if (row >= 0 && row < dados.size()) {
-            return dados.get(row);
+        if (row >= 0 && row < listaMaterias.size()) {
+            return listaMaterias.get(row);
         }
         return null;
     }

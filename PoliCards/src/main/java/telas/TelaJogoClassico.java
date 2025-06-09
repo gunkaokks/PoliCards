@@ -18,8 +18,7 @@ public class TelaJogoClassico extends javax.swing.JFrame {
     public TelaJogoClassico() {
         super("Policards");
         initComponents();
-        this.setLocationRelativeTo(null);
-        verRespostaButton.addActionListener(e -> mostrarResposta());      
+        this.setLocationRelativeTo(null);    
         telaOpcoesPanel.setVisible(false);
         telaSobreNosPanel.setVisible(false);
         telaCreditosPanel.setVisible(false);
@@ -34,6 +33,9 @@ public class TelaJogoClassico extends javax.swing.JFrame {
         onMusicaLabel.setVisible(false);
         offEfeitosSonorosLabel.setVisible(false);
         onEfeitosSonorosLabel.setVisible(false);
+        telaRespostasPanel.setVisible(false);
+        verPerguntaButton.setEnabled(false);
+        proximoFlashcardButton.setEnabled(false);
     }
     
     private List<FlashcardResposta> flashcards;
@@ -105,10 +107,9 @@ public class TelaJogoClassico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        verRespostaButton = new javax.swing.JButton();
         voltarTelaJogoClassico = new javax.swing.JButton();
         opcoesTelaJogoClassico = new javax.swing.JButton();
-        verRespostaButton = new javax.swing.JButton();
         dificuldadeLabel = new javax.swing.JLabel();
         perguntaLabel = new javax.swing.JLabel();
         materiaLabel = new javax.swing.JLabel();
@@ -132,17 +133,22 @@ public class TelaJogoClassico extends javax.swing.JFrame {
         onEfeitoSonoroTelaOpcoesButton = new javax.swing.JButton();
         fecharTelaOpcoes = new javax.swing.JButton();
         telaOpcoesLabelPanel = new javax.swing.JLabel();
+        telaRespostasPanel = new javax.swing.JPanel();
+        proximoFlashcardButton = new javax.swing.JButton();
+        verPerguntaButton = new javax.swing.JButton();
+        telaRespostasLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("próximo flashcard teste");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        verRespostaButton.setBorder(null);
+        verRespostaButton.setContentAreaFilled(false);
+        verRespostaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                verRespostaButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 180, 50));
+        getContentPane().add(verRespostaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, 180, 40));
 
         voltarTelaJogoClassico.setBorder(null);
         voltarTelaJogoClassico.setContentAreaFilled(false);
@@ -151,7 +157,7 @@ public class TelaJogoClassico extends javax.swing.JFrame {
                 voltarTelaJogoClassicoActionPerformed(evt);
             }
         });
-        getContentPane().add(voltarTelaJogoClassico, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
+        getContentPane().add(voltarTelaJogoClassico, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 50));
 
         opcoesTelaJogoClassico.setBorder(null);
         opcoesTelaJogoClassico.setContentAreaFilled(false);
@@ -160,11 +166,7 @@ public class TelaJogoClassico extends javax.swing.JFrame {
                 opcoesTelaJogoClassicoActionPerformed(evt);
             }
         });
-        getContentPane().add(opcoesTelaJogoClassico, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 120, 40));
-
-        verRespostaButton.setBorder(null);
-        verRespostaButton.setContentAreaFilled(false);
-        getContentPane().add(verRespostaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, 180, 40));
+        getContentPane().add(opcoesTelaJogoClassico, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, 120, 50));
 
         dificuldadeLabel.setFont(new java.awt.Font("Jersey 15", 0, 24)); // NOI18N
         getContentPane().add(dificuldadeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, 190, 30));
@@ -314,6 +316,28 @@ public class TelaJogoClassico extends javax.swing.JFrame {
 
         getContentPane().add(telaOpcoesPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
 
+        telaRespostasPanel.setOpaque(false);
+        telaRespostasPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        proximoFlashcardButton.setBorder(null);
+        proximoFlashcardButton.setContentAreaFilled(false);
+        telaRespostasPanel.add(proximoFlashcardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 370, 240, 50));
+
+        verPerguntaButton.setBorder(null);
+        verPerguntaButton.setContentAreaFilled(false);
+        verPerguntaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verPerguntaButtonActionPerformed(evt);
+            }
+        });
+        telaRespostasPanel.add(verPerguntaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 160, 30));
+
+        telaRespostasLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_JOGO_CLASSICO_RESPOSTA.png"))); // NOI18N
+        telaRespostasLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        telaRespostasPanel.add(telaRespostasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getContentPane().add(telaRespostasPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 72, 780, 440));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -425,9 +449,19 @@ public class TelaJogoClassico extends javax.swing.JFrame {
         verRespostaButton.setEnabled(true);
     }//GEN-LAST:event_fecharTelaOpcoesActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void verRespostaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verRespostaButtonActionPerformed
+        telaRespostasPanel.setVisible(true);
+        verPerguntaButton.setEnabled(true);
+        proximoFlashcardButton.setEnabled(true);
+        verRespostaButton.setEnabled(false);
+    }//GEN-LAST:event_verRespostaButtonActionPerformed
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void verPerguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPerguntaButtonActionPerformed
+        telaRespostasPanel.setVisible(false);
+        verPerguntaButton.setEnabled(false);
+        proximoFlashcardButton.setEnabled(false);
+        verRespostaButton.setEnabled(true);
+    }//GEN-LAST:event_verPerguntaButtonActionPerformed
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -461,7 +495,6 @@ public class TelaJogoClassico extends javax.swing.JFrame {
     private javax.swing.JButton creditosTelaOpcoes;
     private javax.swing.JLabel dificuldadeLabel;
     private javax.swing.JButton fecharTelaOpcoes;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel materiaLabel;
     private javax.swing.JButton offEfeitoSonoroTelaOpcoesButton;
     private javax.swing.JLabel offEfeitosSonorosLabel;
@@ -473,14 +506,18 @@ public class TelaJogoClassico extends javax.swing.JFrame {
     private javax.swing.JButton onMusicaTelaOpcoesButton;
     private javax.swing.JButton opcoesTelaJogoClassico;
     private javax.swing.JLabel perguntaLabel;
+    private javax.swing.JButton proximoFlashcardButton;
     private javax.swing.JButton sobreNosTelaCreditos;
     private javax.swing.JLabel telaCreditosLabelPanel;
     private javax.swing.JPanel telaCreditosPanel;
     private javax.swing.JLabel telaJogoClassicoLabel;
     private javax.swing.JLabel telaOpcoesLabelPanel;
     private javax.swing.JPanel telaOpcoesPanel;
+    private javax.swing.JLabel telaRespostasLabel;
+    private javax.swing.JPanel telaRespostasPanel;
     private javax.swing.JLabel telaSobreNosLabel;
     private javax.swing.JPanel telaSobreNosPanel;
+    private javax.swing.JButton verPerguntaButton;
     private javax.swing.JButton verRespostaButton;
     private javax.swing.JButton voltarTelaCreditos;
     private javax.swing.JButton voltarTelaJogoClassico;

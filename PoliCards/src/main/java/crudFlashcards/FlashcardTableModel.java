@@ -6,7 +6,7 @@ import javax.swing.table.AbstractTableModel;
 
 
 public class FlashcardTableModel extends AbstractTableModel {
-    private List<FlashcardResposta> dados = new ArrayList<>();
+    private List<FlashcardResposta> listaFlashcards = new ArrayList<>();
     private String[] colunas = {"ID", "Pergunta", "Resposta", "Dificuldade", "Matéria", "Status"};
 
     @Override
@@ -16,7 +16,7 @@ public class FlashcardTableModel extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        return dados.size();
+        return listaFlashcards.size();
     }
 
     @Override
@@ -26,7 +26,7 @@ public class FlashcardTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int linha, int coluna) {
-        FlashcardResposta f = dados.get(linha);
+        FlashcardResposta f = listaFlashcards.get(linha);
 
         switch (coluna) {
             case 0:
@@ -61,7 +61,7 @@ public class FlashcardTableModel extends AbstractTableModel {
 
     @Override
     public void setValueAt(Object valor, int linha, int coluna) {
-        FlashcardResposta f = dados.get(linha);
+        FlashcardResposta f = listaFlashcards.get(linha);
 
         switch (coluna) {
             case 1:
@@ -87,21 +87,21 @@ public class FlashcardTableModel extends AbstractTableModel {
     }
 
     public void addRow(FlashcardResposta f) {
-        this.dados.add(f);
+        this.listaFlashcards.add(f);
         this.fireTableDataChanged();
     }
 
     public void removeRow(int linha) {
-        this.dados.remove(linha);
+        this.listaFlashcards.remove(linha);
         this.fireTableRowsDeleted(linha, linha);
     }
 
     public FlashcardResposta getFlashcard(int row) {
-        return dados.get(row);
+        return listaFlashcards.get(row);
     }
 
     public void atualizar(FlashcardResposta f, int index) throws Exception {
-        FlashcardResposta f2 = dados.get(index);
+        FlashcardResposta f2 = listaFlashcards.get(index);
 
         f2.setPergunta(f.getPergunta());
         f2.setResposta(f.getResposta());
@@ -117,9 +117,9 @@ public class FlashcardTableModel extends AbstractTableModel {
     }
     
     public void limparDados() {
-        int rowCount = dados.size();
+        int rowCount = listaFlashcards.size();
         if (rowCount > 0) {
-            dados.clear();
+            listaFlashcards.clear();
             fireTableRowsDeleted(0, rowCount - 1);
         }
     }
