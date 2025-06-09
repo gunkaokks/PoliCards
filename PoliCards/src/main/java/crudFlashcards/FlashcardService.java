@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import persistencia.ConnectionFactory;
 
+       
+
 
 public class FlashcardService {
     public static ArrayList<FlashcardResposta> get(int idAluno) throws Exception {
@@ -32,7 +34,7 @@ public class FlashcardService {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                int id = rs.getInt("idFlashcard");
+                int id = rs.getInt("id_flashcard");
                 String pergunta = rs.getString("pergunta");
                 String resposta = rs.getString("resposta");
                 String dificuldade = rs.getString("dificuldade");
@@ -66,21 +68,21 @@ public class FlashcardService {
     }
 
     
-    public static void atualizar(FlashcardResposta f) throws Exception {
+    public static void atualizar(Flashcards f) throws Exception {
         Connection c = null;
         PreparedStatement stmt = null;
 
         try {
             c = ConnectionFactory.getConnection();
 
-            String query = "UPDATE flashcards SET pergunta = ?, resposta = ?, dificuldade = ?, id_materia = ? WHERE idFlashcard = ?;";
+            String query = "UPDATE flashcards SET pergunta = ?, resposta = ?, dificuldade = ?, id_materia = ? WHERE id_flashcard = ?;";
             stmt = c.prepareStatement(query);
 
             stmt.setString(1, f.getPergunta());
             stmt.setString(2, f.getResposta());
             stmt.setString(3, f.getDificuldade());
-            stmt.setInt(4, f.getId_materia()); 
-            stmt.setInt(5, f.getId_flashcard()); 
+            stmt.setInt(4, f.getId_materia());
+            stmt.setInt(5, f.getId_flashcard());
 
             stmt.executeUpdate();
 
@@ -101,7 +103,7 @@ public class FlashcardService {
         try {
             c = ConnectionFactory.getConnection();
 
-            String query = "DELETE FROM flashcards WHERE idFlashcard = ?;";
+            String query = "DELETE FROM flashcards WHERE id_flashcard = ?;";
             stmt = c.prepareStatement(query);
 
             stmt.setInt(1, f.getId_flashcard()); 

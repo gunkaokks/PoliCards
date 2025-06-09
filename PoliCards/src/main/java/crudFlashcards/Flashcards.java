@@ -21,4 +21,12 @@ public class Flashcards {
         this.resposta = resposta;
         this.dificuldade = dificuldade;
     }
+    
+    public Flashcards (int id, String dificuldade, String materia, String pergunta, String resposta) {
+        this.id_aluno = id_aluno;
+        this.dificuldade = dificuldade;
+        this.id_materia = id_materia;
+        this.pergunta = pergunta;
+        this.resposta = resposta;
+    }
 }
