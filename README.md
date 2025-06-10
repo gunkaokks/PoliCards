@@ -12,7 +12,11 @@ Durante o jogo, os alunos podem criar e responder uma série de perguntas no for
 - [@Murilo Domingues Candido de Oliveira](https://github.com/MuriloDCO)
 
 # Documentação do projeto 
-[PoliCards](https://online.fliphtml5.com/epkou/rrni/)
+[PoliCards - Documentação](https://online.fliphtml5.com/epkou/rrni/)
+
+# Desing das telas
+Consulte os desings das telas no figma
+[Policards - telas](https://www.figma.com/design/x6KrP47IXI6n4f7FfOXaEL/Untitled?node-id=0-1&t=H5nrfSU2ptujf3bX-1)
 
 # Ferramentas utilizadas
 **Telas de cadastro e login:** Java, Figma
