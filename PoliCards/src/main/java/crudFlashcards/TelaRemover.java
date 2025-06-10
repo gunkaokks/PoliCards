@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import persistencia.ConnectionFactory;
 import persistencia.Sessao;
+import sons.EfeitosSonoros;
+import telas.TelaManterFlashcards;
 
 public class TelaRemover extends javax.swing.JFrame {
     private int idAlunoLogado;
@@ -13,6 +15,7 @@ public class TelaRemover extends javax.swing.JFrame {
     public TelaRemover() {
         this.idAlunoLogado = Sessao.getIdAluno();
         initComponents();
+        idComboBox.removeAllItems();
         getId();
         getMaterias();
         dificuldadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Fácil", "Médio", "Difícil"}));
@@ -68,7 +71,7 @@ public class TelaRemover extends javax.swing.JFrame {
         try {
             connection = ConnectionFactory.getConnection();
 
-            String query = "SELECT id_flashcard, id_materia, dificuldade, pergunta, resposta FROM flashcards WHERE id_flashcard = ? AND id_aluno = ?";
+            String query = "SELECT f.pergunta, f.resposta, f.dificuldade, m.materia FROM flashcards f JOIN materias m ON f.id_materia = m.id_materia WHERE f.id_flashcard = ? AND f.id_aluno = ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, idQuestoes);
             preparedStatement.setInt(2, idAlunoLogado);
@@ -78,7 +81,8 @@ public class TelaRemover extends javax.swing.JFrame {
             if (resultSet.next()) {
                 perguntaTextField.setText(resultSet.getString("pergunta"));
                 respostaTextField.setText(resultSet.getString("resposta"));
-                materiaComboBox.setSelectedItem(resultSet.getString("id_materia"));
+                String nomeMateria = resultSet.getString("materia");
+                materiaComboBox.setSelectedItem(nomeMateria);
                 dificuldadeComboBox.setSelectedItem(resultSet.getString("dificuldade"));
             } else {
                 JOptionPane.showMessageDialog(this, "Flashcard não encontrado.");
@@ -140,7 +144,6 @@ public class TelaRemover extends javax.swing.JFrame {
         }
     }
 
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -165,6 +168,11 @@ public class TelaRemover extends javax.swing.JFrame {
 
         voltarButton.setBorder(null);
         voltarButton.setContentAreaFilled(false);
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(voltarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 20));
 
         removerButton.setBorder(null);
@@ -182,10 +190,16 @@ public class TelaRemover extends javax.swing.JFrame {
                 dificuldadeComboBoxActionPerformed(evt);
             }
         });
-        getContentPane().add(dificuldadeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 360, 120, 30));
+        getContentPane().add(dificuldadeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 360, 120, 30));
 
         materiaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(materiaComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 210, 30));
+
+        respostaTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                respostaTextFieldActionPerformed(evt);
+            }
+        });
         getContentPane().add(respostaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 295, 470, 30));
 
         perguntaTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -214,12 +228,18 @@ public class TelaRemover extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void perguntaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perguntaTextFieldActionPerformed
-        // TODO add your handling code here:
+        EfeitosSonoros.Play("button.wav");
     }//GEN-LAST:event_perguntaTextFieldActionPerformed
 
     private void removerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
         boolean validacao = true;
-        int id = idComboBox.getSelectedIndex() + 1;
+        String sel = (String) idComboBox.getSelectedItem();
+        if (sel == null) {
+            JOptionPane.showMessageDialog(this, "Nenhum ID selecionado.", "Validação", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int id = Integer.parseInt(sel);
         try {
             Flashcards f = new Flashcards(id);
             validacao = false;
@@ -243,11 +263,23 @@ public class TelaRemover extends javax.swing.JFrame {
     }//GEN-LAST:event_dificuldadeComboBoxActionPerformed
 
     private void procurarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procurarButtonActionPerformed
-        Integer selectedId = (Integer) idComboBox.getSelectedItem();
-        if (selectedId != null) {
+        EfeitosSonoros.Play("click.wav");
+        String sel = (String) idComboBox.getSelectedItem();
+        if (sel != null) {
+            int selectedId = Integer.parseInt(sel);
             getDados(selectedId);
         }
     }//GEN-LAST:event_procurarButtonActionPerformed
+
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+        EfeitosSonoros.Play("back.wav");
+        new TelaManterFlashcards().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_voltarButtonActionPerformed
+
+    private void respostaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_respostaTextFieldActionPerformed
+        EfeitosSonoros.Play("button.wav");
+    }//GEN-LAST:event_respostaTextFieldActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

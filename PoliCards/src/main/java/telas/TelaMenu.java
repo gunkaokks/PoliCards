@@ -7,7 +7,6 @@ public class TelaMenu extends javax.swing.JFrame {
     public TelaMenu() {
         super("Policards");
         initComponents();
-        Musicas.Play("inicio.wav");
         this.setLocationRelativeTo(null);
         telaOpcoesPanelTelaMenu.setVisible(false);
         telaSobreNosPanelTelaMenu.setVisible(false);

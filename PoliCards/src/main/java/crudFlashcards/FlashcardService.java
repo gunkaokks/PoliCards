@@ -20,12 +20,7 @@ public class FlashcardService {
         try {
             c = ConnectionFactory.getConnection();
 
-            String query = "SELECT f.idFlashcard, f.pergunta, f.resposta, f.dificuldade, r.acertou, "
-                    + "m.id_materia, m.materia "
-                    + "FROM flashcards f "
-                    + "JOIN materias m ON f.id_materia = m.id_materia "
-                    + "LEFT JOIN respostas r ON f.id_flashcard = r.id_flashcard AND r.id_aluno = ? "
-                    + "WHERE f.id_aluno = ?";
+            String query = "SELECT f.id_flashcard, f.pergunta, f.resposta, f.dificuldade, r.acertou, .id_materia, m.materia FROM flashcards f JOIN materias m ON f.id_materia = m.id_materia LEFT JOIN respostas r ON f.id_flashcard = r.id_flashcard AND r.id_aluno = ? WHERE f.id_aluno = ?";
 
             stmt = c.prepareStatement(query);
             stmt.setInt(1, idAluno); 

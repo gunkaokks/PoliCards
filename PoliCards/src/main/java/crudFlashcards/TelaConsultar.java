@@ -2,6 +2,8 @@ package crudFlashcards;
 
 import javax.swing.JOptionPane;
 import persistencia.Sessao;
+import sons.EfeitosSonoros;
+import telas.TelaManterFlashcards;
 
 public class TelaConsultar extends javax.swing.JFrame {
 
@@ -62,6 +64,11 @@ public class TelaConsultar extends javax.swing.JFrame {
 
         voltarButton.setBorder(null);
         voltarButton.setContentAreaFilled(false);
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(voltarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 20));
 
         flashcardsTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -107,10 +114,17 @@ public class TelaConsultar extends javax.swing.JFrame {
     }//GEN-LAST:event_idComboBoxActionPerformed
 
     private void procurarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procurarButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
         String selecionado = String.valueOf(idComboBox.getSelectedItem());
         int idSelecionado = Integer.parseInt(selecionado);
         getFlashcards(idSelecionado);
     }//GEN-LAST:event_procurarButtonActionPerformed
+
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+        EfeitosSonoros.Play("back.wav");
+        new TelaManterFlashcards().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_voltarButtonActionPerformed
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
