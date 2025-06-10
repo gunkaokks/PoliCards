@@ -13,8 +13,10 @@ public class TelaRemover extends javax.swing.JFrame {
     private int idAlunoLogado;
 
     public TelaRemover() {
-        this.idAlunoLogado = Sessao.getIdAluno();
+        super ("Policards");
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.idAlunoLogado = Sessao.getIdAluno();
         idComboBox.removeAllItems();
         getId();
         getMaterias();
@@ -160,6 +162,7 @@ public class TelaRemover extends javax.swing.JFrame {
         removerLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         opcoesButton.setBorder(null);

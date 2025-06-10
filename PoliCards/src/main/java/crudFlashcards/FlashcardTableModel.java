@@ -3,6 +3,7 @@ package crudFlashcards;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
+import persistencia.Sessao;
 
 
 public class FlashcardTableModel extends AbstractTableModel {
@@ -45,19 +46,32 @@ public class FlashcardTableModel extends AbstractTableModel {
                 return f.getNomeMateria(); 
                 
             case 5:
-                Boolean acertou = f.getAcertou();
-                if (acertou == null) {
+                int idAluno = Sessao.getIdAluno();
+                int idFlashcard = f.getId_flashcard();
+
+                try {
+                    ArrayList<FlashcardResposta> flashcards = FlashcardService.get(idAluno);
+
+                    for (FlashcardResposta fr : flashcards) {
+                        if (fr.getId_flashcard() == idFlashcard) {
+                            Boolean acertou = fr.getAcertou();
+                            if (acertou == null) {
+                                return "Não jogou";
+                            } else if (acertou) {
+                                return "Acertou";
+                            } else {
+                                return "Errou";
+                            }
+                        }
+                    }
                     return "Não jogou";
-                } else if (acertou) {
-                    return "Acertou";
-                } else {
-                    return "Errou";
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                
-            default:
-                return null;
         }
+        return null;
     }
+    
 
     @Override
     public void setValueAt(Object valor, int linha, int coluna) {
@@ -111,6 +125,7 @@ public class FlashcardTableModel extends AbstractTableModel {
 
         fireTableRowsUpdated(index, index);
     }
+    
     @Override
     public boolean isCellEditable(int row, int column) {
         return column >= 1 && column <= 4;

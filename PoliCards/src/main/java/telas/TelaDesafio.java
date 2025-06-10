@@ -1,14 +1,57 @@
 package telas;
 
+import crudFlashcards.Flashcards;
+import crudFlashcards.FlashcardsDAO;
+import crudMaterias.Materias;
+import crudMaterias.MateriasComboBox;
+import java.awt.Cursor;
+import java.sql.SQLException;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import sons.EfeitosSonoros;
 import sons.Musicas;
 
-public class TelaManterMaterias extends javax.swing.JFrame {
+public class TelaDesafio extends javax.swing.JFrame {
+    private List<Flashcards> flashcardsAtuais;
+    private int tempoDigitado;
 
-    public TelaManterMaterias() {
-        super ("Policards");
+    private boolean iniciarJogo() throws Exception {
+        Materias materiaSelecionada = (Materias) materiaComboBox.getSelectedItem();
+        String dificuldadeSelecionada = (String) dificuldadeComboBox.getSelectedItem();
+
+        try {
+            tempoDigitado = Integer.parseInt(tempoTextArea.getText());
+            if (tempoDigitado <= 0) {
+                JOptionPane.showMessageDialog(this, "O tempo deve ser um número positivo!");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Digite um valor válido para o tempo (em segundos).");
+            return false;
+        }
+
+        try {
+            FlashcardsDAO dao = new FlashcardsDAO();
+            Integer idMateria = (materiaSelecionada.getId_materia() == -1) ? null : materiaSelecionada.getId_materia();
+            String dificuldade = dificuldadeSelecionada.equals("Aleatório") ? null : dificuldadeSelecionada;
+
+            flashcardsAtuais = dao.listarFlashcardsFiltrados(idMateria, dificuldade);
+            return !flashcardsAtuais.isEmpty();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao carregar flashcards: " + e.getMessage());
+            return false;
+        }
+    }
+    
+    public TelaDesafio() {
+        super("Policards");
         initComponents();
         this.setLocationRelativeTo(null);
+        MateriasComboBox.carregarMaterias(materiaComboBox);
+        DefaultComboBoxModel<Materias> modelo = (DefaultComboBoxModel<Materias>) materiaComboBox.getModel();
+        modelo.insertElementAt(new Materias(-1, "Aleatório"), 0);
+        materiaComboBox.setSelectedIndex(0);
         telaOpcoesPanel.setVisible(false);
         telaSobreNosPanel.setVisible(false);
         telaCreditosPanel.setVisible(false);
@@ -19,18 +62,25 @@ public class TelaManterMaterias extends javax.swing.JFrame {
         fecharTelaOpcoes.setEnabled(false);
         creditosTelaOpcoes.setEnabled(false);
         sobreNosTelaCreditos.setEnabled(false);
-        voltarTelaSobreNos.setEnabled(false);
-        opcoesTelaManterMaterias.setEnabled(true);
-        voltarTelaManterMaterias.setEnabled(true);
-        criarTelaManterMaterias.setEnabled(true);
-        deletarTelaManterMaterias.setEnabled(true);
-        
+        offMusicaLabel.setVisible(false);
+        onMusicaLabel.setVisible(false);
+        offEfeitosSonorosLabel.setVisible(false);
+        onEfeitosSonorosLabel.setVisible(false);
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tempoTextArea = new javax.swing.JTextField();
+        digiteTempo = new javax.swing.JLabel();
+        opcoesTelaDesafio = new javax.swing.JButton();
+        voltarTelaDesafio = new javax.swing.JButton();
+        iniciarJogoButton = new javax.swing.JButton();
+        selecioneDificuldade = new javax.swing.JLabel();
+        selecioneMateria = new javax.swing.JLabel();
+        materiaComboBox = new javax.swing.JComboBox<>();
+        dificuldadeComboBox = new javax.swing.JComboBox<>();
+        telaDesafioLabel = new javax.swing.JLabel();
         telaSobreNosPanel = new javax.swing.JPanel();
         voltarTelaSobreNos = new javax.swing.JButton();
         telaSobreNosLabel = new javax.swing.JLabel();
@@ -50,15 +100,66 @@ public class TelaManterMaterias extends javax.swing.JFrame {
         onEfeitoSonoroTelaOpcoesButton = new javax.swing.JButton();
         fecharTelaOpcoes = new javax.swing.JButton();
         telaOpcoesLabelPanel = new javax.swing.JLabel();
-        opcoesTelaManterMaterias = new javax.swing.JButton();
-        voltarTelaManterMaterias = new javax.swing.JButton();
-        deletarTelaManterMaterias = new javax.swing.JButton();
-        criarTelaManterMaterias = new javax.swing.JButton();
-        telaManterMateriasLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tempoTextArea.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        getContentPane().add(tempoTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 410, 220, 30));
+
+        digiteTempo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        digiteTempo.setForeground(new java.awt.Color(51, 51, 51));
+        digiteTempo.setText("Digite o tempo (segundos)");
+        getContentPane().add(digiteTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 388, 210, -1));
+
+        opcoesTelaDesafio.setBorder(null);
+        opcoesTelaDesafio.setContentAreaFilled(false);
+        getContentPane().add(opcoesTelaDesafio, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, 130, 40));
+
+        voltarTelaDesafio.setBorder(null);
+        voltarTelaDesafio.setContentAreaFilled(false);
+        voltarTelaDesafio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarTelaDesafioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltarTelaDesafio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 40));
+
+        iniciarJogoButton.setBorder(null);
+        iniciarJogoButton.setContentAreaFilled(false);
+        iniciarJogoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciarJogoButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(iniciarJogoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, 130, 50));
+
+        selecioneDificuldade.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        selecioneDificuldade.setForeground(new java.awt.Color(51, 51, 51));
+        selecioneDificuldade.setText("Selecione a dificuldade");
+        getContentPane().add(selecioneDificuldade, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 210, -1));
+
+        selecioneMateria.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        selecioneMateria.setForeground(new java.awt.Color(51, 51, 51));
+        selecioneMateria.setText("Selecione a matéria");
+        getContentPane().add(selecioneMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 210, -1));
+
+        materiaComboBox.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        materiaComboBox.setSelectedItem(materiaComboBox);
+        materiaComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                materiaComboBoxActionPerformed(evt);
+            }
+        });
+        getContentPane().add(materiaComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 220, 30));
+
+        dificuldadeComboBox.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        dificuldadeComboBox.setMaximumRowCount(4);
+        dificuldadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aleatório", "Fácil", "Médio", "Difícil" }));
+        getContentPane().add(dificuldadeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 220, 30));
+
+        telaDesafioLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_DESAFIO.png"))); // NOI18N
+        getContentPane().add(telaDesafioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         telaSobreNosPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -193,66 +294,45 @@ public class TelaManterMaterias extends javax.swing.JFrame {
 
         getContentPane().add(telaOpcoesPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
 
-        opcoesTelaManterMaterias.setBorder(null);
-        opcoesTelaManterMaterias.setContentAreaFilled(false);
-        opcoesTelaManterMaterias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opcoesTelaManterMateriasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(opcoesTelaManterMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, 120, 30));
-
-        voltarTelaManterMaterias.setBorder(null);
-        voltarTelaManterMaterias.setContentAreaFilled(false);
-        voltarTelaManterMaterias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarTelaManterMateriasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(voltarTelaManterMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 120, 50));
-
-        deletarTelaManterMaterias.setBorder(null);
-        deletarTelaManterMaterias.setContentAreaFilled(false);
-        getContentPane().add(deletarTelaManterMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 380, 90));
-
-        criarTelaManterMaterias.setBorder(null);
-        criarTelaManterMaterias.setContentAreaFilled(false);
-        criarTelaManterMaterias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                criarTelaManterMateriasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(criarTelaManterMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 380, 90));
-
-        telaManterMateriasLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_MANTER_MATERIAS.png"))); // NOI18N
-        getContentPane().add(telaManterMateriasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void opcoesTelaManterMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcoesTelaManterMateriasActionPerformed
-        telaOpcoesPanel.setVisible(true);
-        offMusicaTelaOpcoesButton.setEnabled(true);
-        onMusicaTelaOpcoesButton.setEnabled(true);
-        offEfeitoSonoroTelaOpcoesButton.setEnabled(true);
-        onEfeitoSonoroTelaOpcoesButton.setEnabled(true);
-        fecharTelaOpcoes.setEnabled(true);
-        creditosTelaOpcoes.setEnabled(true);
-        opcoesTelaManterMaterias.setEnabled(false);
-        voltarTelaManterMaterias.setEnabled(false);
-        criarTelaManterMaterias.setEnabled(false);
-        deletarTelaManterMaterias.setEnabled(false);
-    }//GEN-LAST:event_opcoesTelaManterMateriasActionPerformed
+    private void materiaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materiaComboBoxActionPerformed
 
-    private void voltarTelaManterMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaManterMateriasActionPerformed
-        new TelaMenu().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_voltarTelaManterMateriasActionPerformed
+    }//GEN-LAST:event_materiaComboBoxActionPerformed
 
-    private void criarTelaManterMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarTelaManterMateriasActionPerformed
-        new TelaCriarMaterias().setVisible(true);
+    private void iniciarJogoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarJogoButtonActionPerformed
+        try {
+            iniciarJogoButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+            if (iniciarJogo()) {
+                Materias materiaSelecionada = (Materias) materiaComboBox.getSelectedItem();
+                String dificuldadeSelecionada = (String) dificuldadeComboBox.getSelectedItem();
+
+                TelaJogoDesafio telaJogo = new TelaJogoDesafio();
+                telaJogo.setParametrosJogo(
+                        materiaSelecionada.getMateria(),
+                        dificuldadeSelecionada,
+                        materiaSelecionada.getId_materia(),
+                        tempoDigitado
+                );
+
+                telaJogo.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Nenhum Flashcard encontrado com os filtros selecionados!");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao iniciar o jogo: " + ex.getMessage());
+            ex.printStackTrace();
+        } finally {
+            iniciarJogoButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }
+    }//GEN-LAST:event_iniciarJogoButtonActionPerformed
+
+    private void voltarTelaDesafioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaDesafioActionPerformed
+        new TelaModos().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_criarTelaManterMateriasActionPerformed
+    }//GEN-LAST:event_voltarTelaDesafioActionPerformed
 
     private void voltarTelaSobreNosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaSobreNosActionPerformed
         EfeitosSonoros.Play("back.wav");
@@ -319,7 +399,6 @@ public class TelaManterMaterias extends javax.swing.JFrame {
         onEfeitoSonoroTelaOpcoesButton.setEnabled(false);
         fecharTelaOpcoes.setEnabled(false);
         creditosTelaOpcoes.setVisible(false);
-        opcoesTelaManterMaterias.setEnabled(false);
         sobreNosTelaCreditos.setEnabled(true);
     }//GEN-LAST:event_creditosTelaOpcoesActionPerformed
 
@@ -339,10 +418,9 @@ public class TelaManterMaterias extends javax.swing.JFrame {
         onEfeitoSonoroTelaOpcoesButton.setEnabled(false);
         fecharTelaOpcoes.setEnabled(false);
         creditosTelaOpcoes.setEnabled(false);
-        opcoesTelaManterMaterias.setEnabled(true);
-        voltarTelaManterMaterias.setEnabled(true);
-        criarTelaManterMaterias.setEnabled(true);
-        deletarTelaManterMaterias.setEnabled(true);
+        opcoesTelaDesafio.setEnabled(true);
+        voltarTelaDesafio.setEnabled(false);
+        iniciarJogoButton.setEnabled(true);
     }//GEN-LAST:event_fecharTelaOpcoesActionPerformed
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -357,27 +435,29 @@ public class TelaManterMaterias extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaManterMaterias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDesafio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaManterMaterias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDesafio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaManterMaterias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDesafio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaManterMaterias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDesafio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaManterMaterias().setVisible(true);
+                new TelaDesafio().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton creditosTelaOpcoes;
-    private javax.swing.JButton criarTelaManterMaterias;
-    private javax.swing.JButton deletarTelaManterMaterias;
+    private javax.swing.JComboBox<String> dificuldadeComboBox;
+    private javax.swing.JLabel digiteTempo;
     private javax.swing.JButton fecharTelaOpcoes;
+    private javax.swing.JButton iniciarJogoButton;
+    private javax.swing.JComboBox<Materias> materiaComboBox;
     private javax.swing.JButton offEfeitoSonoroTelaOpcoesButton;
     private javax.swing.JLabel offEfeitosSonorosLabel;
     private javax.swing.JLabel offMusicaLabel;
@@ -386,17 +466,20 @@ public class TelaManterMaterias extends javax.swing.JFrame {
     private javax.swing.JLabel onEfeitosSonorosLabel;
     private javax.swing.JLabel onMusicaLabel;
     private javax.swing.JButton onMusicaTelaOpcoesButton;
-    private javax.swing.JButton opcoesTelaManterMaterias;
+    private javax.swing.JButton opcoesTelaDesafio;
+    private javax.swing.JLabel selecioneDificuldade;
+    private javax.swing.JLabel selecioneMateria;
     private javax.swing.JButton sobreNosTelaCreditos;
     private javax.swing.JLabel telaCreditosLabelPanel;
     private javax.swing.JPanel telaCreditosPanel;
-    private javax.swing.JLabel telaManterMateriasLabel;
+    private javax.swing.JLabel telaDesafioLabel;
     private javax.swing.JLabel telaOpcoesLabelPanel;
     private javax.swing.JPanel telaOpcoesPanel;
     private javax.swing.JLabel telaSobreNosLabel;
     private javax.swing.JPanel telaSobreNosPanel;
+    private javax.swing.JTextField tempoTextArea;
     private javax.swing.JButton voltarTelaCreditos;
-    private javax.swing.JButton voltarTelaManterMaterias;
+    private javax.swing.JButton voltarTelaDesafio;
     private javax.swing.JButton voltarTelaSobreNos;
     // End of variables declaration//GEN-END:variables
 }

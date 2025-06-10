@@ -11,8 +11,10 @@ public class TelaConsultar extends javax.swing.JFrame {
     private int idAlunoLogado;
 
     public TelaConsultar() {
-        this.idAlunoLogado = Sessao.getIdAluno();
+        super ("Policards");
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.idAlunoLogado = Sessao.getIdAluno();
         flashcardsTable.setModel(tabelaFlashcards);
 
         try {
@@ -21,7 +23,8 @@ public class TelaConsultar extends javax.swing.JFrame {
                 idComboBox.addItem(String.valueOf(f.getId_flashcard()));
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao carregar IDs no ComboBox");
+            JOptionPane.showMessageDialog(this, "Erro ao carregar Flashcards:");
+            e.printStackTrace();
         }
    
     }
@@ -71,6 +74,8 @@ public class TelaConsultar extends javax.swing.JFrame {
         });
         getContentPane().add(voltarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 20));
 
+        flashcardsScrollPane.setFocusable(false);
+
         flashcardsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -82,6 +87,7 @@ public class TelaConsultar extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        flashcardsTable.setEnabled(false);
         flashcardsScrollPane.setViewportView(flashcardsTable);
 
         getContentPane().add(flashcardsScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 780, 330));

@@ -255,7 +255,8 @@ public class TelaModos extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarTelaModosButtonActionPerformed
 
     private void desafioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desafioButtonActionPerformed
-        // TODO add your handling code here:
+        new TelaDesafio().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_desafioButtonActionPerformed
 
     private void voltarTelaSobreNosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaSobreNosActionPerformed

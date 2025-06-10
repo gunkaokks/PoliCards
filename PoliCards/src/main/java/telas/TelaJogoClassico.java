@@ -1,6 +1,7 @@
 package telas;
 
 import crudFlashcards.FlashcardResposta;
+import crudFlashcards.FlashcardService;
 import crudFlashcards.Flashcards;
 import crudFlashcards.FlashcardsDAO;
 import crudMaterias.MateriasDAO;
@@ -9,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import persistencia.Sessao;
 import sons.EfeitosSonoros;
 import sons.Musicas;
 
@@ -18,7 +20,8 @@ public class TelaJogoClassico extends javax.swing.JFrame {
     public TelaJogoClassico() {
         super("Policards");
         initComponents();
-        this.setLocationRelativeTo(null);    
+        this.setLocationRelativeTo(null);   
+        this.idAlunoLogado = Sessao.getIdAluno();
         telaOpcoesPanel.setVisible(false);
         telaSobreNosPanel.setVisible(false);
         telaCreditosPanel.setVisible(false);
@@ -47,6 +50,7 @@ public class TelaJogoClassico extends javax.swing.JFrame {
     private int flashcardAtual = -1;
     private String dificuldadeSelecionada;
     private int idMateriaSelecionada;
+    private int idAlunoLogado;
     
     public void setParametrosJogo(String materia, String dificuldade, int idMateria) {
         this.dificuldadeSelecionada = dificuldade;
@@ -88,6 +92,21 @@ public class TelaJogoClassico extends javax.swing.JFrame {
     private String obterNomeMateria(int idMateria) throws SQLException {
         MateriasDAO dao = new MateriasDAO();
         return dao.getNomeMateria(idMateria);
+    }
+    
+    private void registrarTentativa(boolean acertou) {
+        if (flashcardAtual >= 0 && flashcardAtual < flashcards.size()) {
+            FlashcardResposta atual = flashcards.get(flashcardAtual);
+            try {
+                FlashcardService.registrarTentativa(idAlunoLogado, atual.getId_flashcard(), acertou);
+
+                atual.setAcertou(acertou);
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Erro ao registrar tentativa");
+                e.printStackTrace();
+            }
+        }
     }
 
     private void mostrarProximoFlashcard() {
@@ -148,6 +167,7 @@ public class TelaJogoClassico extends javax.swing.JFrame {
         telaJogoClassicoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         telaSobreNosPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -492,7 +512,7 @@ public class TelaJogoClassico extends javax.swing.JFrame {
         fecharTelaOpcoes.setEnabled(false);
         creditosTelaOpcoes.setEnabled(false);
         opcoesTelaJogoClassico.setEnabled(true);
-        voltarTelaJogoClassico.setEnabled(false);
+        voltarTelaJogoClassico.setEnabled(true);
         verRespostaButton.setEnabled(true);
     }//GEN-LAST:event_fecharTelaOpcoesActionPerformed
 
@@ -513,6 +533,7 @@ public class TelaJogoClassico extends javax.swing.JFrame {
     }//GEN-LAST:event_verPerguntaButtonActionPerformed
 
     private void erradoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_erradoButtonActionPerformed
+        registrarTentativa(false);
         erradoLabel.setVisible(true);
         proximoFlashcardLabel.setVisible(true);
         proximoFlashcardLabel.setEnabled(true);
@@ -521,6 +542,7 @@ public class TelaJogoClassico extends javax.swing.JFrame {
     }//GEN-LAST:event_erradoButtonActionPerformed
 
     private void corretoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_corretoButtonActionPerformed
+        registrarTentativa(true);
         corretoLabel.setVisible(true);
         proximoFlashcardLabel.setVisible(true);
         proximoFlashcardLabel.setEnabled(true);
