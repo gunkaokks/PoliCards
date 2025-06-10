@@ -102,15 +102,16 @@ public class TelaDesafio extends javax.swing.JFrame {
         telaOpcoesLabelPanel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tempoTextArea.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        getContentPane().add(tempoTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 410, 220, 30));
+        getContentPane().add(tempoTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, 220, 30));
 
         digiteTempo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         digiteTempo.setForeground(new java.awt.Color(51, 51, 51));
         digiteTempo.setText("Digite o tempo (segundos)");
-        getContentPane().add(digiteTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 388, 210, -1));
+        getContentPane().add(digiteTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 210, -1));
 
         opcoesTelaDesafio.setBorder(null);
         opcoesTelaDesafio.setContentAreaFilled(false);
@@ -137,12 +138,12 @@ public class TelaDesafio extends javax.swing.JFrame {
         selecioneDificuldade.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         selecioneDificuldade.setForeground(new java.awt.Color(51, 51, 51));
         selecioneDificuldade.setText("Selecione a dificuldade");
-        getContentPane().add(selecioneDificuldade, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 210, -1));
+        getContentPane().add(selecioneDificuldade, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 210, -1));
 
         selecioneMateria.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         selecioneMateria.setForeground(new java.awt.Color(51, 51, 51));
         selecioneMateria.setText("Selecione a matéria");
-        getContentPane().add(selecioneMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 210, -1));
+        getContentPane().add(selecioneMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 210, -1));
 
         materiaComboBox.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         materiaComboBox.setSelectedItem(materiaComboBox);
@@ -151,12 +152,12 @@ public class TelaDesafio extends javax.swing.JFrame {
                 materiaComboBoxActionPerformed(evt);
             }
         });
-        getContentPane().add(materiaComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 220, 30));
+        getContentPane().add(materiaComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 220, 30));
 
         dificuldadeComboBox.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         dificuldadeComboBox.setMaximumRowCount(4);
         dificuldadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aleatório", "Fácil", "Médio", "Difícil" }));
-        getContentPane().add(dificuldadeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 220, 30));
+        getContentPane().add(dificuldadeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 220, 30));
 
         telaDesafioLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_DESAFIO.png"))); // NOI18N
         getContentPane().add(telaDesafioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

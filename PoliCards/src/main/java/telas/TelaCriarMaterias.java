@@ -59,6 +59,16 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        materiasScrollPane = new javax.swing.JScrollPane();
+        materiasTable = new javax.swing.JTable();
+        erroPreenchaCamposLabel = new javax.swing.JLabel();
+        voltarTelaCriarMaterias = new javax.swing.JButton();
+        opcoesTelaCriarMaterias = new javax.swing.JButton();
+        materiaTextField = new javax.swing.JTextField();
+        removerButton = new javax.swing.JButton();
+        atualizarButton = new javax.swing.JButton();
+        salvarButton = new javax.swing.JButton();
+        telaCriarMateriasLabel = new javax.swing.JLabel();
         telaSobreNosPanel = new javax.swing.JPanel();
         voltarTelaSobreNos = new javax.swing.JButton();
         telaSobreNosLabel = new javax.swing.JLabel();
@@ -78,19 +88,89 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
         onEfeitoSonoroTelaOpcoesButton = new javax.swing.JButton();
         fecharTelaOpcoes = new javax.swing.JButton();
         telaOpcoesLabelPanel = new javax.swing.JLabel();
-        materiasScrollPane = new javax.swing.JScrollPane();
-        materiasTable = new javax.swing.JTable();
-        erroPreenchaCamposLabel = new javax.swing.JLabel();
-        voltarTelaCriarMaterias = new javax.swing.JButton();
-        opcoesTelaCriarMaterias = new javax.swing.JButton();
-        materiaTextField = new javax.swing.JTextField();
-        removerButton = new javax.swing.JButton();
-        atualizarButton = new javax.swing.JButton();
-        salvarButton = new javax.swing.JButton();
-        telaCriarMateriasLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        materiasTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        materiasTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                materiasTableMouseClicked(evt);
+            }
+        });
+        materiasScrollPane.setViewportView(materiasTable);
+
+        getContentPane().add(materiasScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 690, 190));
+
+        erroPreenchaCamposLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        erroPreenchaCamposLabel.setForeground(new java.awt.Color(255, 29, 51));
+        erroPreenchaCamposLabel.setText("Preencha o campo!");
+        getContentPane().add(erroPreenchaCamposLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 170, -1));
+
+        voltarTelaCriarMaterias.setToolTipText("");
+        voltarTelaCriarMaterias.setBorder(null);
+        voltarTelaCriarMaterias.setContentAreaFilled(false);
+        voltarTelaCriarMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarTelaCriarMateriasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltarTelaCriarMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 40));
+
+        opcoesTelaCriarMaterias.setToolTipText("");
+        opcoesTelaCriarMaterias.setBorder(null);
+        opcoesTelaCriarMaterias.setContentAreaFilled(false);
+        opcoesTelaCriarMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcoesTelaCriarMateriasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(opcoesTelaCriarMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 110, 40));
+
+        materiaTextField.setBackground(new java.awt.Color(193, 193, 193));
+        materiaTextField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        materiaTextField.setBorder(null);
+        getContentPane().add(materiaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 174, 510, 30));
+
+        removerButton.setBorder(null);
+        removerButton.setContentAreaFilled(false);
+        removerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(removerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 460, 120, 50));
+
+        atualizarButton.setBorder(null);
+        atualizarButton.setContentAreaFilled(false);
+        atualizarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(atualizarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, 120, 50));
+
+        salvarButton.setBorder(null);
+        salvarButton.setContentAreaFilled(false);
+        salvarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(salvarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 120, 50));
+
+        telaCriarMateriasLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_CRIAR_MATERIAS.png"))); // NOI18N
+        getContentPane().add(telaCriarMateriasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         telaSobreNosPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -224,86 +304,6 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
         telaOpcoesPanel.add(telaOpcoesLabelPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(telaOpcoesPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
-
-        materiasTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        materiasTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                materiasTableMouseClicked(evt);
-            }
-        });
-        materiasScrollPane.setViewportView(materiasTable);
-
-        getContentPane().add(materiasScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 690, 190));
-
-        erroPreenchaCamposLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        erroPreenchaCamposLabel.setForeground(new java.awt.Color(255, 29, 51));
-        erroPreenchaCamposLabel.setText("Preencha o campo!");
-        getContentPane().add(erroPreenchaCamposLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 170, -1));
-
-        voltarTelaCriarMaterias.setToolTipText("");
-        voltarTelaCriarMaterias.setBorder(null);
-        voltarTelaCriarMaterias.setContentAreaFilled(false);
-        voltarTelaCriarMaterias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarTelaCriarMateriasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(voltarTelaCriarMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 40));
-
-        opcoesTelaCriarMaterias.setToolTipText("");
-        opcoesTelaCriarMaterias.setBorder(null);
-        opcoesTelaCriarMaterias.setContentAreaFilled(false);
-        opcoesTelaCriarMaterias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opcoesTelaCriarMateriasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(opcoesTelaCriarMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 110, 40));
-
-        materiaTextField.setBackground(new java.awt.Color(193, 193, 193));
-        materiaTextField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        materiaTextField.setBorder(null);
-        getContentPane().add(materiaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 174, 510, 30));
-
-        removerButton.setBorder(null);
-        removerButton.setContentAreaFilled(false);
-        removerButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removerButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(removerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 460, 120, 50));
-
-        atualizarButton.setBorder(null);
-        atualizarButton.setContentAreaFilled(false);
-        atualizarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atualizarButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(atualizarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, 120, 50));
-
-        salvarButton.setBorder(null);
-        salvarButton.setContentAreaFilled(false);
-        salvarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salvarButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(salvarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 120, 50));
-
-        telaCriarMateriasLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_CRIAR_MATERIAS.png"))); // NOI18N
-        getContentPane().add(telaCriarMateriasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

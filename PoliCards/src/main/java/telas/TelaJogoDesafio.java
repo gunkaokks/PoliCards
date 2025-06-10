@@ -57,6 +57,8 @@ public class TelaJogoDesafio extends javax.swing.JFrame {
     private String dificuldade;
     private int idMateria;
     private int tempoLimite;
+    private Timer timer;
+    private int tempoRestante;
     
     public void setMateria(String materia) {
         this.materia = materia;
@@ -134,19 +136,21 @@ public class TelaJogoDesafio extends javax.swing.JFrame {
     }
     
     private void iniciarTemporizador() {
-        temporizadorLabel.setText(String.valueOf(tempoLimite));
-        
-        Timer timer = new Timer(1000, new ActionListener() {
-            int tempoRestante = tempoLimite;
+        if (timer != null) {
+            timer.stop();
+        }
 
+        tempoRestante = tempoLimite;
+        temporizadorLabel.setText(String.valueOf(tempoRestante));
+
+        timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 tempoRestante--;
                 temporizadorLabel.setText(String.valueOf(tempoRestante));
 
                 if (tempoRestante <= 0) {
-                    ((Timer) e.getSource()).stop();
-
+                    timer.stop();
                     JOptionPane.showMessageDialog(TelaJogoDesafio.this, "Tempo esgotado! Você completou " + (flashcardAtual + 1) + " flashcards.");
                     new TelaDesafio().setVisible(true);
                     dispose();
@@ -177,17 +181,17 @@ public class TelaJogoDesafio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        temporizadorLabel = new javax.swing.JLabel();
         dificuldadeLabel = new javax.swing.JLabel();
         materiaLabel = new javax.swing.JLabel();
+        temporizadorLabel = new javax.swing.JLabel();
         telaRespostasPanel = new javax.swing.JPanel();
         respostaLabel = new javax.swing.JLabel();
-        proximoFlashcardButton = new javax.swing.JButton();
-        corretoButton = new javax.swing.JButton();
-        erradoButton = new javax.swing.JButton();
         erradoLabel = new javax.swing.JLabel();
         corretoLabel = new javax.swing.JLabel();
         proximoFlashcardLabel = new javax.swing.JLabel();
+        proximoFlashcardButton = new javax.swing.JButton();
+        corretoButton = new javax.swing.JButton();
+        erradoButton = new javax.swing.JButton();
         telaRespostasLabel = new javax.swing.JLabel();
         verRespostaButton = new javax.swing.JButton();
         voltarTelaJogoDesafio = new javax.swing.JButton();
@@ -218,14 +222,16 @@ public class TelaJogoDesafio extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        temporizadorLabel.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        getContentPane().add(temporizadorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 100, 40));
-
         dificuldadeLabel.setFont(new java.awt.Font("Jersey 15", 0, 24)); // NOI18N
-        getContentPane().add(dificuldadeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, 190, 30));
+        getContentPane().add(dificuldadeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 140, 30));
 
         materiaLabel.setFont(new java.awt.Font("Jersey 15", 0, 24)); // NOI18N
-        getContentPane().add(materiaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 220, 30));
+        getContentPane().add(materiaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 110, 30));
+
+        temporizadorLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        temporizadorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        temporizadorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(temporizadorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 123, 80, 40));
 
         telaRespostasPanel.setOpaque(false);
         telaRespostasPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -234,7 +240,16 @@ public class TelaJogoDesafio extends javax.swing.JFrame {
         respostaLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         respostaLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         respostaLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        telaRespostasPanel.add(respostaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 88, 630, 260));
+        telaRespostasPanel.add(respostaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 108, 630, 240));
+
+        erradoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ERRADO.png"))); // NOI18N
+        telaRespostasPanel.add(erradoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 352, 100, -1));
+
+        corretoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CORRETO.png"))); // NOI18N
+        telaRespostasPanel.add(corretoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(281, 362, 100, 70));
+
+        proximoFlashcardLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PROXIMO_FLASHCARD_DESAFIO.png"))); // NOI18N
+        telaRespostasPanel.add(proximoFlashcardLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 369, 250, 50));
 
         proximoFlashcardButton.setBorder(null);
         proximoFlashcardButton.setContentAreaFilled(false);
@@ -263,18 +278,9 @@ public class TelaJogoDesafio extends javax.swing.JFrame {
         });
         telaRespostasPanel.add(erradoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 100, 70));
 
-        erradoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ERRADO.png"))); // NOI18N
-        telaRespostasPanel.add(erradoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 352, 100, -1));
-
-        corretoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CORRETO.png"))); // NOI18N
-        telaRespostasPanel.add(corretoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 362, 100, 70));
-
-        proximoFlashcardLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PROXIMO_FLASHCARD.png"))); // NOI18N
-        telaRespostasPanel.add(proximoFlashcardLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 369, 250, 50));
-
-        telaRespostasLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_JOGO_CLASSICO_RESPOSTA.png"))); // NOI18N
+        telaRespostasLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_JOGO_DESAFIO_RESPOSTA.png"))); // NOI18N
         telaRespostasLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        telaRespostasPanel.add(telaRespostasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        telaRespostasPanel.add(telaRespostasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -2, -1, -1));
 
         getContentPane().add(telaRespostasPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 72, 780, 440));
 
@@ -285,7 +291,7 @@ public class TelaJogoDesafio extends javax.swing.JFrame {
                 verRespostaButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(verRespostaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, 180, 40));
+        getContentPane().add(verRespostaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 450, 180, 40));
 
         voltarTelaJogoDesafio.setBorder(null);
         voltarTelaJogoDesafio.setContentAreaFilled(false);
@@ -309,9 +315,9 @@ public class TelaJogoDesafio extends javax.swing.JFrame {
         perguntaLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         perguntaLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         perguntaLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        getContentPane().add(perguntaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 630, 260));
+        getContentPane().add(perguntaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 630, 240));
 
-        telaJogoDesafioLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_JOGO_CLASSICO.png"))); // NOI18N
+        telaJogoDesafioLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_JOGO_DESAFIO.png"))); // NOI18N
         getContentPane().add(telaJogoDesafioLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 560));
 
         telaSobreNosPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -559,6 +565,7 @@ public class TelaJogoDesafio extends javax.swing.JFrame {
     }//GEN-LAST:event_fecharTelaOpcoesActionPerformed
 
     private void verRespostaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verRespostaButtonActionPerformed
+        timer.stop();
         telaRespostasPanel.setVisible(true);
         proximoFlashcardButton.setEnabled(true);
         verRespostaButton.setEnabled(false);
@@ -567,25 +574,28 @@ public class TelaJogoDesafio extends javax.swing.JFrame {
     }//GEN-LAST:event_verRespostaButtonActionPerformed
 
     private void erradoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_erradoButtonActionPerformed
-        registrarTentativa(false);
+        erradoButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
         erradoLabel.setVisible(true);
         proximoFlashcardLabel.setVisible(true);
         proximoFlashcardLabel.setEnabled(true);
         erradoButton.setEnabled(false);
         corretoButton.setEnabled(false);
+        registrarTentativa(false);
     }//GEN-LAST:event_erradoButtonActionPerformed
 
     private void corretoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_corretoButtonActionPerformed
-        registrarTentativa(true);
+        corretoButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
         corretoLabel.setVisible(true);
         proximoFlashcardLabel.setVisible(true);
         proximoFlashcardLabel.setEnabled(true);
         erradoButton.setEnabled(false);
         corretoButton.setEnabled(false);
+        registrarTentativa(true);
     }//GEN-LAST:event_corretoButtonActionPerformed
 
     private void proximoFlashcardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximoFlashcardButtonActionPerformed
         mostrarProximoFlashcard();
+        iniciarTemporizador();
         telaRespostasPanel.setVisible(false);
         corretoLabel.setVisible(false);
         erradoLabel.setVisible(false);
@@ -594,7 +604,6 @@ public class TelaJogoDesafio extends javax.swing.JFrame {
         proximoFlashcardLabel.setVisible(false);
         proximoFlashcardLabel.setEnabled(false);
         verRespostaButton.setEnabled(true);
-        
     }//GEN-LAST:event_proximoFlashcardButtonActionPerformed
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
