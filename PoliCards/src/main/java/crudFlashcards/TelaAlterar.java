@@ -6,18 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import persistencia.ConnectionFactory;
+import persistencia.Sessao;
 
 public class TelaAlterar extends javax.swing.JFrame {
     private int idAlunoLogado;
     
-    public TelaAlterar(int id_aluno) {
-        this.idAlunoLogado = id_aluno;
+    public TelaAlterar() {
+        this.idAlunoLogado = Sessao.getIdAluno();
         initComponents();
         getId();
-        getMaterias(id_aluno); 
-        dificuldadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{
-            "Fácil", "Médio", "Difícil"
-        }));
+        getMaterias(); 
+        dificuldadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{ "Fácil", "Médio", "Difícil"}));
     }
     
     private void getId() {
@@ -30,8 +29,9 @@ public class TelaAlterar extends javax.swing.JFrame {
             connection = ConnectionFactory.getConnection();
 
             // Criar um PreparedStatement para executar a consulta SQL
-            String query = "SELECT id_flashcard FROM flashcards";
+            String query = "SELECT id_flashcard FROM flashcards  WHERE id_aluno = ?";
             preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, idAlunoLogado);
 
             // Executar a consulta SQL
             resultSet = preparedStatement.executeQuery();
@@ -69,9 +69,10 @@ public class TelaAlterar extends javax.swing.JFrame {
         try {
             connection = ConnectionFactory.getConnection();
 
-            String query = "SELECT id_flashcard, id_materia, dificuldade, pergunta, resposta FROM flashcards WHERE id_flashcard = ?";
+            String query = "SELECT id_flashcard, id_materia, dificuldade, pergunta, resposta FROM flashcards WHERE id_flashcard = ? AND id_aluno = ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, idQuestoes);
+            preparedStatement.setInt(2, idAlunoLogado);
 
             resultSet = preparedStatement.executeQuery();
 
@@ -104,7 +105,7 @@ public class TelaAlterar extends javax.swing.JFrame {
         }
     }
     
-    private void getMaterias(int idAluno) {
+    private void getMaterias() {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -114,7 +115,7 @@ public class TelaAlterar extends javax.swing.JFrame {
 
             String query = "SELECT DISTINCT materia FROM materias WHERE id_aluno = ?";
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, idAluno);
+            preparedStatement.setInt(1, idAlunoLogado);
             resultSet = preparedStatement.executeQuery();
 
             materiaComboBox.removeAllItems(); 
@@ -147,7 +148,7 @@ public class TelaAlterar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        prucurarButton = new javax.swing.JButton();
+        procurarButton = new javax.swing.JButton();
         opcoesButton = new javax.swing.JButton();
         voltarButton = new javax.swing.JButton();
         editarButton = new javax.swing.JButton();
@@ -161,14 +162,14 @@ public class TelaAlterar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        prucurarButton.setBorder(null);
-        prucurarButton.setContentAreaFilled(false);
-        prucurarButton.addActionListener(new java.awt.event.ActionListener() {
+        procurarButton.setBorder(null);
+        procurarButton.setContentAreaFilled(false);
+        procurarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                prucurarButtonActionPerformed(evt);
+                procurarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(prucurarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 90, 30));
+        getContentPane().add(procurarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 90, 30));
 
         opcoesButton.setBorder(null);
         opcoesButton.setContentAreaFilled(false);
@@ -220,15 +221,33 @@ public class TelaAlterar extends javax.swing.JFrame {
 
     private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
         boolean validacao = true;
-        int id = Integer.parseInt((String) idComboBox.getSelectedItem()); 
+        int id_flashcard = Integer.parseInt((String) idComboBox.getSelectedItem());
         String dificuldade = (String) dificuldadeComboBox.getSelectedItem();
-        String materia = (String) materiaComboBox.getSelectedItem();
+        String materiaNome = (String) materiaComboBox.getSelectedItem();
         String pergunta = perguntaTextField.getText();
         String resposta = respostaTextField.getText();
+        int id_aluno = Sessao.getIdAluno();
+        
+        int id_materia = 0;
+
+        try (Connection conn = ConnectionFactory.getConnection(); PreparedStatement ps = conn.prepareStatement("SELECT id_materia FROM materias WHERE materia = ? AND id_aluno = ?")) {
+            ps.setString(1, materiaNome);
+            ps.setInt(2, Sessao.getIdAluno());
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    id_materia = rs.getInt("id_materia");
+                } else {
+                    throw new Exception("Matéria não encontrada.");
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
 
         try {
             editarButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
-            Flashcards f = new Flashcards(id, dificuldade, materia, pergunta, resposta);
+            Flashcards f = new Flashcards( id_flashcard, id_aluno, id_materia, pergunta, resposta, dificuldade);
             validacao = false;
 
             FlashcardService.atualizar(f);
@@ -246,13 +265,19 @@ public class TelaAlterar extends javax.swing.JFrame {
 
     }//GEN-LAST:event_editarButtonActionPerformed
 
-    private void prucurarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prucurarButtonActionPerformed
+    private void procurarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procurarButtonActionPerformed
         Integer selectedId = (Integer) idComboBox.getSelectedItem();
         if (selectedId != null) {
             getDados(selectedId);
         }
-    }//GEN-LAST:event_prucurarButtonActionPerformed
-
+    }//GEN-LAST:event_procurarButtonActionPerformed
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TelaAlterar().setVisible(true);
+            }
+        });
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> dificuldadeComboBox;
     private javax.swing.JButton editarButton;
@@ -260,7 +285,7 @@ public class TelaAlterar extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> materiaComboBox;
     private javax.swing.JButton opcoesButton;
     private javax.swing.JTextField perguntaTextField;
-    private javax.swing.JButton prucurarButton;
+    private javax.swing.JButton procurarButton;
     private javax.swing.JTextField respostaTextField;
     private javax.swing.JLabel telaConsultarLabel;
     private javax.swing.JButton voltarButton;
