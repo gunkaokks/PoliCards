@@ -2,6 +2,7 @@ package telas;
 
 import crudFlashcards.TelaAlterar;
 import crudFlashcards.TelaConsultar;
+import crudFlashcards.TelaRemover;
 import java.awt.Cursor;
 import sons.EfeitosSonoros;
 import sons.Musicas;
@@ -34,6 +35,7 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
 
         opcoesTelaManterFlashcards = new javax.swing.JButton();
         voltarTelaManterFlashcards = new javax.swing.JButton();
+        removerButton = new javax.swing.JButton();
         visualizarButton = new javax.swing.JButton();
         criarFlashcardsButton = new javax.swing.JButton();
         editarFlashcardsButton = new javax.swing.JButton();
@@ -81,6 +83,15 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
             }
         });
         getContentPane().add(voltarTelaManterFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 40));
+
+        removerButton.setBorder(null);
+        removerButton.setContentAreaFilled(false);
+        removerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(removerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 220, 50));
 
         visualizarButton.setBorder(null);
         visualizarButton.setContentAreaFilled(false);
@@ -281,17 +292,21 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarTelaManterFlashcardsActionPerformed
 
     private void editarFlashcardsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarFlashcardsButtonActionPerformed
+        editarFlashcardsButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
         EfeitosSonoros.Play("click.wav");
-        
+        new TelaAlterar().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_editarFlashcardsButtonActionPerformed
 
     private void gerenciarMateriasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenciarMateriasButtonActionPerformed
+        gerenciarMateriasButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
         EfeitosSonoros.Play("click.wav");
         new TelaCriarMaterias().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_gerenciarMateriasButtonActionPerformed
 
     private void criarFlashcardsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarFlashcardsButtonActionPerformed
+        criarFlashcardsButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
         EfeitosSonoros.Play("click.wav");
         new TelaCriarFlashcards().setVisible(true);
         this.dispose();
@@ -389,8 +404,18 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
     }//GEN-LAST:event_fecharTelaOpcoesActionPerformed
 
     private void visualizarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarButtonActionPerformed
-       
+        visualizarButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+        EfeitosSonoros.Play("click.wav");
+        new TelaConsultar().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_visualizarButtonActionPerformed
+
+    private void removerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerButtonActionPerformed
+        removerButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+        EfeitosSonoros.Play("click.wav");
+        new TelaRemover().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_removerButtonActionPerformed
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -435,6 +460,7 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
     private javax.swing.JLabel onMusicaLabel;
     private javax.swing.JButton onMusicaTelaOpcoesButton;
     private javax.swing.JButton opcoesTelaManterFlashcards;
+    private javax.swing.JButton removerButton;
     private javax.swing.JButton sobreNosTelaCreditos;
     private javax.swing.JLabel telaCreditosLabelPanel;
     private javax.swing.JPanel telaCreditosPanel;

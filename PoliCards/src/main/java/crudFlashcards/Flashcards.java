@@ -22,11 +22,14 @@ public class Flashcards {
         this.dificuldade = dificuldade;
     }
     
-    public Flashcards (int id, String dificuldade, String materia, String pergunta, String resposta) {
+    public Flashcards (int id_aluno, int id_materia, String dificuldade, String materia, String pergunta, String resposta) {
         this.id_aluno = id_aluno;
         this.dificuldade = dificuldade;
         this.id_materia = id_materia;
         this.pergunta = pergunta;
         this.resposta = resposta;
+    }
+    public Flashcards(int id_flashcard) {
+        this.id_flashcard = id_flashcard;
     }
 }

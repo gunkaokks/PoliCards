@@ -1,18 +1,18 @@
 package crudFlashcards;
 
 import javax.swing.JOptionPane;
-
+import persistencia.Sessao;
 
 public class TelaConsultar extends javax.swing.JFrame {
-    private int indexSelecionado = -1;
+
     private FlashcardTableModel tabelaFlashcards = new FlashcardTableModel();
     private int idAlunoLogado;
-   
-    public TelaConsultar(int idAluno) {
-        this.idAlunoLogado = idAluno;
+
+    public TelaConsultar() {
+        this.idAlunoLogado = Sessao.getIdAluno();
         initComponents();
         flashcardsTable.setModel(tabelaFlashcards);
-        
+
         try {
             idComboBox.removeAllItems();
             for (FlashcardResposta f : FlashcardService.get(idAlunoLogado)) {
@@ -21,7 +21,7 @@ public class TelaConsultar extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao carregar IDs no ComboBox");
         }
-    
+   
     }
     
     private void getFlashcards(int idQuestao) {
@@ -111,7 +111,13 @@ public class TelaConsultar extends javax.swing.JFrame {
         int idSelecionado = Integer.parseInt(selecionado);
         getFlashcards(idSelecionado);
     }//GEN-LAST:event_procurarButtonActionPerformed
-
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TelaConsultar().setVisible(true);
+            }
+        });
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane flashcardsScrollPane;
     private javax.swing.JTable flashcardsTable;

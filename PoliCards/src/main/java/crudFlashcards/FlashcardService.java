@@ -96,7 +96,7 @@ public class FlashcardService {
         }
     }
     
-    public static void remover(FlashcardResposta f) throws Exception {
+    public static void remover(Flashcards f) throws Exception {
         Connection c = null;
         PreparedStatement stmt = null;
 
