@@ -303,6 +303,7 @@ public class TelaDesafio extends javax.swing.JFrame {
     }//GEN-LAST:event_materiaComboBoxActionPerformed
 
     private void iniciarJogoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarJogoButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
         try {
             iniciarJogoButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
             if (iniciarJogo()) {
@@ -331,6 +332,7 @@ public class TelaDesafio extends javax.swing.JFrame {
     }//GEN-LAST:event_iniciarJogoButtonActionPerformed
 
     private void voltarTelaDesafioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaDesafioActionPerformed
+        EfeitosSonoros.Play("back.wav");
         new TelaModos().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_voltarTelaDesafioActionPerformed

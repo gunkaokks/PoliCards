@@ -33,14 +33,6 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        opcoesTelaManterFlashcards = new javax.swing.JButton();
-        voltarTelaManterFlashcards = new javax.swing.JButton();
-        removerButton = new javax.swing.JButton();
-        visualizarButton = new javax.swing.JButton();
-        criarFlashcardsButton = new javax.swing.JButton();
-        editarFlashcardsButton = new javax.swing.JButton();
-        gerenciarMateriasButton = new javax.swing.JButton();
-        telaManterFlashcardsLabel = new javax.swing.JLabel();
         telaSobreNosPanel = new javax.swing.JPanel();
         voltarTelaSobreNos = new javax.swing.JButton();
         telaSobreNosLabel = new javax.swing.JLabel();
@@ -60,77 +52,19 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
         onEfeitoSonoroTelaOpcoesButton = new javax.swing.JButton();
         fecharTelaOpcoes = new javax.swing.JButton();
         telaOpcoesLabelPanel = new javax.swing.JLabel();
+        opcoesTelaManterFlashcards = new javax.swing.JButton();
+        voltarTelaManterFlashcards = new javax.swing.JButton();
+        removerButton = new javax.swing.JButton();
+        visualizarButton = new javax.swing.JButton();
+        criarFlashcardsButton = new javax.swing.JButton();
+        editarFlashcardsButton = new javax.swing.JButton();
+        gerenciarMateriasButton = new javax.swing.JButton();
+        telaManterFlashcardsLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PoliCards");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        opcoesTelaManterFlashcards.setBorder(null);
-        opcoesTelaManterFlashcards.setContentAreaFilled(false);
-        opcoesTelaManterFlashcards.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opcoesTelaManterFlashcardsActionPerformed(evt);
-            }
-        });
-        getContentPane().add(opcoesTelaManterFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, 130, 40));
-
-        voltarTelaManterFlashcards.setBorder(null);
-        voltarTelaManterFlashcards.setContentAreaFilled(false);
-        voltarTelaManterFlashcards.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarTelaManterFlashcardsActionPerformed(evt);
-            }
-        });
-        getContentPane().add(voltarTelaManterFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 40));
-
-        removerButton.setBorder(null);
-        removerButton.setContentAreaFilled(false);
-        removerButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removerButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(removerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 220, 50));
-
-        visualizarButton.setBorder(null);
-        visualizarButton.setContentAreaFilled(false);
-        visualizarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                visualizarButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(visualizarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 220, 50));
-
-        criarFlashcardsButton.setBorder(null);
-        criarFlashcardsButton.setContentAreaFilled(false);
-        criarFlashcardsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                criarFlashcardsButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(criarFlashcardsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 210, 50));
-
-        editarFlashcardsButton.setBorder(null);
-        editarFlashcardsButton.setContentAreaFilled(false);
-        editarFlashcardsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editarFlashcardsButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(editarFlashcardsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 210, 50));
-
-        gerenciarMateriasButton.setBorder(null);
-        gerenciarMateriasButton.setContentAreaFilled(false);
-        gerenciarMateriasButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gerenciarMateriasButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(gerenciarMateriasButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 210, 40));
-
-        telaManterFlashcardsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_MENU_FLASHCARDS.png"))); // NOI18N
-        getContentPane().add(telaManterFlashcardsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         telaSobreNosPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -264,6 +198,72 @@ public class TelaManterFlashcards extends javax.swing.JFrame {
         telaOpcoesPanel.add(telaOpcoesLabelPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(telaOpcoesPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
+
+        opcoesTelaManterFlashcards.setBorder(null);
+        opcoesTelaManterFlashcards.setContentAreaFilled(false);
+        opcoesTelaManterFlashcards.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcoesTelaManterFlashcardsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(opcoesTelaManterFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, 130, 40));
+
+        voltarTelaManterFlashcards.setBorder(null);
+        voltarTelaManterFlashcards.setContentAreaFilled(false);
+        voltarTelaManterFlashcards.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarTelaManterFlashcardsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltarTelaManterFlashcards, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 40));
+
+        removerButton.setBorder(null);
+        removerButton.setContentAreaFilled(false);
+        removerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(removerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 220, 50));
+
+        visualizarButton.setBorder(null);
+        visualizarButton.setContentAreaFilled(false);
+        visualizarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visualizarButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(visualizarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 220, 50));
+
+        criarFlashcardsButton.setBorder(null);
+        criarFlashcardsButton.setContentAreaFilled(false);
+        criarFlashcardsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                criarFlashcardsButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(criarFlashcardsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 210, 50));
+
+        editarFlashcardsButton.setBorder(null);
+        editarFlashcardsButton.setContentAreaFilled(false);
+        editarFlashcardsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarFlashcardsButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(editarFlashcardsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 210, 50));
+
+        gerenciarMateriasButton.setBorder(null);
+        gerenciarMateriasButton.setContentAreaFilled(false);
+        gerenciarMateriasButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gerenciarMateriasButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(gerenciarMateriasButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 210, 40));
+
+        telaManterFlashcardsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_MENU_FLASHCARDS.png"))); // NOI18N
+        getContentPane().add(telaManterFlashcardsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

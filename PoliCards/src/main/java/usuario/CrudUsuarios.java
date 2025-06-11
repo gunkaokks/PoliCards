@@ -182,18 +182,16 @@ public class CrudUsuarios extends javax.swing.JFrame {
 
                 UsuarioService.adicionar(u);
 
-                JOptionPane.showMessageDialog(this, "Usuário criado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Usuário criado com sucesso!");
 
                 this.getUsuarios();
                 limparCampos();
             } else {
-                JOptionPane.showMessageDialog(this, "Usuário já existe", "Aviso", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Usuário já existe");
             }
         } catch (Exception e) {
-            String title = validacao ? "Validação" : "Erro";
-            int pane = validacao ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.ERROR_MESSAGE;
-
-            JOptionPane.showMessageDialog(this, e.getMessage(), title, pane);
+            JOptionPane.showMessageDialog(this, "Erro ao salvar usuário");
+            e.printStackTrace();
         }
 
     }//GEN-LAST:event_salvarButtonActionPerformed
@@ -207,21 +205,19 @@ public class CrudUsuarios extends javax.swing.JFrame {
         if (this.indexSelecionado == -1)
             return;
 
-try
-{
-    removerButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
-    Usuario u = this.tabelaUsuario.getUsuario(this.indexSelecionado);
-    UsuarioService.remover(u);
+        try {
+            removerButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+            Usuario u = this.tabelaUsuario.getUsuario(this.indexSelecionado);
+            UsuarioService.remover(u);
 
-    this.tabelaUsuario.removeRow(this.indexSelecionado);
-    this.limparCampos();
-    
-    JOptionPane.showMessageDialog(this, "O usuário foi removido com sucesso.", "Usuário Removido", JOptionPane.INFORMATION_MESSAGE);
-}
-catch (Exception e)
-{
-    JOptionPane.showMessageDialog(this, e.getMessage(), "Erro ao deletar usuário", JOptionPane.ERROR_MESSAGE);
-}
+            this.tabelaUsuario.removeRow(this.indexSelecionado);
+            this.limparCampos();
+
+            JOptionPane.showMessageDialog(this, "O usuario foi removido com sucesso!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao deletar usuário");
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_removerButtonActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed

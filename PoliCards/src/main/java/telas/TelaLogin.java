@@ -113,7 +113,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_emailTextFieldActionPerformed
     
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        EfeitosSonoros.Play("text.wav");
+        EfeitosSonoros.Play("button.wav");
         String emailAluno = emailTextField.getText().trim();
         String senhaAluno = new String(senhaPasswordField.getPassword());
 

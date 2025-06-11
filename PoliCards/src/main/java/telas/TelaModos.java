@@ -236,6 +236,7 @@ public class TelaModos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void opcoesTelaModosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcoesTelaModosButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
         telaOpcoesPanel.setVisible(true);
         offMusicaTelaOpcoesButton.setEnabled(true);
         onMusicaTelaOpcoesButton.setEnabled(true);
@@ -250,11 +251,13 @@ public class TelaModos extends javax.swing.JFrame {
     }//GEN-LAST:event_opcoesTelaModosButtonActionPerformed
 
     private void voltarTelaModosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaModosButtonActionPerformed
+        EfeitosSonoros.Play("back.wav");
         new TelaMenu().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_voltarTelaModosButtonActionPerformed
 
     private void desafioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desafioButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
         new TelaDesafio().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_desafioButtonActionPerformed
@@ -350,6 +353,7 @@ public class TelaModos extends javax.swing.JFrame {
     }//GEN-LAST:event_fecharTelaOpcoesActionPerformed
 
     private void classicoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classicoButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
         classicoButton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
         new TelaClassico().setVisible(true);
         this.dispose();

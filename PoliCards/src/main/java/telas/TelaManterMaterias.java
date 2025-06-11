@@ -231,6 +231,7 @@ public class TelaManterMaterias extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void opcoesTelaManterMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcoesTelaManterMateriasActionPerformed
+        EfeitosSonoros.Play("click.wav");
         telaOpcoesPanel.setVisible(true);
         offMusicaTelaOpcoesButton.setEnabled(true);
         onMusicaTelaOpcoesButton.setEnabled(true);
@@ -245,11 +246,13 @@ public class TelaManterMaterias extends javax.swing.JFrame {
     }//GEN-LAST:event_opcoesTelaManterMateriasActionPerformed
 
     private void voltarTelaManterMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaManterMateriasActionPerformed
+        EfeitosSonoros.Play("back.wav");
         new TelaMenu().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_voltarTelaManterMateriasActionPerformed
 
     private void criarTelaManterMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarTelaManterMateriasActionPerformed
+        EfeitosSonoros.Play("click.wav");
         new TelaCriarMaterias().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_criarTelaManterMateriasActionPerformed

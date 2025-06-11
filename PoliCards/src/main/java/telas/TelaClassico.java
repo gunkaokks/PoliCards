@@ -228,6 +228,11 @@ public class TelaClassico extends javax.swing.JFrame {
 
         opcoesTelaClassico.setBorder(null);
         opcoesTelaClassico.setContentAreaFilled(false);
+        opcoesTelaClassico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcoesTelaClassicoActionPerformed(evt);
+            }
+        });
         getContentPane().add(opcoesTelaClassico, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, 130, 40));
 
         voltarTelaClassico.setBorder(null);
@@ -393,10 +398,28 @@ public class TelaClassico extends javax.swing.JFrame {
         onEfeitoSonoroTelaOpcoesButton.setEnabled(false);
         fecharTelaOpcoes.setEnabled(false);
         creditosTelaOpcoes.setEnabled(false);
+        materiaComboBox.setEnabled(true);
+        dificuldadeComboBox.setEnabled(true);
         opcoesTelaClassico.setEnabled(true);
-        voltarTelaClassico.setEnabled(false);
+        voltarTelaClassico.setEnabled(true);
         iniciarJogoButton.setEnabled(true);
     }//GEN-LAST:event_fecharTelaOpcoesActionPerformed
+
+    private void opcoesTelaClassicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcoesTelaClassicoActionPerformed
+        EfeitosSonoros.Play("click.wav");
+        telaOpcoesPanel.setVisible(true);
+        offMusicaTelaOpcoesButton.setEnabled(true);
+        onMusicaTelaOpcoesButton.setEnabled(true);
+        offEfeitoSonoroTelaOpcoesButton.setEnabled(true);
+        onEfeitoSonoroTelaOpcoesButton.setEnabled(true);
+        fecharTelaOpcoes.setEnabled(true);
+        creditosTelaOpcoes.setEnabled(true);
+        materiaComboBox.setEnabled(false);
+        dificuldadeComboBox.setEnabled(false);
+        opcoesTelaClassico.setEnabled(false);
+        voltarTelaClassico.setEnabled(false);
+        iniciarJogoButton.setEnabled(false);
+    }//GEN-LAST:event_opcoesTelaClassicoActionPerformed
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

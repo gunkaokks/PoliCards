@@ -7,6 +7,7 @@ import crudMaterias.MateriasComboBox;
 import java.awt.Cursor;
 import javax.swing.JOptionPane;
 import persistencia.Sessao;
+import sons.EfeitosSonoros;
 
 public class TelaCriarFlashcards extends javax.swing.JFrame {
     public TelaCriarFlashcards() {
@@ -222,6 +223,7 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
     }//GEN-LAST:event_onMusicaTelaOpcoesButtonActionPerformed
 
     private void fecharTelaOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharTelaOpcoesActionPerformed
+        EfeitosSonoros.Play("back.wav");
         telaOpcoesPanelTelaCriarFlashcards.setVisible(false);
         offMusicaTelaOpcoesButton.setEnabled(false);
         onMusicaTelaOpcoesButton.setEnabled(false);
@@ -239,11 +241,13 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
     }//GEN-LAST:event_fecharTelaOpcoesActionPerformed
 
     private void voltarTelaCriarFlashcardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaCriarFlashcardsActionPerformed
+        EfeitosSonoros.Play("back.wav");
         new TelaManterFlashcards().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_voltarTelaCriarFlashcardsActionPerformed
 
     private void opcoesTelaCriarFlashcardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcoesTelaCriarFlashcardsActionPerformed
+        EfeitosSonoros.Play("click.wav");
         telaOpcoesPanelTelaCriarFlashcards.setVisible(true);
         respostaTextArea.setEnabled(false);
         perguntaTextArea.setEnabled(false);
@@ -258,6 +262,7 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
     }//GEN-LAST:event_opcoesTelaCriarFlashcardsActionPerformed
 
     private void creditosTelaOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditosTelaOpcoesActionPerformed
+        EfeitosSonoros.Play("click.wav");
         telaCreditosPanelTelaCriarFlashcards.setVisible(true);
         offMusicaTelaOpcoesButton.setEnabled(false);
         onMusicaTelaOpcoesButton.setEnabled(false);
@@ -274,6 +279,7 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
     }//GEN-LAST:event_creditosTelaOpcoesActionPerformed
 
     private void voltarTelaCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaCreditosActionPerformed
+        EfeitosSonoros.Play("back.wav");
         telaCreditosPanelTelaCriarFlashcards.setVisible(false);
         offMusicaTelaOpcoesButton.setEnabled(true);
         onMusicaTelaOpcoesButton.setEnabled(true);
@@ -286,18 +292,21 @@ public class TelaCriarFlashcards extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarTelaCreditosActionPerformed
 
     private void voltarTelaSobreNosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaSobreNosActionPerformed
+        EfeitosSonoros.Play("back.wav");
         telaSobreNosPanelTelaCriarFlashcards.setVisible(false);
         voltarTelaSobreNos.setEnabled(false);
         sobreNosTelaCreditos.setVisible(true);
     }//GEN-LAST:event_voltarTelaSobreNosActionPerformed
 
     private void sobreNosTelaCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobreNosTelaCreditosActionPerformed
+        EfeitosSonoros.Play("click.wav");
         telaSobreNosPanelTelaCriarFlashcards.setVisible(true);
         voltarTelaSobreNos.setEnabled(true);
         sobreNosTelaCreditos.setVisible(false);
     }//GEN-LAST:event_sobreNosTelaCreditosActionPerformed
 
     private void finalizarTelaCriarFlashcardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarTelaCriarFlashcardsActionPerformed
+        EfeitosSonoros.Play("click.wav");
         Materias materiaSelecionada = (Materias) materiaComboBox.getSelectedItem();
         String pergunta = perguntaTextArea.getText();
         String resposta = respostaTextArea.getText();

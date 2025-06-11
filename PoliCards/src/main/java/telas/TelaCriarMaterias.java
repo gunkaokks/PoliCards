@@ -37,6 +37,8 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
         onMusicaLabel.setVisible(false);
         offEfeitosSonorosLabel.setVisible(false);
         onEfeitosSonorosLabel.setVisible(false);
+        interrogacaoPanel.setVisible(false);
+        voltarInterrogacaoButton.setEnabled(false);
     }
 
     private void getMaterias() {
@@ -59,16 +61,6 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        materiasScrollPane = new javax.swing.JScrollPane();
-        materiasTable = new javax.swing.JTable();
-        erroPreenchaCamposLabel = new javax.swing.JLabel();
-        voltarTelaCriarMaterias = new javax.swing.JButton();
-        opcoesTelaCriarMaterias = new javax.swing.JButton();
-        materiaTextField = new javax.swing.JTextField();
-        removerButton = new javax.swing.JButton();
-        atualizarButton = new javax.swing.JButton();
-        salvarButton = new javax.swing.JButton();
-        telaCriarMateriasLabel = new javax.swing.JLabel();
         telaSobreNosPanel = new javax.swing.JPanel();
         voltarTelaSobreNos = new javax.swing.JButton();
         telaSobreNosLabel = new javax.swing.JLabel();
@@ -88,89 +80,23 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
         onEfeitoSonoroTelaOpcoesButton = new javax.swing.JButton();
         fecharTelaOpcoes = new javax.swing.JButton();
         telaOpcoesLabelPanel = new javax.swing.JLabel();
+        interrogacaoPanel = new javax.swing.JPanel();
+        voltarInterrogacaoButton = new javax.swing.JButton();
+        interrogacaoLabel = new javax.swing.JLabel();
+        interrogacaoButton = new javax.swing.JButton();
+        materiasScrollPane = new javax.swing.JScrollPane();
+        materiasTable = new javax.swing.JTable();
+        erroPreenchaCamposLabel = new javax.swing.JLabel();
+        voltarTelaCriarMaterias = new javax.swing.JButton();
+        opcoesTelaCriarMaterias = new javax.swing.JButton();
+        materiaTextField = new javax.swing.JTextField();
+        removerButton = new javax.swing.JButton();
+        atualizarButton = new javax.swing.JButton();
+        salvarButton = new javax.swing.JButton();
+        telaCriarMateriasLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        materiasTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        materiasTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                materiasTableMouseClicked(evt);
-            }
-        });
-        materiasScrollPane.setViewportView(materiasTable);
-
-        getContentPane().add(materiasScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 690, 190));
-
-        erroPreenchaCamposLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        erroPreenchaCamposLabel.setForeground(new java.awt.Color(255, 29, 51));
-        erroPreenchaCamposLabel.setText("Preencha o campo!");
-        getContentPane().add(erroPreenchaCamposLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 170, -1));
-
-        voltarTelaCriarMaterias.setToolTipText("");
-        voltarTelaCriarMaterias.setBorder(null);
-        voltarTelaCriarMaterias.setContentAreaFilled(false);
-        voltarTelaCriarMaterias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarTelaCriarMateriasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(voltarTelaCriarMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 40));
-
-        opcoesTelaCriarMaterias.setToolTipText("");
-        opcoesTelaCriarMaterias.setBorder(null);
-        opcoesTelaCriarMaterias.setContentAreaFilled(false);
-        opcoesTelaCriarMaterias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opcoesTelaCriarMateriasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(opcoesTelaCriarMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 110, 40));
-
-        materiaTextField.setBackground(new java.awt.Color(193, 193, 193));
-        materiaTextField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        materiaTextField.setBorder(null);
-        getContentPane().add(materiaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 174, 510, 30));
-
-        removerButton.setBorder(null);
-        removerButton.setContentAreaFilled(false);
-        removerButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removerButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(removerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 460, 120, 50));
-
-        atualizarButton.setBorder(null);
-        atualizarButton.setContentAreaFilled(false);
-        atualizarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atualizarButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(atualizarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, 120, 50));
-
-        salvarButton.setBorder(null);
-        salvarButton.setContentAreaFilled(false);
-        salvarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salvarButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(salvarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 120, 50));
-
-        telaCriarMateriasLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_CRIAR_MATERIAS.png"))); // NOI18N
-        getContentPane().add(telaCriarMateriasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         telaSobreNosPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -305,10 +231,116 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
 
         getContentPane().add(telaOpcoesPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
 
+        interrogacaoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        voltarInterrogacaoButton.setBorder(null);
+        voltarInterrogacaoButton.setContentAreaFilled(false);
+        voltarInterrogacaoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarInterrogacaoButtonActionPerformed(evt);
+            }
+        });
+        interrogacaoPanel.add(voltarInterrogacaoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 3, 100, 30));
+
+        interrogacaoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_INTERROGACAO.png"))); // NOI18N
+        interrogacaoPanel.add(interrogacaoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getContentPane().add(interrogacaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 560));
+
+        interrogacaoButton.setBorder(null);
+        interrogacaoButton.setContentAreaFilled(false);
+        interrogacaoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                interrogacaoButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(interrogacaoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 530, 70, 30));
+
+        materiasTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        materiasTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                materiasTableMouseClicked(evt);
+            }
+        });
+        materiasScrollPane.setViewportView(materiasTable);
+
+        getContentPane().add(materiasScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 690, 190));
+
+        erroPreenchaCamposLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        erroPreenchaCamposLabel.setForeground(new java.awt.Color(255, 29, 51));
+        erroPreenchaCamposLabel.setText("Preencha o campo!");
+        getContentPane().add(erroPreenchaCamposLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 170, -1));
+
+        voltarTelaCriarMaterias.setToolTipText("");
+        voltarTelaCriarMaterias.setBorder(null);
+        voltarTelaCriarMaterias.setContentAreaFilled(false);
+        voltarTelaCriarMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarTelaCriarMateriasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltarTelaCriarMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 40));
+
+        opcoesTelaCriarMaterias.setToolTipText("");
+        opcoesTelaCriarMaterias.setBorder(null);
+        opcoesTelaCriarMaterias.setContentAreaFilled(false);
+        opcoesTelaCriarMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcoesTelaCriarMateriasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(opcoesTelaCriarMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 110, 40));
+
+        materiaTextField.setBackground(new java.awt.Color(193, 193, 193));
+        materiaTextField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        materiaTextField.setBorder(null);
+        getContentPane().add(materiaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 174, 510, 30));
+
+        removerButton.setBorder(null);
+        removerButton.setContentAreaFilled(false);
+        removerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(removerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 460, 120, 50));
+
+        atualizarButton.setBorder(null);
+        atualizarButton.setContentAreaFilled(false);
+        atualizarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(atualizarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, 120, 50));
+
+        salvarButton.setBorder(null);
+        salvarButton.setContentAreaFilled(false);
+        salvarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(salvarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 120, 50));
+
+        telaCriarMateriasLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TELA_CRIAR_MATERIAS.png"))); // NOI18N
+        getContentPane().add(telaCriarMateriasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void salvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
         String materia = materiaTextField.getText().trim();
         
         if (materia.isEmpty()) {
@@ -328,6 +360,8 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
                     salvarButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                 }
                 dao.close();
+                new TelaCriarMaterias().setVisible(true);
+                this.dispose();
 
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(this, "Erro ao conectar com o banco de dados.");
@@ -346,6 +380,7 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
     }//GEN-LAST:event_materiasTableMouseClicked
 
     private void atualizarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
         String materia = materiaTextField.getText().trim();
         
         if (materia.isEmpty()) {
@@ -376,6 +411,7 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
     }//GEN-LAST:event_atualizarButtonActionPerformed
 
     private void removerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
         String materia = materiaTextField.getText().trim();
 
         if (materia.isEmpty()) {
@@ -407,6 +443,7 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
     }//GEN-LAST:event_removerButtonActionPerformed
 
     private void opcoesTelaCriarMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcoesTelaCriarMateriasActionPerformed
+        EfeitosSonoros.Play("click.wav");
         telaOpcoesPanel.setVisible(true);
         offMusicaTelaOpcoesButton.setEnabled(true);
         onMusicaTelaOpcoesButton.setEnabled(true);
@@ -524,9 +561,42 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
     }//GEN-LAST:event_fecharTelaOpcoesActionPerformed
 
     private void voltarTelaCriarMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaCriarMateriasActionPerformed
+        EfeitosSonoros.Play("back.wav");
         new TelaManterFlashcards().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_voltarTelaCriarMateriasActionPerformed
+
+    private void voltarInterrogacaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarInterrogacaoButtonActionPerformed
+        EfeitosSonoros.Play("back.wav");
+        interrogacaoPanel.setVisible(false);
+        voltarInterrogacaoButton.setEnabled(false);
+        opcoesTelaCriarMaterias.setEnabled(true);
+        voltarTelaCriarMaterias.setEnabled(true);
+        materiaTextField.setEnabled(true);
+        salvarButton.setEnabled(true);
+        atualizarButton.setEnabled(true);
+        removerButton.setEnabled(true);
+        materiasScrollPane.setEnabled(true);
+        materiasTable.setEnabled(true);
+        materiasScrollPane.setVisible(true);
+        materiasTable.setVisible(true);
+    }//GEN-LAST:event_voltarInterrogacaoButtonActionPerformed
+
+    private void interrogacaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_interrogacaoButtonActionPerformed
+        EfeitosSonoros.Play("click.wav");
+        interrogacaoPanel.setVisible(true);
+        voltarInterrogacaoButton.setEnabled(true);
+        opcoesTelaCriarMaterias.setEnabled(false);
+        voltarTelaCriarMaterias.setEnabled(false);
+        materiaTextField.setEnabled(false);
+        salvarButton.setEnabled(false);
+        atualizarButton.setEnabled(false);
+        removerButton.setEnabled(false);
+        materiasScrollPane.setEnabled(false);
+        materiasTable.setEnabled(false);
+        materiasScrollPane.setVisible(false);
+        materiasTable.setVisible(false);
+    }//GEN-LAST:event_interrogacaoButtonActionPerformed
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -561,6 +631,9 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
     private javax.swing.JButton creditosTelaOpcoes;
     private javax.swing.JLabel erroPreenchaCamposLabel;
     private javax.swing.JButton fecharTelaOpcoes;
+    private javax.swing.JButton interrogacaoButton;
+    private javax.swing.JLabel interrogacaoLabel;
+    private javax.swing.JPanel interrogacaoPanel;
     private javax.swing.JTextField materiaTextField;
     private javax.swing.JScrollPane materiasScrollPane;
     private javax.swing.JTable materiasTable;
@@ -583,6 +656,7 @@ public class TelaCriarMaterias extends javax.swing.JFrame {
     private javax.swing.JPanel telaOpcoesPanel;
     private javax.swing.JLabel telaSobreNosLabel;
     private javax.swing.JPanel telaSobreNosPanel;
+    private javax.swing.JButton voltarInterrogacaoButton;
     private javax.swing.JButton voltarTelaCreditos;
     private javax.swing.JButton voltarTelaCriarMaterias;
     private javax.swing.JButton voltarTelaSobreNos;
